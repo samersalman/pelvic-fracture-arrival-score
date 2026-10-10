@@ -1,0 +1,810 @@
+{
+  "label": "POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score",
+  "design": {
+    "candidate_pool_v3": [
+      "age_65_74",
+      "age_ge75",
+      "sex_female",
+      "sbp_lt90",
+      "sbp_lt70",
+      "sbp_unrecordable",
+      "hr_ge120",
+      "si_ge0_9",
+      "si_ge1_0",
+      "gcs_motor_le5",
+      "gcs_le8",
+      "mech_high_energy",
+      "mech_mvc",
+      "mech_fall",
+      "air_transport",
+      "cc_anticoag",
+      "cc_bleeding"
+    ],
+    "candidate_pool_a1": [
+      "age_65_74",
+      "age_ge75",
+      "sex_female",
+      "sbp_lt90",
+      "sbp_unrecordable",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_motor_le5",
+      "mech_high_energy",
+      "mech_mvc",
+      "mech_fall",
+      "air_transport",
+      "cc_anticoag",
+      "cc_bleeding"
+    ],
+    "dropped_duplicate_tiers": [
+      "sbp_lt70",
+      "si_ge0_9",
+      "gcs_le8"
+    ],
+    "kept_one_term_per_domain": [
+      "sbp_lt90",
+      "si_ge1_0",
+      "hr_ge120",
+      "gcs_motor_le5",
+      "age_65_74",
+      "age_ge75",
+      "sex_female",
+      "mech_high_energy",
+      "mech_mvc",
+      "mech_fall"
+    ],
+    "other_v3_candidates_kept": [
+      "sbp_unrecordable",
+      "air_transport",
+      "cc_anticoag",
+      "cc_bleeding"
+    ],
+    "stability": {
+      "bootstraps": 100,
+      "threshold": 0.85,
+      "lambda_rule": "1se",
+      "seed_rule": "RandomState(42+i)",
+      "cv": "5-fold, 50 Cs, saga, roc_auc"
+    },
+    "force_in_anchors": [
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "cc_anticoag_forced_in": true,
+    "override": [
+      "sbp_unrecordable"
+    ],
+    "integer_rule": "round(beta/min positive beta passing |beta|>=0.15) with +/-1 floor (D-11)",
+    "train_n": 159824,
+    "train_events": 17653,
+    "test_n": 79912,
+    "test_events": 8826
+  },
+  "stability_a1": [
+    {
+      "Variable": "sex_female",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "sbp_lt90",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "sbp_unrecordable",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "hr_ge120",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "si_ge1_0",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "gcs_motor_le5",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "mech_high_energy",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "mech_fall",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "air_transport",
+      "Selection_Frequency": 1.0
+    },
+    {
+      "Variable": "mech_mvc",
+      "Selection_Frequency": 0.99
+    },
+    {
+      "Variable": "age_65_74",
+      "Selection_Frequency": 0.96
+    },
+    {
+      "Variable": "age_ge75",
+      "Selection_Frequency": 0.73
+    },
+    {
+      "Variable": "cc_bleeding",
+      "Selection_Frequency": 0.51
+    },
+    {
+      "Variable": "cc_anticoag",
+      "Selection_Frequency": 0.23
+    }
+  ],
+  "stability_selected": [
+    "sex_female",
+    "sbp_lt90",
+    "sbp_unrecordable",
+    "hr_ge120",
+    "si_ge1_0",
+    "gcs_motor_le5",
+    "mech_high_energy",
+    "mech_fall",
+    "air_transport",
+    "mech_mvc",
+    "age_65_74"
+  ],
+  "stability_parity_check_17_candidates": {
+    "max_abs_freq_diff": 0.0,
+    "same_selected_set": true,
+    "table": [
+      {
+        "Variable": "sex_female",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "sbp_lt90",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "sbp_lt70",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "sbp_unrecordable",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "hr_ge120",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "si_ge0_9",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "si_ge1_0",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "gcs_motor_le5",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "gcs_le8",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "mech_high_energy",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "mech_fall",
+        "Selection_Frequency_v4rerun": 1.0,
+        "Selection_Frequency_v3": 1.0,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "mech_mvc",
+        "Selection_Frequency_v4rerun": 0.97,
+        "Selection_Frequency_v3": 0.97,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "age_65_74",
+        "Selection_Frequency_v4rerun": 0.95,
+        "Selection_Frequency_v3": 0.95,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "air_transport",
+        "Selection_Frequency_v4rerun": 0.94,
+        "Selection_Frequency_v3": 0.94,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "age_ge75",
+        "Selection_Frequency_v4rerun": 0.68,
+        "Selection_Frequency_v3": 0.68,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "cc_bleeding",
+        "Selection_Frequency_v4rerun": 0.4,
+        "Selection_Frequency_v3": 0.4,
+        "abs_diff": 0.0
+      },
+      {
+        "Variable": "cc_anticoag",
+        "Selection_Frequency_v4rerun": 0.11,
+        "Selection_Frequency_v3": 0.11,
+        "abs_diff": 0.0
+      }
+    ]
+  },
+  "step05_replication_check": {
+    "pass": true,
+    "max_abs_beta_diff": 0.0
+  },
+  "fit": {
+    "variables": [
+      "sex_female",
+      "sbp_lt90",
+      "sbp_unrecordable",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_motor_le5",
+      "mech_high_energy",
+      "mech_fall",
+      "air_transport",
+      "mech_mvc",
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "point_vars": [
+      "sex_female",
+      "sbp_lt90",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_motor_le5",
+      "mech_high_energy",
+      "mech_fall",
+      "air_transport",
+      "mech_mvc",
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "override_vars": [
+      "sbp_unrecordable"
+    ],
+    "intercept": -2.7239508426139634,
+    "beta": {
+      "sex_female": -0.4838238214122565,
+      "sbp_lt90": 1.3079509143133832,
+      "sbp_unrecordable": 3.1183187763846596,
+      "hr_ge120": 0.7928355474060631,
+      "si_ge1_0": 1.0983659013967493,
+      "gcs_motor_le5": 1.280548368267449,
+      "mech_high_energy": 0.5539008409542012,
+      "mech_fall": -1.6702083389915825,
+      "air_transport": 0.18785960440338476,
+      "mech_mvc": -0.28468475624984235,
+      "age_65_74": 0.3124156122678035,
+      "age_ge75": 0.34329418844020704,
+      "cc_anticoag": 0.06438753487254634
+    },
+    "points": {
+      "sex_female": -3,
+      "sbp_lt90": 7,
+      "hr_ge120": 4,
+      "si_ge1_0": 6,
+      "gcs_motor_le5": 7,
+      "mech_high_energy": 3,
+      "mech_fall": -9,
+      "air_transport": 1,
+      "mech_mvc": -2,
+      "age_65_74": 2,
+      "age_ge75": 2,
+      "cc_anticoag": 0
+    },
+    "anchor": 0.18785960440338476,
+    "anchor_var": "air_transport",
+    "below_screen": [
+      "cc_anticoag",
+      "mech_fall",
+      "mech_mvc",
+      "sex_female"
+    ],
+    "dropped_beta": [],
+    "dropped_vif": [],
+    "vif_trace": [
+      {
+        "iter": 0,
+        "max_droppable": "mech_high_energy",
+        "max_droppable_vif": 3.5976856414637823,
+        "global_max": "mech_high_energy",
+        "global_max_vif": 3.5976856414637823
+      }
+    ],
+    "train_auroc_integer": 0.8796818804112743,
+    "train_auroc_logit": 0.8819787566971308
+  },
+  "n_point_criteria_a1": 12,
+  "n_nonzero_point_criteria_a1": 11,
+  "test": {
+    "auroc_integer_a1": 0.881978664895511,
+    "auroc_integer_a1_ci": [
+      0.8783550890492894,
+      0.8856723917608273
+    ],
+    "auroc_logit_a1": 0.8842501178138452,
+    "auroc_logit_a1_ci": [
+      0.8806815172357108,
+      0.887949467645379
+    ],
+    "auroc_integer_published": 0.8823435472073577,
+    "auroc_integer_published_ci": [
+      0.8787021818242114,
+      0.8860217303851029
+    ],
+    "auroc_logit_published": 0.8861383748918458,
+    "delta_integer_a1_minus_published": -0.0003648823118467259,
+    "delta_paired_bootstrap_ci": [
+      -0.0012830896397883484,
+      0.0005493547914639903
+    ],
+    "n_bootstrap": 2000,
+    "bootstrap_seed": 42,
+    "delta_delong": {
+      "auc1": 0.8819786648955109,
+      "auc2": 0.8823435472073577,
+      "delta": -0.00036488231184683695,
+      "se": 0.00045728062199558293,
+      "z": -0.797939589599232,
+      "p": 0.4249055476985053
+    },
+    "delta_logit_a1_minus_published": -0.0018882570780005548,
+    "loss_threshold": 0.005,
+    "material_loss": false,
+    "verdict": "REDUNDANCY NOT DRIVING PERFORMANCE: A1 integer AUROC differs from the published card by no more than 0.005 (loss threshold)",
+    "strata_a1_same_cutoffs": [
+      {
+        "stratum": "rule_out (score <= 0)",
+        "n": 49596,
+        "events": 1027,
+        "rate": 0.02070731510605694,
+        "ci_low": 0.019490669724573483,
+        "ci_high": 0.021998201979364865
+      },
+      {
+        "stratum": "observe (score 1 to 4)",
+        "n": 15186,
+        "events": 1416,
+        "rate": 0.09324377716317661,
+        "ci_low": 0.08872140618057318,
+        "ci_high": 0.09797188265384905
+      },
+      {
+        "stratum": "escalate (score >= 5)",
+        "n": 15130,
+        "events": 6383,
+        "rate": 0.42187706543291476,
+        "ci_low": 0.41402864941557,
+        "ci_high": 0.42976514170927677
+      }
+    ],
+    "strata_published": [
+      {
+        "stratum": "rule_out (score <= 0)",
+        "n": 45127,
+        "events": 742,
+        "rate": 0.016442484543621336,
+        "ci_low": 0.015309660449550393,
+        "ci_high": 0.01765762778898742
+      },
+      {
+        "stratum": "observe (score 1 to 4)",
+        "n": 22661,
+        "events": 2367,
+        "rate": 0.10445258373416884,
+        "ci_low": 0.10053729553824226,
+        "ci_high": 0.10850195441322047
+      },
+      {
+        "stratum": "escalate (score >= 5)",
+        "n": 12124,
+        "events": 5717,
+        "rate": 0.47154404486968,
+        "ci_low": 0.46266878123988286,
+        "ci_high": 0.4804373351829899
+      }
+    ],
+    "a1_score_min": -12.0,
+    "a1_score_max": 30.0
+  },
+  "matched_workload": {
+    "a1_matched_to_published_workload": {
+      "n_common": 75072,
+      "events_common": 8358,
+      "score_cutoff": 7.0,
+      "score_pct_flagged": 16.261722080136405,
+      "score": {
+        "n_flagged": 12208,
+        "events_caught_TP": 5551,
+        "false_positives_FP": 6657,
+        "events_missed_FN": 2807,
+        "sensitivity": 0.6641541038525963,
+        "ppv": 0.4547018348623853
+      },
+      "si_cutoff": 0.93578,
+      "si_pct_flagged": 16.261722080136405,
+      "si": {
+        "n_flagged": 12208,
+        "events_caught_TP": 4853,
+        "false_positives_FP": 7355,
+        "events_missed_FN": 3505,
+        "sensitivity": 0.5806413017468294,
+        "ppv": 0.3975262123197903
+      },
+      "workload_gap_pp": 0.0,
+      "tolerance_pp": 0.25,
+      "within_tolerance": true,
+      "delta_events_caught": 698,
+      "delta_false_positives": -698
+    },
+    "a1_at_same_numeric_cutoff_ge5": {
+      "n_common": 75072,
+      "events_common": 8358,
+      "score_cutoff": 5.0,
+      "score_pct_flagged": 19.426683716965044,
+      "score": {
+        "n_flagged": 14584,
+        "events_caught_TP": 6022,
+        "false_positives_FP": 8562,
+        "events_missed_FN": 2336,
+        "sensitivity": 0.7205072983967457,
+        "ppv": 0.41291826659352715
+      },
+      "si_cutoff": 0.891304,
+      "si_pct_flagged": 19.426683716965044,
+      "si": {
+        "n_flagged": 14584,
+        "events_caught_TP": 5243,
+        "false_positives_FP": 9341,
+        "events_missed_FN": 3115,
+        "sensitivity": 0.6273031825795645,
+        "ppv": 0.3595035655512891
+      },
+      "workload_gap_pp": 0.0,
+      "tolerance_pp": 0.25,
+      "within_tolerance": true,
+      "delta_events_caught": 779,
+      "delta_false_positives": -779
+    },
+    "published_vs_shock_index": {
+      "n_common": 75072,
+      "events_common": 8358,
+      "score_cutoff": 5.0,
+      "score_pct_flagged": 15.623667945439045,
+      "score": {
+        "n_flagged": 11729,
+        "events_caught_TP": 5442,
+        "false_positives_FP": 6287,
+        "events_missed_FN": 2916,
+        "sensitivity": 0.6511127063890882,
+        "ppv": 0.46397817375735356
+      },
+      "si_cutoff": 0.946309,
+      "si_pct_flagged": 15.631660272804773,
+      "si": {
+        "n_flagged": 11735,
+        "events_caught_TP": 4764,
+        "false_positives_FP": 6971,
+        "events_missed_FN": 3594,
+        "sensitivity": 0.5699928212491027,
+        "ppv": 0.405965061780997
+      },
+      "workload_gap_pp": 0.007992327365727303,
+      "tolerance_pp": 0.25,
+      "within_tolerance": true,
+      "delta_events_caught": 678,
+      "delta_false_positives": -684
+    },
+    "note": "Shock index matched to the achieved flagged fraction of the score (v3 step 08 rule, common complete-case set where SI and rSIG are observed). A1 uses the integer cutoff whose flagged fraction is closest to the published 15.6237 percent."
+  },
+  "a1b_secondary_published_divisor": {
+    "note": "SECONDARY: A1 model re-scaled with the published divisor so the card scale is like-for-like with the published card; not the rule-faithful A1 card.",
+    "divisor_beta": 0.34071677258401617,
+    "points": {
+      "sex_female": -1,
+      "sbp_lt90": 4,
+      "hr_ge120": 2,
+      "si_ge1_0": 3,
+      "gcs_motor_le5": 4,
+      "mech_high_energy": 2,
+      "mech_fall": -5,
+      "air_transport": 1,
+      "mech_mvc": -1,
+      "age_65_74": 1,
+      "age_ge75": 1,
+      "cc_anticoag": 0
+    },
+    "auroc_integer": 0.8809940465635664,
+    "auroc_integer_ci": [
+      0.8773902415806476,
+      0.88474120698499
+    ],
+    "delta_vs_published": -0.001349500643791357,
+    "delta_paired_bootstrap_ci": [
+      -0.0021377370030476765,
+      -0.00047522445085521964
+    ],
+    "delta_delong": {
+      "auc1": 0.8809940465635663,
+      "auc2": 0.8823435472073577,
+      "delta": -0.001349500643791468,
+      "se": 0.00042506398030588995,
+      "z": -3.1748176893754283,
+      "p": 0.0014993066806943123
+    },
+    "strata_same_cutoffs": [
+      {
+        "stratum": "rule_out (score <= 0)",
+        "n": 45141,
+        "events": 758,
+        "rate": 0.016791830043641036,
+        "ci_low": 0.015646968292941096,
+        "ci_high": 0.018018925964479928
+      },
+      {
+        "stratum": "observe (score 1 to 4)",
+        "n": 22866,
+        "events": 2422,
+        "rate": 0.10592145543601854,
+        "ci_low": 0.10199872167403813,
+        "ci_high": 0.10997657634233378
+      },
+      {
+        "stratum": "escalate (score >= 5)",
+        "n": 11905,
+        "events": 5646,
+        "rate": 0.47425451490970183,
+        "ci_low": 0.4652945835762207,
+        "ci_high": 0.48323105578847486
+      }
+    ],
+    "matched_workload": {
+      "n_common": 75072,
+      "events_common": 8358,
+      "score_cutoff": 5.0,
+      "score_pct_flagged": 15.318627450980394,
+      "score": {
+        "n_flagged": 11500,
+        "events_caught_TP": 5358,
+        "false_positives_FP": 6142,
+        "events_missed_FN": 3000,
+        "sensitivity": 0.6410624551328069,
+        "ppv": 0.46591304347826085
+      },
+      "si_cutoff": 0.951049,
+      "si_pct_flagged": 15.323955669224212,
+      "si": {
+        "n_flagged": 11504,
+        "events_caught_TP": 4728,
+        "false_positives_FP": 6776,
+        "events_missed_FN": 3630,
+        "sensitivity": 0.5656855707106964,
+        "ppv": 0.4109874826147427
+      },
+      "workload_gap_pp": 0.005328218243819127,
+      "tolerance_pp": 0.25,
+      "within_tolerance": true,
+      "delta_events_caught": 630,
+      "delta_false_positives": -634
+    },
+    "score_min": -6.0,
+    "score_max": 17.0
+  },
+  "temporal": {
+    "published_variable_set": {
+      "label": "published variable set (parity check)",
+      "n_derive": 151266,
+      "events_derive": 17348,
+      "n_valid": 88470,
+      "events_valid": 9131,
+      "auroc_logit": 0.8883209650114091,
+      "ci_logit": [
+        0.8849579335943654,
+        0.8916936805367661
+      ],
+      "auroc_integer": 0.8846006802434996,
+      "ci_integer": [
+        0.8811616356344661,
+        0.8880178533528612
+      ],
+      "anchor_var": "age_65_74",
+      "anchor_beta": 0.38289422238911586,
+      "points": {
+        "mech_fall": -4,
+        "gcs_motor_le5": 3,
+        "si_ge0_9": 2,
+        "sbp_lt90": 3,
+        "mech_high_energy": 1,
+        "sex_female": -1,
+        "hr_ge120": 2,
+        "si_ge1_0": 1,
+        "gcs_le8": 1,
+        "sbp_lt70": 1,
+        "mech_mvc": -1,
+        "age_65_74": 1,
+        "age_ge75": 1,
+        "cc_anticoag": 0,
+        "sbp_unrecordable": 0
+      }
+    },
+    "a1_variable_set": {
+      "label": "A1 variable set",
+      "n_derive": 151266,
+      "events_derive": 17348,
+      "n_valid": 88470,
+      "events_valid": 9131,
+      "auroc_logit": 0.8858021499341848,
+      "ci_logit": [
+        0.8824529843897858,
+        0.8891496793228126
+      ],
+      "auroc_integer": 0.8825302080563092,
+      "ci_integer": [
+        0.8789822011457038,
+        0.8859859716936123
+      ],
+      "anchor_var": "air_transport",
+      "anchor_beta": 0.19479665291555595,
+      "points": {
+        "sex_female": -2,
+        "sbp_lt90": 7,
+        "hr_ge120": 4,
+        "si_ge1_0": 6,
+        "gcs_motor_le5": 7,
+        "mech_high_energy": 3,
+        "mech_fall": -9,
+        "air_transport": 1,
+        "mech_mvc": -2,
+        "age_65_74": 2,
+        "age_ge75": 2,
+        "cc_anticoag": 0,
+        "sbp_unrecordable": 0
+      }
+    },
+    "parity_with_table4b": true,
+    "delta_integer": -0.002070472187190364,
+    "delta_logit": -0.00251881507722429,
+    "note": "Temporal validation in v3 step 12 RE-ESTIMATES coefficients on 2019-2022; it does not apply the fixed random-split card."
+  },
+  "collinearity": {
+    "vif": {
+      "fit15_as_in_v3_step05 (14 point + override)": {
+        "max_vif_var": "mech_high_energy",
+        "max_vif": 3.5914430328316183,
+        "vif": {
+          "mech_fall": 3.4436953193066695,
+          "gcs_motor_le5": 3.03145159797942,
+          "si_ge0_9": 2.9849755259092206,
+          "sbp_lt90": 1.616014743613544,
+          "mech_high_energy": 3.5914430328316183,
+          "sex_female": 1.1488363107975414,
+          "hr_ge120": 1.5174577199894648,
+          "si_ge1_0": 3.2101947506864006,
+          "sbp_unrecordable": 1.0323656640785863,
+          "gcs_le8": 2.9778211028478836,
+          "sbp_lt70": 1.280640177853797,
+          "mech_mvc": 1.6904079845496525,
+          "age_65_74": 1.2704129847978407,
+          "age_ge75": 1.888553738566128,
+          "cc_anticoag": 1.1450038879693256
+        }
+      },
+      "point14 (card incl. anticoagulant, no override)": {
+        "max_vif_var": "mech_high_energy",
+        "max_vif": 3.5912679083280463,
+        "vif": {
+          "mech_fall": 3.4433534598428723,
+          "gcs_motor_le5": 3.0307228870384826,
+          "si_ge0_9": 2.9829026619468193,
+          "sbp_lt90": 1.615758907452357,
+          "mech_high_energy": 3.5912679083280463,
+          "sex_female": 1.1488362277143556,
+          "hr_ge120": 1.517293453227739,
+          "si_ge1_0": 3.2098217319212656,
+          "gcs_le8": 2.9528763379092178,
+          "sbp_lt70": 1.2805105094333715,
+          "mech_mvc": 1.6902724437437093,
+          "age_65_74": 1.270405635270466,
+          "age_ge75": 1.8885470653158236,
+          "cc_anticoag": 1.1450033143928762
+        }
+      },
+      "point13 (published card criteria, no anticoagulant)": {
+        "max_vif_var": "mech_high_energy",
+        "max_vif": 3.5909758089467134,
+        "vif": {
+          "mech_fall": 3.4294817074080863,
+          "gcs_motor_le5": 3.030346001033605,
+          "si_ge0_9": 2.9826563577201797,
+          "sbp_lt90": 1.6155966986461352,
+          "mech_high_energy": 3.5909758089467134,
+          "sex_female": 1.1470368333791932,
+          "hr_ge120": 1.5172794220174204,
+          "si_ge1_0": 3.2097668799308,
+          "gcs_le8": 2.952867634232752,
+          "sbp_lt70": 1.2804866099422605,
+          "mech_mvc": 1.6899919852413232,
+          "age_65_74": 1.2560294874847204,
+          "age_ge75": 1.787865769790643
+        }
+      },
+      "fit14 (13 point + override)": {
+        "max_vif_var": "mech_high_energy",
+        "max_vif": 3.5911512536642936,
+        "vif": {
+          "mech_fall": 3.4298266562094635,
+          "gcs_motor_le5": 3.0310754536288576,
+          "si_ge0_9": 2.9847302322152043,
+          "sbp_lt90": 1.6158528231238976,
+          "mech_high_energy": 3.5911512536642936,
+          "sex_female": 1.1470369346715164,
+          "hr_ge120": 1.5174437566625014,
+          "si_ge1_0": 3.2101396960558675,
+          "gcs_le8": 2.977813046253388,
+          "sbp_lt70": 1.2806161995083951,
+          "mech_mvc": 1.6901278021086217,
+          "age_65_74": 1.2560373043320088,
+          "age_ge75": 1.7878736537590445,
+          "sbp_unrecordable": 1.0323651469269537
+        }
+      }
+    },
+    "pairwise_corr_train": {
+      "si_ge0_9|si_ge1_0": 0.8001399960318459,
+      "sbp_lt90|sbp_lt70": 0.46066134652166046,
+      "gcs_motor_le5|gcs_le8": 0.8117786351585855,
+      "sbp_lt90|si_ge1_0": 0.49370191528576146,
+      "sbp_lt90|si_ge0_9": 0.4352848294308968,
+      "hr_ge120|si_ge0_9": 0.5180967735070814
+    },
+    "key_pairs_by_dataset": {
+      "train": {
+        "si_ge0_9|si_ge1_0": 0.8001399960318459,
+        "sbp_lt90|sbp_lt70": 0.46066134652166046
+      },
+      "test": {
+        "si_ge0_9|si_ge1_0": 0.8041476312292021,
+        "sbp_lt90|sbp_lt70": 0.47245678549815495
+      },
+      "whole_primary_cohort": {
+        "si_ge0_9|si_ge1_0": 0.8014733180888518,
+        "sbp_lt90|sbp_lt70": 0.4645778981571022
+      }
+    }
+  }
+}

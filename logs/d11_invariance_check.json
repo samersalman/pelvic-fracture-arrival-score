@@ -1,0 +1,124 @@
+{
+  "gate": "G8f",
+  "deviation": "D-11 (integer-scale anchor restricted to screen-passing coefficients)",
+  "baseline": "logs/pre_d11_snapshot",
+  "auroc_tolerance": 0.005,
+  "model_identity": {
+    "max_abs_delta_beta": 0.0,
+    "n_coefficients": 15,
+    "intercept_delta": 0.0,
+    "pelvic_logit_auroc_pre": 0.8861,
+    "pelvic_logit_auroc_post": 0.8861,
+    "pelvic_logit_auroc_delta": 0.0
+  },
+  "card_rescaling": {
+    "pelvic_score_auroc_pre": 0.8847,
+    "pelvic_score_auroc_post": 0.8823,
+    "pelvic_score_auroc_delta": -0.0024000000000000687,
+    "pelvic_score_ci_post": [
+      0.8787,
+      0.886
+    ],
+    "theoretical_point_sum_pre": [
+      -39,
+      102
+    ],
+    "theoretical_point_sum_post": [
+      -7,
+      18
+    ]
+  },
+  "manuscript_sentence": "The model is unchanged -- coefficients, intercept and variable selection are identical (max |delta beta| = 0) and the continuous-logit AUROC is identical to four decimal places (0.8861). The integer card is a coarser rendering of the same model, and its discrimination is -0.0024 lower (0.8847 to 0.8823) because the wider anchor merges score levels and tied levels contribute 0.5 to the concordance statistic.",
+  "rows": [
+    {
+      "class": "must_be_identical",
+      "quantity": "beta vector (15 vars)",
+      "pre": "",
+      "post": "",
+      "delta": "max |d| = 0.000e+00",
+      "verdict": "PASS"
+    },
+    {
+      "class": "must_be_identical",
+      "quantity": "intercept",
+      "pre": -2.776448216290156,
+      "post": -2.776448216290156,
+      "delta": "0.000e+00",
+      "verdict": "PASS"
+    },
+    {
+      "class": "must_be_identical",
+      "quantity": "point_vars",
+      "pre": "",
+      "post": "",
+      "delta": "identical",
+      "verdict": "PASS"
+    },
+    {
+      "class": "must_be_identical",
+      "quantity": "override_vars",
+      "pre": "",
+      "post": "",
+      "delta": "identical",
+      "verdict": "PASS"
+    },
+    {
+      "class": "must_be_identical",
+      "quantity": "variables_kept",
+      "pre": "",
+      "post": "",
+      "delta": "identical",
+      "verdict": "PASS"
+    },
+    {
+      "class": "must_be_identical",
+      "quantity": "pelvic_logit AUROC",
+      "pre": "0.8861",
+      "post": "0.8861",
+      "delta": "+0.00000",
+      "verdict": "PASS"
+    },
+    {
+      "class": "may_move_reported",
+      "quantity": "pelvic_score AUROC (integer card)",
+      "pre": "0.8847",
+      "post": "0.8823",
+      "delta": "-0.00240",
+      "verdict": "WITHIN_TOLERANCE"
+    },
+    {
+      "class": "may_move_reported",
+      "quantity": "card theoretical point sum",
+      "pre": "-39..102",
+      "post": "-7..18",
+      "delta": "rescaled",
+      "verdict": "EXPECTED"
+    },
+    {
+      "class": "harness_check",
+      "quantity": "SI-alone AUROC",
+      "pre": "0.8209",
+      "post": "0.8209",
+      "delta": "+0.00000",
+      "verdict": "PASS"
+    },
+    {
+      "class": "harness_check",
+      "quantity": "rSIG AUROC",
+      "pre": "0.8542",
+      "post": "0.8542",
+      "delta": "+0.00000",
+      "verdict": "PASS"
+    },
+    {
+      "class": "harness_check",
+      "quantity": "full_information_ISS_AIS AUROC",
+      "pre": "0.9000",
+      "post": "0.9000",
+      "delta": "+0.00000",
+      "verdict": "PASS"
+    }
+  ],
+  "failures": [],
+  "verdict": "PASS"
+}

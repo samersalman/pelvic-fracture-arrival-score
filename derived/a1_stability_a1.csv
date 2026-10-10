@@ -1,0 +1,15 @@
+Variable,Selection_Frequency
+sex_female,1.0
+sbp_lt90,1.0
+sbp_unrecordable,1.0
+hr_ge120,1.0
+si_ge1_0,1.0
+gcs_motor_le5,1.0
+mech_high_energy,1.0
+mech_fall,1.0
+air_transport,1.0
+mech_mvc,0.99
+age_65_74,0.96
+age_ge75,0.73
+cc_bleeding,0.51
+cc_anticoag,0.23

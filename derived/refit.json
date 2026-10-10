@@ -1,0 +1,473 @@
+{
+  "outcome": "major_hemorrhage_event",
+  "intercept": -2.776448216290156,
+  "coefficients": {
+    "mech_fall": -1.6723184972244383,
+    "gcs_motor_le5": 0.9159636345789678,
+    "si_ge0_9": 0.7626428636171445,
+    "sbp_lt90": 1.1173469764931137,
+    "mech_high_energy": 0.5289613092339879,
+    "sex_female": -0.4932471508784344,
+    "hr_ge120": 0.6708023649437505,
+    "si_ge1_0": 0.5336987276552378,
+    "sbp_unrecordable": 3.1090909985421713,
+    "gcs_le8": 0.5069677446736888,
+    "sbp_lt70": 0.4685363783288724,
+    "mech_mvc": -0.2732202743907288,
+    "age_65_74": 0.34071677258401617,
+    "age_ge75": 0.3838394765061876,
+    "cc_anticoag": 0.06195757223497538
+  },
+  "points": {
+    "mech_fall": -5,
+    "gcs_motor_le5": 3,
+    "si_ge0_9": 2,
+    "sbp_lt90": 3,
+    "mech_high_energy": 2,
+    "sex_female": -1,
+    "hr_ge120": 2,
+    "si_ge1_0": 2,
+    "gcs_le8": 1,
+    "sbp_lt70": 1,
+    "mech_mvc": -1,
+    "age_65_74": 1,
+    "age_ge75": 1,
+    "cc_anticoag": 0
+  },
+  "point_vars": [
+    "mech_fall",
+    "gcs_motor_le5",
+    "si_ge0_9",
+    "sbp_lt90",
+    "mech_high_energy",
+    "sex_female",
+    "hr_ge120",
+    "si_ge1_0",
+    "gcs_le8",
+    "sbp_lt70",
+    "mech_mvc",
+    "age_65_74",
+    "age_ge75",
+    "cc_anticoag"
+  ],
+  "override_vars": [
+    "sbp_unrecordable"
+  ],
+  "override_labels": {
+    "sbp_unrecordable": "No signs of life on arrival (unrecordable systolic pressure)"
+  },
+  "override_rule_text": "Automatic escalation regardless of score: no signs of life on arrival (unrecordable systolic pressure)",
+  "variables_kept": [
+    "mech_fall",
+    "gcs_motor_le5",
+    "si_ge0_9",
+    "sbp_lt90",
+    "mech_high_energy",
+    "sex_female",
+    "hr_ge120",
+    "si_ge1_0",
+    "sbp_unrecordable",
+    "gcs_le8",
+    "sbp_lt70",
+    "mech_mvc",
+    "age_65_74",
+    "age_ge75",
+    "cc_anticoag"
+  ],
+  "forced_in_anchors": [
+    "age_65_74",
+    "age_ge75",
+    "cc_anticoag"
+  ],
+  "variables_dropped_beta": [
+    "air_transport"
+  ],
+  "variables_dropped_vif": [],
+  "anchor_min_positive_beta": 0.34071677258401617,
+  "anchor_min_positive_var": "age_65_74",
+  "anchor_selection_rule": "anchor = min{ beta_v : v in point_vars, beta_v > 0, |beta_v| >= BETA_DROP }; variables retained solely by force-in and sitting below the BETA_DROP screen are excluded from the anchor search (CONTRACTS \u00a75.3 / SAP D-11)",
+  "anchor_eligible_vars": [
+    "gcs_motor_le5",
+    "si_ge0_9",
+    "sbp_lt90",
+    "mech_high_energy",
+    "hr_ge120",
+    "si_ge1_0",
+    "gcs_le8",
+    "sbp_lt70",
+    "age_65_74",
+    "age_ge75"
+  ],
+  "anchor_eligible_betas": {
+    "gcs_motor_le5": 0.915964,
+    "si_ge0_9": 0.762643,
+    "sbp_lt90": 1.117347,
+    "mech_high_energy": 0.528961,
+    "hr_ge120": 0.670802,
+    "si_ge1_0": 0.533699,
+    "gcs_le8": 0.506968,
+    "sbp_lt70": 0.468536,
+    "age_65_74": 0.340717,
+    "age_ge75": 0.383839
+  },
+  "anchor_excluded_forced_in": [
+    {
+      "variable": "cc_anticoag",
+      "beta": 0.061958,
+      "abs_beta": 0.061958,
+      "positive": true,
+      "force_in_anchor": true,
+      "reason": "|\u03b2| = 0.0620 < screen 0.15; retained SOLELY by force-in pre-registration, so it is not eligible to set the integer scale (CONTRACTS \u00a75.3 / D-11). Still retained, still reported; may score 0 points."
+    }
+  ],
+  "anchor_screen_cutoff": 0.15,
+  "anchor_n_positive_point_vars": 11,
+  "anchor_n_eligible": 10,
+  "anchor_degenerate_fallback": false,
+  "anchor_locked_sap_would_have_chosen": {
+    "variable": "cc_anticoag",
+    "beta": 0.061958
+  },
+  "anchor_deviation": {
+    "id": "D-11",
+    "kind": "DEVIATION from the locked SAP's literal integer-conversion rule; not a bugfix",
+    "locked_sap_rule": "integer points round(\u03b2/|\u03b2_min_pos|) with a \u00b11 floor, with force-in anchors immune to the |\u03b2| >= 0.15 screen (v2/SAP_lock.md \u00a74-\u00a75); read literally, |\u03b2_min_pos| ranges over EVERY retained point-role variable, including a force-in anchor retained only because it was pre-registered",
+    "what_it_produced": "under the v3 outcome the force-in anchor cc_anticoag collapsed to \u03b2 = 0.062 (OR 1.06, 95% CI 0.976-1.159, non-significant) because restricting the death arm to early hemorrhagic death removed the late deaths in which anticoagulation mattered; it became the |\u03b2_min_positive| denominator and divided every other coefficient by 0.062, giving mech_fall -27, sbp_lt90 +18, gcs_motor_le5 +15 and an observed score range of -35..+96 (v2: -7..+32)",
+    "why_degenerate": "the unit of the scale was set by a coefficient statistically indistinguishable from zero, so every point value became an artefact of a null term; it also defeated Fix 4 / D-4, whose entire purpose was a reviewer's objection that a +16 weight is implausible on a bedside card; a -27 row is worse than the thing objected to",
+    "amended_rule": "anchor = min{ beta_v : v in point_vars, beta_v > 0, |beta_v| >= BETA_DROP }; variables retained solely by force-in and sitting below the BETA_DROP screen are excluded from the anchor search (CONTRACTS \u00a75.3 / SAP D-11)",
+    "unchanged": "same round(\u03b2/anchor); same \u00b11 floor and its exact condition (pts == 0 and abs(\u03b2) >= BETA_DROP); same anchor immunity from the \u03b2-drop and the VIF loop; same override exclusion (\u00a75.1)",
+    "justification": "A coefficient retained by pre-registration rather than by evidence should not set the unit of the scale. The |\u03b2| >= 0.15 screen exists precisely to identify coefficients large enough to be meaningful; the denominator should come from that set. The force-in anchor is still retained and reported; it simply no longer defines the unit.",
+    "scope": "The MODEL is unchanged; no coefficient, no intercept, no selected variable and no role assignment moves. Only the integer CARD is rescaled.",
+    "auroc_claim": "Do NOT claim the integer AUROC is unchanged. Rank-invariance holds for the CONTINUOUS LOGIT, which must be identical to the digit because nothing about the fit changes. The INTEGER card is a coarser QUANTISATION, not a strictly monotone relabelling: pairs with distinct totals under the old anchor can tie under the new one and ties score 0.5, so the integer AUROC can move and will most likely move slightly DOWN. The defensible claim is 'the model is unchanged; the card is a coarser rendering of it; here is the cost in discrimination'. Both deltas are REPORTED in d11_rescaling_only_check and neither is asserted.",
+    "duplicated_in": [
+      "05_refit_integer.py",
+      "12_temporal_external_validation.py",
+      "13_sensitivity_components.py"
+    ],
+    "authority": [
+      "CONTRACTS.md \u00a75.3",
+      "CONTRACTS.md \u00a713 G8",
+      "SAP_amendment_v3.md D-11"
+    ]
+  },
+  "zero_point_force_in_anchors": [
+    {
+      "variable": "cc_anticoag",
+      "label": "cc_anticoag",
+      "beta": 0.06195757223497538,
+      "se": 0.0438,
+      "or": 1.064,
+      "ci_low": 0.976,
+      "ci_high": 1.159,
+      "points": 0,
+      "force_in_anchor": true,
+      "passed_beta_screen": false,
+      "significant_at_0_05": false,
+      "beta_screen_cutoff": 0.15,
+      "retention_reason": "pre-registered force-in anchor (locked SAP \u00a74); retained regardless of the |\u03b2| screen",
+      "disposition": "STAYS ON THE CARD AT 0 POINTS. Pre-registered; not dropped, not hidden, not tidied off F9 (CONTRACTS \u00a75.3, \u00a713 G8d). The \u00b11 floor correctly does not fire (|\u03b2| < BETA_DROP) and it is NOT special-cased up to \u00b11.",
+      "v2_comparison": {
+        "beta": 0.2529,
+        "or": 1.288,
+        "ci_low": 1.202,
+        "ci_high": 1.38,
+        "points": 1,
+        "outcome": "major_hemorrhage_event_v2def (received_hc | death_inhosp | substantial_transfusion_ml_only)",
+        "note": "v2 COMPARISON ONLY; hard-coded from the frozen ../v2/tables/table3_points.csv under the v2 outcome. Label as a v2 comparison wherever quoted (CONTRACTS \u00a713 G5b); never present as a v3 result."
+      }
+    }
+  ],
+  "zero_point_point_vars": [
+    {
+      "variable": "cc_anticoag",
+      "label": "cc_anticoag",
+      "beta": 0.06195757223497538,
+      "se": 0.0438,
+      "or": 1.064,
+      "ci_low": 0.976,
+      "ci_high": 1.159,
+      "points": 0,
+      "force_in_anchor": true,
+      "passed_beta_screen": false,
+      "significant_at_0_05": false,
+      "beta_screen_cutoff": 0.15,
+      "retention_reason": "pre-registered force-in anchor (locked SAP \u00a74); retained regardless of the |\u03b2| screen",
+      "disposition": "STAYS ON THE CARD AT 0 POINTS. Pre-registered; not dropped, not hidden, not tidied off F9 (CONTRACTS \u00a75.3, \u00a713 G8d). The \u00b11 floor correctly does not fire (|\u03b2| < BETA_DROP) and it is NOT special-cased up to \u00b11.",
+      "v2_comparison": {
+        "beta": 0.2529,
+        "or": 1.288,
+        "ci_low": 1.202,
+        "ci_high": 1.38,
+        "points": 1,
+        "outcome": "major_hemorrhage_event_v2def (received_hc | death_inhosp | substantial_transfusion_ml_only)",
+        "note": "v2 COMPARISON ONLY; hard-coded from the frozen ../v2/tables/table3_points.csv under the v2 outcome. Label as a v2 comparison wherever quoted (CONTRACTS \u00a713 G5b); never present as a v3 result."
+      }
+    }
+  ],
+  "v2_reference_points": {
+    "note": "v2 COMPARISON ONLY; hard-coded from the frozen ../v2/tables/table3_points.csv under the v2 outcome. Label as a v2 comparison wherever quoted (CONTRACTS \u00a713 G5b); never present as a v3 result.",
+    "v2_outcome": "major_hemorrhage_event_v2def (received_hc | death_inhosp | substantial_transfusion_ml_only)",
+    "v3_outcome": "major_hemorrhage_event",
+    "variables": {
+      "cc_anticoag": {
+        "beta": 0.2529,
+        "or": 1.288,
+        "ci_low": 1.202,
+        "ci_high": 1.38,
+        "points": 1,
+        "v3_beta": 0.06195757223497538,
+        "v3_or": 1.0639172041412903,
+        "v3_ci_low": 0.9764363493864591,
+        "v3_ci_high": 1.1592356408884805,
+        "v3_points": 0
+      },
+      "age_65_74": {
+        "beta": 0.5532,
+        "or": 1.739,
+        "ci_low": 1.644,
+        "ci_high": 1.839,
+        "points": 2,
+        "v3_beta": 0.34071677258401617,
+        "v3_or": 1.4059549794697341,
+        "v3_ci_low": 1.325017674711656,
+        "v3_ci_high": 1.4918362539774441,
+        "v3_points": 1
+      },
+      "age_ge75": {
+        "beta": 0.8549,
+        "or": 2.351,
+        "ci_low": 2.217,
+        "ci_high": 2.494,
+        "points": 3,
+        "v3_beta": 0.3838394765061876,
+        "v3_or": 1.467909788760687,
+        "v3_ci_low": 1.3729859031278007,
+        "v3_ci_high": 1.5693964104297689,
+        "v3_points": 1
+      }
+    }
+  },
+  "d11_rescaling_only_check": {
+    "prior_artifacts_found": true,
+    "note": "\u00a713 G8f; the claim under test is MODEL IDENTITY (\u03b2 vector, intercept, role split), not AUROC invariance.",
+    "auroc_interpretation": "training_auroc_logit MUST reproduce to the digit; the fit is untouched. training_auroc_integer MAY move, most likely slightly down: the new anchor is a coarser quantisation, distinct totals can collapse to ties, and ties score 0.5. Report the delta as the cost of legibility; do not assert it is zero.",
+    "baseline_source": "logs/pre_d11_snapshot (SHA-manifested)",
+    "baseline_table3": "v3/logs/pre_d11_snapshot/table3_points.csv",
+    "variables_identical": true,
+    "beta_identical_to_4dp": true,
+    "beta_max_abs_diff": 0.0,
+    "prior_points": {
+      "mech_fall": -27,
+      "gcs_motor_le5": 15,
+      "si_ge0_9": 12,
+      "sbp_lt90": 18,
+      "mech_high_energy": 9,
+      "sex_female": -8,
+      "hr_ge120": 11,
+      "si_ge1_0": 9,
+      "sbp_unrecordable": null,
+      "gcs_le8": 8,
+      "sbp_lt70": 8,
+      "mech_mvc": -4,
+      "age_65_74": 5,
+      "age_ge75": 6,
+      "cc_anticoag": 1
+    },
+    "new_points": {
+      "mech_fall": -5,
+      "gcs_motor_le5": 3,
+      "si_ge0_9": 2,
+      "sbp_lt90": 3,
+      "mech_high_energy": 2,
+      "sex_female": -1,
+      "hr_ge120": 2,
+      "si_ge1_0": 2,
+      "sbp_unrecordable": null,
+      "gcs_le8": 1,
+      "sbp_lt70": 1,
+      "mech_mvc": -1,
+      "age_65_74": 1,
+      "age_ge75": 1,
+      "cc_anticoag": 0
+    },
+    "points_changed": {
+      "age_65_74": [
+        5,
+        1
+      ],
+      "age_ge75": [
+        6,
+        1
+      ],
+      "cc_anticoag": [
+        1,
+        0
+      ],
+      "gcs_le8": [
+        8,
+        1
+      ],
+      "gcs_motor_le5": [
+        15,
+        3
+      ],
+      "hr_ge120": [
+        11,
+        2
+      ],
+      "mech_fall": [
+        -27,
+        -5
+      ],
+      "mech_high_energy": [
+        9,
+        2
+      ],
+      "mech_mvc": [
+        -4,
+        -1
+      ],
+      "sbp_lt70": [
+        8,
+        1
+      ],
+      "sbp_lt90": [
+        18,
+        3
+      ],
+      "sex_female": [
+        -8,
+        -1
+      ],
+      "si_ge0_9": [
+        12,
+        2
+      ],
+      "si_ge1_0": [
+        9,
+        2
+      ]
+    },
+    "prior_anchor_var": "cc_anticoag",
+    "prior_anchor_beta": 0.06195757223497538,
+    "prior_anchor_selection_rule": "LOCKED SAP literal rule (pre-D-11: no anchor_selection_rule field was written)",
+    "model_identity": {
+      "prior_intercept": -2.776448216290156,
+      "new_intercept": -2.776448216290156,
+      "intercept_abs_diff": 0.0,
+      "coefficient_max_abs_diff": 0.0,
+      "coefficient_vars_compared": [
+        "age_65_74",
+        "age_ge75",
+        "cc_anticoag",
+        "gcs_le8",
+        "gcs_motor_le5",
+        "hr_ge120",
+        "mech_fall",
+        "mech_high_energy",
+        "mech_mvc",
+        "sbp_lt70",
+        "sbp_lt90",
+        "sbp_unrecordable",
+        "sex_female",
+        "si_ge0_9",
+        "si_ge1_0"
+      ],
+      "prior_point_vars": [
+        "mech_fall",
+        "gcs_motor_le5",
+        "si_ge0_9",
+        "sbp_lt90",
+        "mech_high_energy",
+        "sex_female",
+        "hr_ge120",
+        "si_ge1_0",
+        "gcs_le8",
+        "sbp_lt70",
+        "mech_mvc",
+        "age_65_74",
+        "age_ge75",
+        "cc_anticoag"
+      ],
+      "new_point_vars": [
+        "mech_fall",
+        "gcs_motor_le5",
+        "si_ge0_9",
+        "sbp_lt90",
+        "mech_high_energy",
+        "sex_female",
+        "hr_ge120",
+        "si_ge1_0",
+        "gcs_le8",
+        "sbp_lt70",
+        "mech_mvc",
+        "age_65_74",
+        "age_ge75",
+        "cc_anticoag"
+      ],
+      "point_vars_identical": true,
+      "prior_override_vars": [
+        "sbp_unrecordable"
+      ],
+      "new_override_vars": [
+        "sbp_unrecordable"
+      ],
+      "override_vars_identical": true,
+      "note": "This is the block that substantiates 'the model is unchanged'. It says nothing about the integer card's discrimination; see auroc_deltas."
+    },
+    "auroc_deltas": {
+      "prior_training_auroc_logit": 0.8850209731474983,
+      "prior_training_auroc_integer": 0.8833237777862346,
+      "training_auroc_logit": 0.8850209731474983,
+      "training_auroc_integer": 0.880967322730392,
+      "delta_logit": 0.0,
+      "logit_identical_to_4dp": true,
+      "delta_integer": -0.002356455055842588,
+      "interpretation": "delta_logit MUST be ~0; the fit is untouched, so a non-zero value means something upstream moved and is NOT attributable to D-11. delta_integer MAY be non-zero and is expected to be slightly negative: the amended anchor is a coarser quantisation, so patient pairs that had distinct totals can tie, and ties contribute 0.5 to AUROC. That delta is the cost of legibility and is reported as such; it is never asserted to be zero."
+    }
+  },
+  "theoretical_point_sum_unconstrained": [
+    -7,
+    18
+  ],
+  "training_score_distribution": {
+    "min": -6,
+    "max": 17,
+    "mean": -0.32422539793773153,
+    "median": 0.0,
+    "p25": -5.0,
+    "p75": 2.0,
+    "p90": 6.0,
+    "p95": 9.0
+  },
+  "training_auroc_integer": 0.880967322730392,
+  "training_auroc_logit": 0.8850209731474983,
+  "n_train": 159824,
+  "n_train_events": 17653,
+  "beta_cutoff": 0.15,
+  "n_selected_before_cutoff": 16,
+  "lasso_x_cols": [
+    "age_65_74",
+    "age_ge75",
+    "sex_female",
+    "sbp_lt90",
+    "sbp_lt70",
+    "sbp_unrecordable",
+    "hr_ge120",
+    "si_ge0_9",
+    "si_ge1_0",
+    "gcs_motor_le5",
+    "gcs_le8",
+    "mech_high_energy",
+    "mech_mvc",
+    "mech_fall",
+    "air_transport",
+    "cc_anticoag",
+    "cc_bleeding"
+  ],
+  "force_in_spec": [
+    "age_65_74",
+    "age_ge75",
+    "cc_anticoag"
+  ]
+}

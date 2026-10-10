@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite the archived release and the
+  associated manuscript.
+title: >-
+  Pelvic-Fracture Arrival Score: code, aggregate tables and web calculator
+abstract: >-
+  Analysis code, aggregate result tables and figures, and a research-use web
+  calculator for the Pelvic-Fracture Arrival Score, a bedside integer score for
+  early recognition of major hemorrhage in adults with blunt pelvic-ring
+  fracture, derived and internally validated on the National Trauma Data Bank
+  (2019 to 2024). No patient-level data are included.
+type: software
+version: 1.0.0
+license: MIT
+repository-code: 'https://github.com/samersalman/pelvic-fracture-arrival-score'
+authors:
+  - given-names: Samer G.
+    family-names: Salman
+    affiliation: 'Baylor College of Medicine, Houston, TX, USA'
+keywords:
+  - pelvic ring fracture
+  - major hemorrhage
+  - trauma
+  - clinical prediction rule
+  - integer risk score
+  - shock index
+  - National Trauma Data Bank
+  - temporal validation
+preferred-citation:
+  type: unpublished
+  title: >-
+    Early Recognition of Major Hemorrhage in Blunt Pelvic-Ring Fracture:
+    Development and Temporal Validation of an Arrival-Data Bedside Score
+  authors:
+    - given-names: Samer G.
+      family-names: Salman
+  year: 2026
+  status: submitted
+# add_doi:release:begin
+# @@DOI_BLOCK@@ (filled by scripts/add_doi.py after the Zenodo release)
+# add_doi:release:end

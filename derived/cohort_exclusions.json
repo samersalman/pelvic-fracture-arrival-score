@@ -1,0 +1,9 @@
+{
+  "All NTDB/TQP 2019-2024 encounters": 7327714,
+  "Adult (AGE_NUMBER >= 18 & AGE_UNITS == 'Y')": 6065699,
+  "Pelvic-ring fracture (>=1 ICD-10 S32.1/.3/.5/.6/.81/.82)": 349776,
+  "Blunt mechanism (non-blank e-code; penetrating excluded)": 334818,
+  "Direct arrival (HOSPITAL_TRANSFER == 'N')": 257776,
+  "Exclude DOA / unsurvivable (PREHOSPITAL_ARREST == 'Y' or any AIS severity 6)": 252657,
+  "Valid outcome (disposition known or ED death)": 239736
+}

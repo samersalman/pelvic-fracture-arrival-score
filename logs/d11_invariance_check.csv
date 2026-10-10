@@ -1,0 +1,12 @@
+class,quantity,pre,post,delta,verdict
+must_be_identical,beta vector (15 vars),,,max |d| = 0.000e+00,PASS
+must_be_identical,intercept,-2.776448216290156,-2.776448216290156,0.000e+00,PASS
+must_be_identical,point_vars,,,identical,PASS
+must_be_identical,override_vars,,,identical,PASS
+must_be_identical,variables_kept,,,identical,PASS
+must_be_identical,pelvic_logit AUROC,0.8861,0.8861,+0.00000,PASS
+may_move_reported,pelvic_score AUROC (integer card),0.8847,0.8823,-0.00240,WITHIN_TOLERANCE
+may_move_reported,card theoretical point sum,-39..102,-7..18,rescaled,EXPECTED
+harness_check,SI-alone AUROC,0.8209,0.8209,+0.00000,PASS
+harness_check,rSIG AUROC,0.8542,0.8542,+0.00000,PASS
+harness_check,full_information_ISS_AIS AUROC,0.9000,0.9000,+0.00000,PASS

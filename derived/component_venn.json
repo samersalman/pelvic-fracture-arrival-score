@@ -1,0 +1,376 @@
+{
+  "venn": {
+    "cohort": "cohort_primary==1",
+    "n_analytic": 239736,
+    "composite_positive": 26479,
+    "composite_definition": "received_hc | death_hemorrhagic | substantial_transfusion",
+    "marginals": {
+      "received_hc": 19583,
+      "death_hemorrhagic": 4191,
+      "substantial_transfusion": 17156
+    },
+    "regions": {
+      "hc_only": 7438,
+      "death_only": 1639,
+      "transfusion_only": 4561,
+      "hc_and_death": 246,
+      "hc_and_transfusion": 10289,
+      "death_and_transfusion": 696,
+      "all_three": 1610
+    },
+    "region_sum": 26479,
+    "check_sum_equals_composite": true,
+    "orphan_composite_positive": 0,
+    "pct_of_composite": {
+      "hc_only": 28.09,
+      "death_only": 6.19,
+      "transfusion_only": 17.22,
+      "hc_and_death": 0.93,
+      "hc_and_transfusion": 38.86,
+      "death_and_transfusion": 2.63,
+      "all_three": 6.08
+    }
+  },
+  "component_changepoints": {
+    "shock_index": {
+      "received_hc": {
+        "exposure": "shock_index",
+        "outcome": "received_hc",
+        "component": "received_hc",
+        "label": "HC-only (DISCRETIONARY)",
+        "breakpoint": 1.24,
+        "lci": 1.12,
+        "uci": 1.26,
+        "beta_pre": 2.680098430795729,
+        "beta_post": 0.9784320860051661,
+        "or_per_unit_pre": 1.3073600084001968,
+        "or_per_unit_post": 1.1027898635865105,
+        "n": 232696,
+        "events": 18846,
+        "interior_lo": 0.3987,
+        "interior_hi": 1.2617,
+        "grid_min": 0.6,
+        "grid_max": 1.26,
+        "grid_step": 0.02,
+        "n_valid_grid": 34,
+        "n_boot": 400,
+        "at_grid_boundary": false,
+        "boot_n_ok": 400,
+        "boot_n_unique": 8
+      },
+      "death_hemorrhagic": {
+        "exposure": "shock_index",
+        "outcome": "death_hemorrhagic",
+        "component": "death_hemorrhagic",
+        "label": "death-only (NON-DISCRETIONARY; head AIS<4 & <=48h)",
+        "breakpoint": 1.1,
+        "lci": 1.04,
+        "uci": 1.2,
+        "beta_pre": 2.5621202071779163,
+        "beta_post": 0.9881665645259419,
+        "or_per_unit_pre": 1.2920266353162844,
+        "or_per_unit_post": 1.1038638946823305,
+        "n": 232696,
+        "events": 3548,
+        "interior_lo": 0.3987,
+        "interior_hi": 1.2617,
+        "grid_min": 0.6,
+        "grid_max": 1.26,
+        "grid_step": 0.02,
+        "n_valid_grid": 34,
+        "n_boot": 1000,
+        "at_grid_boundary": false,
+        "boot_n_ok": 1000,
+        "boot_n_unique": 15
+      },
+      "substantial_transfusion": {
+        "exposure": "shock_index",
+        "outcome": "substantial_transfusion",
+        "component": "substantial_transfusion",
+        "label": "transfusion-only (unit-aware)",
+        "breakpoint": 1.22,
+        "lci": 1.14,
+        "uci": 1.26,
+        "beta_pre": 3.012490129264095,
+        "beta_post": 1.6308409820017502,
+        "or_per_unit_pre": 1.3515458520263357,
+        "or_per_unit_post": 1.1771356805180269,
+        "n": 232696,
+        "events": 16403,
+        "interior_lo": 0.3987,
+        "interior_hi": 1.2617,
+        "grid_min": 0.6,
+        "grid_max": 1.26,
+        "grid_step": 0.02,
+        "n_valid_grid": 34,
+        "n_boot": 400,
+        "at_grid_boundary": false,
+        "boot_n_ok": 400,
+        "boot_n_unique": 8
+      }
+    },
+    "sbp2": {
+      "received_hc": {
+        "exposure": "sbp2",
+        "outcome": "received_hc",
+        "component": "received_hc",
+        "label": "HC-only (DISCRETIONARY)",
+        "breakpoint": 128.0,
+        "lci": 124.0,
+        "uci": 130.0,
+        "beta_pre": -0.029064675682492595,
+        "beta_post": -0.0037908037730837035,
+        "or_per_unit_pre": 0.7477797794728838,
+        "or_per_unit_post": 0.9628014782287813,
+        "n": 233383,
+        "events": 18929,
+        "interior_lo": 87.0,
+        "interior_hi": 183.0,
+        "grid_min": 88.0,
+        "grid_max": 130.0,
+        "grid_step": 2.0,
+        "n_valid_grid": 22,
+        "n_boot": 400,
+        "at_grid_boundary": false,
+        "boot_n_ok": 400,
+        "boot_n_unique": 5
+      },
+      "death_hemorrhagic": {
+        "exposure": "sbp2",
+        "outcome": "death_hemorrhagic",
+        "component": "death_hemorrhagic",
+        "label": "death-only (NON-DISCRETIONARY; head AIS<4 & <=48h)",
+        "breakpoint": 118.0,
+        "lci": 110.0,
+        "uci": 130.0,
+        "beta_pre": -0.025875036857793063,
+        "beta_post": -0.008433506416317144,
+        "or_per_unit_pre": 0.7720157183729356,
+        "or_per_unit_post": 0.9191232392362947,
+        "n": 233383,
+        "events": 3593,
+        "interior_lo": 87.0,
+        "interior_hi": 183.0,
+        "grid_min": 88.0,
+        "grid_max": 130.0,
+        "grid_step": 2.0,
+        "n_valid_grid": 22,
+        "n_boot": 1000,
+        "at_grid_boundary": false,
+        "boot_n_ok": 1000,
+        "boot_n_unique": 16
+      },
+      "substantial_transfusion": {
+        "exposure": "sbp2",
+        "outcome": "substantial_transfusion",
+        "component": "substantial_transfusion",
+        "label": "transfusion-only (unit-aware)",
+        "breakpoint": 118.0,
+        "lci": 116.0,
+        "uci": 120.0,
+        "beta_pre": -0.039908169469766615,
+        "beta_post": -0.0033761200593715943,
+        "or_per_unit_pre": 0.670935887210005,
+        "or_per_unit_post": 0.9668023489005847,
+        "n": 233383,
+        "events": 16484,
+        "interior_lo": 87.0,
+        "interior_hi": 183.0,
+        "grid_min": 88.0,
+        "grid_max": 130.0,
+        "grid_step": 2.0,
+        "n_valid_grid": 22,
+        "n_boot": 400,
+        "at_grid_boundary": false,
+        "boot_n_ok": 400,
+        "boot_n_unique": 5
+      }
+    }
+  },
+  "composite_reference_script11": {
+    "source": "script_11_changepoint_jsons",
+    "values": {
+      "si_composite": 1.26,
+      "si_mortality": 1.1,
+      "sbp_composite": 122.0,
+      "sbp_mortality": 118.0
+    },
+    "detail": {
+      "si_composite": {
+        "breakpoint": 1.26,
+        "lci": 1.22,
+        "uci": 1.26,
+        "mi_location": 1.24,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "adjustment": [
+          "age",
+          "sex_male",
+          "mechanism_cat",
+          "iss",
+          "ais_head",
+          "unstable_ring",
+          "cc_anticoag",
+          "charlson",
+          "acs_level",
+          "puf_year"
+        ],
+        "adjustment_stripped": {
+          "exposure_or_mediator": [],
+          "outcome_defining": [],
+          "never_adjust": [
+            "finaldischarge_days",
+            "finaldischarge_hrs"
+          ]
+        },
+        "mortality_only_run": false
+      },
+      "si_mortality": {
+        "breakpoint": 1.1,
+        "lci": 1.04,
+        "uci": 1.2,
+        "mi_location": 1.093,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "adjustment": [
+          "age",
+          "sex_male",
+          "mechanism_cat",
+          "iss",
+          "unstable_ring",
+          "cc_anticoag",
+          "charlson",
+          "acs_level",
+          "puf_year"
+        ],
+        "adjustment_stripped": {
+          "exposure_or_mediator": [],
+          "outcome_defining": [
+            "ais_head"
+          ],
+          "never_adjust": [
+            "finaldischarge_days",
+            "finaldischarge_hrs"
+          ]
+        },
+        "mortality_only_run": true
+      },
+      "sbp_composite": {
+        "breakpoint": 122.0,
+        "lci": 118.0,
+        "uci": 122.0,
+        "mi_location": 120.0,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "adjustment": [
+          "age",
+          "sex_male",
+          "mechanism_cat",
+          "iss",
+          "ais_head",
+          "unstable_ring",
+          "cc_anticoag",
+          "charlson",
+          "acs_level",
+          "puf_year"
+        ],
+        "adjustment_stripped": {
+          "exposure_or_mediator": [],
+          "outcome_defining": [],
+          "never_adjust": [
+            "finaldischarge_days",
+            "finaldischarge_hrs"
+          ]
+        },
+        "mortality_only_run": false
+      },
+      "sbp_mortality": {
+        "breakpoint": 118.0,
+        "lci": 110.0,
+        "uci": 130.0,
+        "mi_location": 117.0,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "adjustment": [
+          "age",
+          "sex_male",
+          "mechanism_cat",
+          "iss",
+          "unstable_ring",
+          "cc_anticoag",
+          "charlson",
+          "acs_level",
+          "puf_year"
+        ],
+        "adjustment_stripped": {
+          "exposure_or_mediator": [],
+          "outcome_defining": [
+            "ais_head"
+          ],
+          "never_adjust": [
+            "finaldischarge_days",
+            "finaldischarge_hrs"
+          ]
+        },
+        "mortality_only_run": true
+      }
+    },
+    "stale_tags": [],
+    "stale": false,
+    "descriptive_only_tags": []
+  },
+  "colocation": {
+    "shock_index": {
+      "death_component_column": "death_hemorrhagic",
+      "reference_is_v2_stale_fallback": false,
+      "reference_descriptive_only": false,
+      "reference_guard_reason": null,
+      "death_only_descriptive_only": false,
+      "verdict_reliable": true,
+      "verdict": "does NOT co-locate",
+      "verdict_undetermined_reason": "",
+      "death_only_breakpoint": 1.1,
+      "death_only_ci": [
+        1.04,
+        1.2
+      ],
+      "composite_breakpoint_script11": 1.26,
+      "mortality_only_breakpoint_script11": 1.1,
+      "delta_death_minus_composite": -0.16,
+      "grid_step": 0.02,
+      "ci_covers_composite": false,
+      "colocates": false,
+      "composite_at_grid_floor": false,
+      "death_component_matches_script11_mortality": true
+    },
+    "sbp2": {
+      "death_component_column": "death_hemorrhagic",
+      "reference_is_v2_stale_fallback": false,
+      "reference_descriptive_only": false,
+      "reference_guard_reason": null,
+      "death_only_descriptive_only": false,
+      "verdict_reliable": true,
+      "verdict": "co-locates",
+      "verdict_undetermined_reason": "",
+      "death_only_breakpoint": 118.0,
+      "death_only_ci": [
+        110.0,
+        130.0
+      ],
+      "composite_breakpoint_script11": 122.0,
+      "mortality_only_breakpoint_script11": 118.0,
+      "delta_death_minus_composite": -4.0,
+      "grid_step": 2.0,
+      "ci_covers_composite": true,
+      "colocates": true,
+      "composite_at_grid_floor": false,
+      "death_component_matches_script11_mortality": true
+    }
+  },
+  "meta": {
+    "script": "13_sensitivity_components.py",
+    "seed": 42,
+    "analytic_n": 239736,
+    "generated_epoch": 1786413863.604577
+  }
+}

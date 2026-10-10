@@ -1,0 +1,771 @@
+{
+  "script": "12_temporal_external_validation.py",
+  "generated": "2026-08-10 17:20:59",
+  "seed": 42,
+  "n_boot": 2000,
+  "derivation_years": "2019-2022",
+  "validation_years": "2023-2024",
+  "model_specification": {
+    "variables_kept": [
+      "mech_fall",
+      "gcs_motor_le5",
+      "si_ge0_9",
+      "sbp_lt90",
+      "mech_high_energy",
+      "sex_female",
+      "hr_ge120",
+      "si_ge1_0",
+      "sbp_unrecordable",
+      "gcs_le8",
+      "sbp_lt70",
+      "mech_mvc",
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "n_predictors": 15,
+    "point_vars": [
+      "mech_fall",
+      "gcs_motor_le5",
+      "si_ge0_9",
+      "sbp_lt90",
+      "mech_high_energy",
+      "sex_female",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_le8",
+      "sbp_lt70",
+      "mech_mvc",
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "override_vars": [
+      "sbp_unrecordable"
+    ],
+    "load": "name-based from refit.json; positional alignment never used",
+    "integer_rule": "round(beta / |beta_min_positive|) over point-role variables, with a \u00b11 floor at |beta| >= 0.15 (sign preserved); the SAME rule 05_refit_integer.py applies, which is what makes the temporal card comparable to the random-split card",
+    "integer_beta_floor": 0.15,
+    "anchor_selection_rule": "anchor = min{ beta_v : v in point_vars, beta_v > 0, |beta_v| >= BETA_DROP }; variables retained solely by force-in and sitting below the BETA_DROP screen are excluded from the anchor search (CONTRACTS \u00a75.3 / SAP D-11)",
+    "anchor_selection_rule_source": "READ from refit.json['anchor_selection_rule'] and asserted equal to this script's literal at load time; a mismatch is a hard failure (\u00a713 G8e), so the three implementations cannot drift",
+    "anchor_rule_recorded_by_05": "anchor = min{ beta_v : v in point_vars, beta_v > 0, |beta_v| >= BETA_DROP }; variables retained solely by force-in and sitting below the BETA_DROP screen are excluded from the anchor search (CONTRACTS \u00a75.3 / SAP D-11)",
+    "refit_anchor_min_positive_var": "age_65_74",
+    "refit_anchor_min_positive_beta": 0.34071677258401617,
+    "force_in_anchors": [
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "anchor_note": "D-11: the divisor is the smallest POSITIVE point-role coefficient that passed the |beta| >= BETA_DROP screen. A force-in anchor sitting below the screen is excluded from the ANCHOR SEARCH only; it stays in the linear predictor, stays on the card, and may score 0 points. This is a registered DEVIATION from the locked SAP's literal rule, not a bugfix. Each outcome block below carries its own anchor_min_positive_var / _beta and an anchor_parity_vs_refit record: 12 re-estimates on 2019-2022, so its anchor VARIABLE may differ from 05's while the RULE is identical."
+  },
+  "design_note": "Variable selection fixed (15 LASSO predictors from refit.json); coefficients re-estimated on 2019-2022 and applied unchanged to 2023-2024. Frozen published card NOT applied to valid (its random split leaks 2023-2024 rows). v3: `unstable_ring` is out of the score (Fix 3) so the weight vector is shorter than v2's; `sbp_unrecordable` is an override and carries no points (Fix 4).",
+  "outcome_note": "Mortality anchor is `death_hemorrhagic` (Fix 2 + 2b): in-hospital death restricted to head AIS < 4 and to an early-death window. The column is consumed BY NAME from the local candidates table and never recomputed here; `01` owns the exact restriction. `death_inhosp` is a NAMED SENSITIVITY owned by 13 and is not validated here.",
+  "internal_reference_note": "internal_random_auroc_* is the v3 PRIMARY-COMPOSITE random-split AUROC read from table4_discrimination.csv; it is NaN for the mortality and any-transfusion rows (different outcomes) and NaN if table4 is absent. No v2 constant is substituted (CONTRACTS \u00a713 G5b).",
+  "citl_definitions": {
+    "citl_offset_intercept": "intercept of logit(P)=a+offset(LP); <0 => over-prediction",
+    "citl_meandiff": "mean(predicted prob) - mean(observed); >0 => over-prediction",
+    "calibration_slope": "beta of logit(P)=a+beta*LP; 1.0 = ideal spread"
+  },
+  "any_transfusion_note": "blood_4h > 0; missing blood_4h treated as no documented transfusion. Missing derive=12,586, valid=7,044.",
+  "composite": {
+    "label": "COMPOSITE (headline)",
+    "outcome": "major_hemorrhage_event",
+    "method": "newton",
+    "n_derive": 151266,
+    "events_derive": 17348,
+    "prevalence_derive": 0.11468538865310116,
+    "n_valid": 88470,
+    "events_valid": 9131,
+    "prevalence_valid": 0.10321012772691308,
+    "auroc_logit": 0.8883209650114091,
+    "ci_logit": [
+      0.8849579335943654,
+      0.8916936805367661
+    ],
+    "auroc_integer": 0.8846006802434996,
+    "ci_integer": [
+      0.881187526980407,
+      0.8881280131975001
+    ],
+    "citl_offset_intercept": -0.05671255795910325,
+    "citl_meandiff": 0.003656231437372842,
+    "calibration_slope": 1.0005406621634123,
+    "brier": 0.06565310760316959,
+    "hl_chisq": 317.85591369044914,
+    "hl_df": 7,
+    "hl_p": 0.0,
+    "reliability_deciles": [
+      {
+        "decile": 1,
+        "n": 21726,
+        "mean_pred": 0.010451481230450857,
+        "obs_rate": 0.003129890453834116
+      },
+      {
+        "decile": 2,
+        "n": 4949,
+        "mean_pred": 0.011264179011528116,
+        "obs_rate": 0.009496868054152355
+      },
+      {
+        "decile": 3,
+        "n": 10138,
+        "mean_pred": 0.015065113452551784,
+        "obs_rate": 0.01331623594397317
+      },
+      {
+        "decile": 4,
+        "n": 9991,
+        "mean_pred": 0.03615152560110461,
+        "obs_rate": 0.033129816835151635
+      },
+      {
+        "decile": 5,
+        "n": 6712,
+        "mean_pred": 0.059118181996469295,
+        "obs_rate": 0.0484207389749702
+      },
+      {
+        "decile": 6,
+        "n": 8526,
+        "mean_pred": 0.07547979509943384,
+        "obs_rate": 0.06486042692939245
+      },
+      {
+        "decile": 7,
+        "n": 8883,
+        "mean_pred": 0.09957049240551041,
+        "obs_rate": 0.08814589665653495
+      },
+      {
+        "decile": 8,
+        "n": 9269,
+        "mean_pred": 0.2079669077535293,
+        "obs_rate": 0.25439637501348583
+      },
+      {
+        "decile": 9,
+        "n": 8276,
+        "mean_pred": 0.5806258527159565,
+        "obs_rate": 0.5474867085548574
+      }
+    ],
+    "temporal_intercept": -2.762530187058602,
+    "temporal_coefficients": {
+      "mech_fall": -1.6786287024561088,
+      "gcs_motor_le5": 0.9595584740546431,
+      "si_ge0_9": 0.7194938343216621,
+      "sbp_lt90": 1.1599642701372517,
+      "mech_high_energy": 0.5307128019475574,
+      "sex_female": -0.49190695917721794,
+      "hr_ge120": 0.6806670214738829,
+      "si_ge1_0": 0.5598575799352361,
+      "sbp_unrecordable": 2.8285104149291285,
+      "gcs_le8": 0.4723027130315052,
+      "sbp_lt70": 0.46712851428606667,
+      "mech_mvc": -0.292836092255075,
+      "age_65_74": 0.38289422238911586,
+      "age_ge75": 0.4443661222303717,
+      "cc_anticoag": 0.013900239470953505
+    },
+    "temporal_points": {
+      "mech_fall": -4,
+      "gcs_motor_le5": 3,
+      "si_ge0_9": 2,
+      "sbp_lt90": 3,
+      "mech_high_energy": 1,
+      "sex_female": -1,
+      "hr_ge120": 2,
+      "si_ge1_0": 1,
+      "gcs_le8": 1,
+      "sbp_lt70": 1,
+      "mech_mvc": -1,
+      "age_65_74": 1,
+      "age_ge75": 1,
+      "cc_anticoag": 0,
+      "sbp_unrecordable": 0
+    },
+    "point_vars": [
+      "mech_fall",
+      "gcs_motor_le5",
+      "si_ge0_9",
+      "sbp_lt90",
+      "mech_high_energy",
+      "sex_female",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_le8",
+      "sbp_lt70",
+      "mech_mvc",
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "override_vars": [
+      "sbp_unrecordable"
+    ],
+    "min_positive_beta": 0.38289422238911586,
+    "min_positive_var": "age_65_74",
+    "integer_rule": "round(beta / |beta_min_positive|) with a \u00b11 floor at |beta| >= 0.15; identical to 05_refit_integer.py",
+    "integer_beta_floor": 0.15,
+    "integer_floor_applied_to": {},
+    "anchor_selection_rule": "anchor = min{ beta_v : v in point_vars, beta_v > 0, |beta_v| >= BETA_DROP }; variables retained solely by force-in and sitting below the BETA_DROP screen are excluded from the anchor search (CONTRACTS \u00a75.3 / SAP D-11)",
+    "anchor_min_positive_var": "age_65_74",
+    "anchor_min_positive_beta": 0.38289422238911586,
+    "anchor_eligible_vars": [
+      "gcs_motor_le5",
+      "si_ge0_9",
+      "sbp_lt90",
+      "mech_high_energy",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_le8",
+      "sbp_lt70",
+      "age_65_74",
+      "age_ge75"
+    ],
+    "anchor_eligible_betas": {
+      "gcs_motor_le5": 0.959558,
+      "si_ge0_9": 0.719494,
+      "sbp_lt90": 1.159964,
+      "mech_high_energy": 0.530713,
+      "hr_ge120": 0.680667,
+      "si_ge1_0": 0.559858,
+      "gcs_le8": 0.472303,
+      "sbp_lt70": 0.467129,
+      "age_65_74": 0.382894,
+      "age_ge75": 0.444366
+    },
+    "anchor_excluded_forced_in": [
+      {
+        "variable": "cc_anticoag",
+        "beta": 0.0139,
+        "abs_beta": 0.0139,
+        "positive": true,
+        "force_in_anchor": true,
+        "reason": "|beta| = 0.0139 < screen 0.15; retained SOLELY by force-in pre-registration, so it is not eligible to set the integer scale (CONTRACTS \u00a75.3 / D-11). Still retained, still reported; may score 0 points."
+      }
+    ],
+    "anchor_screen_cutoff": 0.15,
+    "anchor_n_positive_point_vars": 11,
+    "anchor_n_eligible": 10,
+    "anchor_degenerate_fallback": false,
+    "anchor_locked_sap_would_have_chosen": {
+      "variable": "cc_anticoag",
+      "beta": 0.0139
+    },
+    "anchor_parity_vs_refit": {
+      "refit_anchor_var": "age_65_74",
+      "refit_anchor_beta": 0.34071677258401617,
+      "this_anchor_var": "age_65_74",
+      "this_anchor_beta": 0.38289422238911586,
+      "same_anchor_var": true,
+      "note": "12 re-estimates on the temporal derivation years, so a DIFFERENT anchor variable does not by itself indicate a rule divergence; the rule string is the hard parity gate (CONTRACTS \u00a713 G8e)."
+    },
+    "zero_point_point_vars": [
+      "cc_anticoag"
+    ],
+    "zero_point_force_in_anchors": [
+      "cc_anticoag"
+    ],
+    "internal_random_auroc_logit": 0.8861,
+    "internal_random_auroc_integer": 0.8823,
+    "auroc_drop_logit_vs_internal": 0.002220965011409115,
+    "auroc_drop_integer_vs_internal": 0.0023006802434996088
+  },
+  "mortality": {
+    "label": "MORTALITY ANCHOR (death_hemorrhagic; Fix 2/2b)",
+    "outcome": "death_hemorrhagic",
+    "method": "newton",
+    "n_derive": 151266,
+    "events_derive": 2801,
+    "prevalence_derive": 0.01851704943609271,
+    "n_valid": 88470,
+    "events_valid": 1390,
+    "prevalence_valid": 0.015711540635243586,
+    "auroc_logit": 0.8613003423627658,
+    "ci_logit": [
+      0.8504782914482368,
+      0.8717295418096553
+    ],
+    "auroc_integer": 0.8532952003119598,
+    "ci_integer": [
+      0.8427229914975223,
+      0.8634473679587317
+    ],
+    "citl_offset_intercept": -0.12363751858873796,
+    "citl_meandiff": 0.001799135715874603,
+    "calibration_slope": 1.0087911659926747,
+    "brier": 0.014047969289623426,
+    "hl_chisq": 72.89295376684484,
+    "hl_df": 8,
+    "hl_p": 1.301736496372996e-12,
+    "reliability_deciles": [
+      {
+        "decile": 1,
+        "n": 12200,
+        "mean_pred": 0.0017345707526560021,
+        "obs_rate": 0.001557377049180328
+      },
+      {
+        "decile": 2,
+        "n": 5536,
+        "mean_pred": 0.0038454410698188766,
+        "obs_rate": 0.0030708092485549135
+      },
+      {
+        "decile": 3,
+        "n": 13703,
+        "mean_pred": 0.0050721066125664835,
+        "obs_rate": 0.002116324892359337
+      },
+      {
+        "decile": 4,
+        "n": 6779,
+        "mean_pred": 0.005482694365775935,
+        "obs_rate": 0.0019176869744800117
+      },
+      {
+        "decile": 5,
+        "n": 8183,
+        "mean_pred": 0.006295260280075499,
+        "obs_rate": 0.00476597824758646
+      },
+      {
+        "decile": 6,
+        "n": 8989,
+        "mean_pred": 0.007045411062789223,
+        "obs_rate": 0.003448659472688842
+      },
+      {
+        "decile": 7,
+        "n": 7624,
+        "mean_pred": 0.007893362789072137,
+        "obs_rate": 0.00708289611752361
+      },
+      {
+        "decile": 8,
+        "n": 7779,
+        "mean_pred": 0.012748733530904027,
+        "obs_rate": 0.01195526417277285
+      },
+      {
+        "decile": 9,
+        "n": 8849,
+        "mean_pred": 0.025180138032184756,
+        "obs_rate": 0.02926884393716804
+      },
+      {
+        "decile": 10,
+        "n": 8828,
+        "mean_pred": 0.10229195711577378,
+        "obs_rate": 0.0946986859990938
+      }
+    ],
+    "temporal_intercept": -5.165832240669931,
+    "temporal_coefficients": {
+      "mech_fall": -1.5218618988121866,
+      "gcs_motor_le5": 1.3215219061383494,
+      "si_ge0_9": 0.4164010597514655,
+      "sbp_lt90": 0.740090124544409,
+      "mech_high_energy": 0.23932695282028454,
+      "sex_female": -0.2893038035958307,
+      "hr_ge120": 0.33359946881001523,
+      "si_ge1_0": 0.11467207990786167,
+      "sbp_unrecordable": 3.435258514134926,
+      "gcs_le8": 0.5203636809128652,
+      "sbp_lt70": 0.32698895508878384,
+      "mech_mvc": 0.0243356878232591,
+      "age_65_74": 1.0448521983783805,
+      "age_ge75": 1.6985822459595952,
+      "cc_anticoag": 0.27470050817699165
+    },
+    "temporal_points": {
+      "mech_fall": -6,
+      "gcs_motor_le5": 6,
+      "si_ge0_9": 2,
+      "sbp_lt90": 3,
+      "mech_high_energy": 1,
+      "sex_female": -1,
+      "hr_ge120": 1,
+      "si_ge1_0": 0,
+      "gcs_le8": 2,
+      "sbp_lt70": 1,
+      "mech_mvc": 0,
+      "age_65_74": 4,
+      "age_ge75": 7,
+      "cc_anticoag": 1,
+      "sbp_unrecordable": 0
+    },
+    "point_vars": [
+      "mech_fall",
+      "gcs_motor_le5",
+      "si_ge0_9",
+      "sbp_lt90",
+      "mech_high_energy",
+      "sex_female",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_le8",
+      "sbp_lt70",
+      "mech_mvc",
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "override_vars": [
+      "sbp_unrecordable"
+    ],
+    "min_positive_beta": 0.23932695282028454,
+    "min_positive_var": "mech_high_energy",
+    "integer_rule": "round(beta / |beta_min_positive|) with a \u00b11 floor at |beta| >= 0.15; identical to 05_refit_integer.py",
+    "integer_beta_floor": 0.15,
+    "integer_floor_applied_to": {},
+    "anchor_selection_rule": "anchor = min{ beta_v : v in point_vars, beta_v > 0, |beta_v| >= BETA_DROP }; variables retained solely by force-in and sitting below the BETA_DROP screen are excluded from the anchor search (CONTRACTS \u00a75.3 / SAP D-11)",
+    "anchor_min_positive_var": "mech_high_energy",
+    "anchor_min_positive_beta": 0.23932695282028454,
+    "anchor_eligible_vars": [
+      "gcs_motor_le5",
+      "si_ge0_9",
+      "sbp_lt90",
+      "mech_high_energy",
+      "hr_ge120",
+      "gcs_le8",
+      "sbp_lt70",
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "anchor_eligible_betas": {
+      "gcs_motor_le5": 1.321522,
+      "si_ge0_9": 0.416401,
+      "sbp_lt90": 0.74009,
+      "mech_high_energy": 0.239327,
+      "hr_ge120": 0.333599,
+      "gcs_le8": 0.520364,
+      "sbp_lt70": 0.326989,
+      "age_65_74": 1.044852,
+      "age_ge75": 1.698582,
+      "cc_anticoag": 0.274701
+    },
+    "anchor_excluded_forced_in": [
+      {
+        "variable": "si_ge1_0",
+        "beta": 0.114672,
+        "abs_beta": 0.114672,
+        "positive": true,
+        "force_in_anchor": false,
+        "reason": "|beta| = 0.1147 < screen 0.15; below the screen, not eligible to set the integer scale (CONTRACTS \u00a75.3 / D-11). Still retained, still reported; may score 0 points."
+      },
+      {
+        "variable": "mech_mvc",
+        "beta": 0.024336,
+        "abs_beta": 0.024336,
+        "positive": true,
+        "force_in_anchor": false,
+        "reason": "|beta| = 0.0243 < screen 0.15; below the screen, not eligible to set the integer scale (CONTRACTS \u00a75.3 / D-11). Still retained, still reported; may score 0 points."
+      }
+    ],
+    "anchor_screen_cutoff": 0.15,
+    "anchor_n_positive_point_vars": 12,
+    "anchor_n_eligible": 10,
+    "anchor_degenerate_fallback": false,
+    "anchor_locked_sap_would_have_chosen": {
+      "variable": "mech_mvc",
+      "beta": 0.024336
+    },
+    "anchor_parity_vs_refit": {
+      "refit_anchor_var": "age_65_74",
+      "refit_anchor_beta": 0.34071677258401617,
+      "this_anchor_var": "mech_high_energy",
+      "this_anchor_beta": 0.23932695282028454,
+      "same_anchor_var": false,
+      "note": "12 re-estimates on the temporal derivation years, so a DIFFERENT anchor variable does not by itself indicate a rule divergence; the rule string is the hard parity gate (CONTRACTS \u00a713 G8e)."
+    },
+    "zero_point_point_vars": [
+      "mech_mvc",
+      "si_ge1_0"
+    ],
+    "zero_point_force_in_anchors": [],
+    "internal_random_auroc_logit": NaN,
+    "internal_random_auroc_integer": NaN,
+    "auroc_drop_logit_vs_internal": NaN,
+    "auroc_drop_integer_vs_internal": NaN
+  },
+  "any_transfusion": {
+    "label": "ANY-TRANSFUSION (COVID co-run)",
+    "outcome": "any_transfusion",
+    "method": "newton",
+    "n_derive": 151266,
+    "events_derive": 22823,
+    "prevalence_derive": 0.1508799069189375,
+    "n_valid": 88470,
+    "events_valid": 11532,
+    "prevalence_valid": 0.13034927093930146,
+    "auroc_logit": 0.8849482279955552,
+    "ci_logit": [
+      0.8818663027178176,
+      0.8880311665120689
+    ],
+    "auroc_integer": 0.8843790991592375,
+    "ci_integer": [
+      0.8813286471085457,
+      0.8877040163368982
+    ],
+    "citl_offset_intercept": -0.13473443443895822,
+    "citl_meandiff": 0.01022385342810131,
+    "calibration_slope": 0.9651640762434956,
+    "brier": 0.07741113684304944,
+    "hl_chisq": 465.6143922420117,
+    "hl_df": 8,
+    "hl_p": 0.0,
+    "reliability_deciles": [
+      {
+        "decile": 1,
+        "n": 16377,
+        "mean_pred": 0.013066049617275682,
+        "obs_rate": 0.004152164621114979
+      },
+      {
+        "decile": 2,
+        "n": 4949,
+        "mean_pred": 0.014096622227132566,
+        "obs_rate": 0.00868862396443726
+      },
+      {
+        "decile": 3,
+        "n": 5349,
+        "mean_pred": 0.015809829845361736,
+        "obs_rate": 0.0035520658066928398
+      },
+      {
+        "decile": 4,
+        "n": 9233,
+        "mean_pred": 0.019764781438390167,
+        "obs_rate": 0.02220296761615943
+      },
+      {
+        "decile": 5,
+        "n": 11236,
+        "mean_pred": 0.05201862601851877,
+        "obs_rate": 0.04316482734069064
+      },
+      {
+        "decile": 6,
+        "n": 7433,
+        "mean_pred": 0.08732141362625787,
+        "obs_rate": 0.08220099556033902
+      },
+      {
+        "decile": 7,
+        "n": 7376,
+        "mean_pred": 0.10808372513403074,
+        "obs_rate": 0.09015726681127982
+      },
+      {
+        "decile": 8,
+        "n": 8858,
+        "mean_pred": 0.14201077314135346,
+        "obs_rate": 0.12463310002257846
+      },
+      {
+        "decile": 9,
+        "n": 9371,
+        "mean_pred": 0.29858535207673276,
+        "obs_rate": 0.3310212357272436
+      },
+      {
+        "decile": 10,
+        "n": 8288,
+        "mean_pred": 0.699681558774444,
+        "obs_rate": 0.6310328185328186
+      }
+    ],
+    "temporal_intercept": -2.362652578185164,
+    "temporal_coefficients": {
+      "mech_fall": -1.660469612536287,
+      "gcs_motor_le5": 0.9484882478362399,
+      "si_ge0_9": 0.8434081125120549,
+      "sbp_lt90": 1.392204761390062,
+      "mech_high_energy": 0.5517174547376111,
+      "sex_female": -0.46300182011354807,
+      "hr_ge120": 0.577255153012216,
+      "si_ge1_0": 0.6176196454546365,
+      "sbp_unrecordable": 1.294689249449499,
+      "gcs_le8": 0.6186346156318341,
+      "sbp_lt70": 0.16073791782344646,
+      "mech_mvc": -0.2971683133533006,
+      "age_65_74": 0.34641209696761655,
+      "age_ge75": 0.19080557728035275,
+      "cc_anticoag": 0.047695288224958554
+    },
+    "temporal_points": {
+      "mech_fall": -10,
+      "gcs_motor_le5": 6,
+      "si_ge0_9": 5,
+      "sbp_lt90": 9,
+      "mech_high_energy": 3,
+      "sex_female": -3,
+      "hr_ge120": 4,
+      "si_ge1_0": 4,
+      "gcs_le8": 4,
+      "sbp_lt70": 1,
+      "mech_mvc": -2,
+      "age_65_74": 2,
+      "age_ge75": 1,
+      "cc_anticoag": 0,
+      "sbp_unrecordable": 0
+    },
+    "point_vars": [
+      "mech_fall",
+      "gcs_motor_le5",
+      "si_ge0_9",
+      "sbp_lt90",
+      "mech_high_energy",
+      "sex_female",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_le8",
+      "sbp_lt70",
+      "mech_mvc",
+      "age_65_74",
+      "age_ge75",
+      "cc_anticoag"
+    ],
+    "override_vars": [
+      "sbp_unrecordable"
+    ],
+    "min_positive_beta": 0.16073791782344646,
+    "min_positive_var": "sbp_lt70",
+    "integer_rule": "round(beta / |beta_min_positive|) with a \u00b11 floor at |beta| >= 0.15; identical to 05_refit_integer.py",
+    "integer_beta_floor": 0.15,
+    "integer_floor_applied_to": {},
+    "anchor_selection_rule": "anchor = min{ beta_v : v in point_vars, beta_v > 0, |beta_v| >= BETA_DROP }; variables retained solely by force-in and sitting below the BETA_DROP screen are excluded from the anchor search (CONTRACTS \u00a75.3 / SAP D-11)",
+    "anchor_min_positive_var": "sbp_lt70",
+    "anchor_min_positive_beta": 0.16073791782344646,
+    "anchor_eligible_vars": [
+      "gcs_motor_le5",
+      "si_ge0_9",
+      "sbp_lt90",
+      "mech_high_energy",
+      "hr_ge120",
+      "si_ge1_0",
+      "gcs_le8",
+      "sbp_lt70",
+      "age_65_74",
+      "age_ge75"
+    ],
+    "anchor_eligible_betas": {
+      "gcs_motor_le5": 0.948488,
+      "si_ge0_9": 0.843408,
+      "sbp_lt90": 1.392205,
+      "mech_high_energy": 0.551717,
+      "hr_ge120": 0.577255,
+      "si_ge1_0": 0.61762,
+      "gcs_le8": 0.618635,
+      "sbp_lt70": 0.160738,
+      "age_65_74": 0.346412,
+      "age_ge75": 0.190806
+    },
+    "anchor_excluded_forced_in": [
+      {
+        "variable": "cc_anticoag",
+        "beta": 0.047695,
+        "abs_beta": 0.047695,
+        "positive": true,
+        "force_in_anchor": true,
+        "reason": "|beta| = 0.0477 < screen 0.15; retained SOLELY by force-in pre-registration, so it is not eligible to set the integer scale (CONTRACTS \u00a75.3 / D-11). Still retained, still reported; may score 0 points."
+      }
+    ],
+    "anchor_screen_cutoff": 0.15,
+    "anchor_n_positive_point_vars": 11,
+    "anchor_n_eligible": 10,
+    "anchor_degenerate_fallback": false,
+    "anchor_locked_sap_would_have_chosen": {
+      "variable": "cc_anticoag",
+      "beta": 0.047695
+    },
+    "anchor_parity_vs_refit": {
+      "refit_anchor_var": "age_65_74",
+      "refit_anchor_beta": 0.34071677258401617,
+      "this_anchor_var": "sbp_lt70",
+      "this_anchor_beta": 0.16073791782344646,
+      "same_anchor_var": false,
+      "note": "12 re-estimates on the temporal derivation years, so a DIFFERENT anchor variable does not by itself indicate a rule divergence; the rule string is the hard parity gate (CONTRACTS \u00a713 G8e)."
+    },
+    "zero_point_point_vars": [
+      "cc_anticoag"
+    ],
+    "zero_point_force_in_anchors": [
+      "cc_anticoag"
+    ],
+    "internal_random_auroc_logit": NaN,
+    "internal_random_auroc_integer": NaN,
+    "auroc_drop_logit_vs_internal": NaN,
+    "auroc_drop_integer_vs_internal": NaN
+  },
+  "differential_ascertainment_d10": {
+    "test": "re-run the mortality arm on the upper-bound rung `death_hemorrhagic_missing_incl` (every untimed death retained) and compare |CITL| with the primary arm `death_hemorrhagic`",
+    "bounding_outcome": "death_hemorrhagic_missing_incl",
+    "primary_outcome": "death_hemorrhagic",
+    "materiality_rule": "|CITL| shrinks by >= 25% relative => the offset is attributed to ascertainment. This threshold is a REPORTING CONVENTION declared in 12, not a SAP-locked value; both raw |CITL| values are emitted so a reader may apply their own.",
+    "reported_in": "citl_slope.json + run log only (NOT table4b_temporal.csv)",
+    "status": "EVALUATED",
+    "n_boot_diagnostic": 500,
+    "primary": {
+      "outcome": "death_hemorrhagic",
+      "events_derive": 2801,
+      "events_valid": 1390,
+      "citl_offset_intercept": -0.12363751858873796,
+      "abs_citl": 0.12363751858873796,
+      "calibration_slope": 1.0087911659926747,
+      "auroc_logit": 0.8613003423627658
+    },
+    "bounding": {
+      "outcome": "death_hemorrhagic_missing_incl",
+      "events_derive": 3062,
+      "events_valid": 1416,
+      "citl_offset_intercept": -0.2085475300197776,
+      "abs_citl": 0.2085475300197776,
+      "calibration_slope": 1.0169254382491086,
+      "auroc_logit": 0.8609744297616948
+    },
+    "abs_citl_shrinkage": -0.08491001143103964,
+    "abs_citl_shrinkage_relative": -0.6867657358401079,
+    "verdict": "not_explained_by_ascertainment",
+    "verdict_text": "|CITL| moves only from 0.1236 to 0.2085 (-68.7%) when every untimed death is retained, below the 25% materiality rule. The offset is NOT explained by the ascertainment differential alone; but the differential is real and still qualifies the estimate.",
+    "gate": "CONTRACTS \u00a713 G5h / SAP deviation D-10",
+    "split_ascertainment": {
+      "source": "logs/qc_manifest.json -> finaldischarge_timing.ascertainment_by_split",
+      "derivation": {
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022
+        ],
+        "n": 151266.0,
+        "n_deaths": 8942.0,
+        "deaths_missing_timing_n": 393.0,
+        "deaths_missing_timing_pct": 4.395,
+        "death_hemorrhagic_n": 2801.0,
+        "composite_rate_pct": 11.469
+      },
+      "validation": {
+        "years": [
+          2023,
+          2024
+        ],
+        "n": 88470.0,
+        "n_deaths": 4484.0,
+        "deaths_missing_timing_n": 36.0,
+        "deaths_missing_timing_pct": 0.803,
+        "death_hemorrhagic_n": 1390.0,
+        "composite_rate_pct": 10.321
+      },
+      "differential_pp": 3.592
+    },
+    "attribution_statement": "Timing missingness among in-hospital deaths is differential across the temporal split: 4.395 % of derivation (2019-2022) deaths carry no elapsed-hours value versus 0.803 % in validation (2023-2024); a differential of +3.592 percentage points. Because an untimed death is conservatively counted as NOT within 48 h, `death_hemorrhagic` is UNDER-ASCERTAINED MORE IN DERIVATION (2,801 events) than in validation (1,390 events). Any calibration-in-the-large offset or slope deviation reported for the mortality arm is therefore PARTLY ATTRIBUTABLE TO DATA COLLECTION, NOT MODEL DECAY, and must be attributed as such rather than read as temporal drift."
+  },
+  "differential_ascertainment_note": "READ `differential_ascertainment_d10` BEFORE quoting `mortality`. Timing missingness among deaths is differential across the temporal split, so the mortality arm's CITL/slope is partly a data-collection artifact. A temporal-drift claim made without this attribution is a CONTRACTS \u00a713 G5h FAIL."
+}

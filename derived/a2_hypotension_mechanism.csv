@@ -1,0 +1,18 @@
+group,subgroup,n,events,rate_pct,ci_low_pct,ci_high_pct,note,label
+i_posthoc_profile,"woman >=75, fall, SBP<90, SI>=1.0 (all, incl. no-signs-of-life)",94,<10,withheld,withheld,withheld,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+i_posthoc_profile,"same, excluding no-signs-of-life",94,<10,withheld,withheld,withheld,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+i_posthoc_profile,"same, excluding NSLO, by score <=4 (Observe or lower)",withheld,<10,withheld,withheld,withheld,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+ii_fall_hypotension,fall with SBP<90 (excl. no-signs-of-life),691,155,22.431259044862518,19.47840521463998,25.688942651066732,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+ii_fall_hypotension,"fall with SBP<90, age >=75 (excl. NSLO)",273,31,11.355311355311356,8.115968195271202,15.667123795780109,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+ii_fall_hypotension,"fall with SBP<90, woman (excl. NSLO)",310,35,11.290322580645162,8.230901956609987,15.297365818515829,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+ii_fall_hypotension,"fall with SBP<90, score <=4 (excl. NSLO)",599,102,17.02838063439065,14.230607074495676,20.24636125267994,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+ii_fall_hypotension,non-fall with SBP<90 (excl. NSLO),3795,2319,61.10671936758893,59.54518829921045,62.64578779542498,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iii_sbp_lt90_by_stratum,all SBP<90 (excl. NSLO),4486,2474,55.14935354436023,53.69019519995105,56.599700428598595,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iii_sbp_lt90_by_stratum,"SBP<90, score <=0 (rule-out)",208,21,10.096153846153847,6.698687527641156,14.940824905803252,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iii_sbp_lt90_by_stratum,"SBP<90, score 1 to 4 (observe)",566,126,22.261484098939928,19.0277682389675,25.86918596828982,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iii_sbp_lt90_by_stratum,"SBP<90, score >=5 (escalate)",3712,2327,62.6885775862069,61.12038962202856,64.23053049766257,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iii_sbp_lt90_by_stratum,"SBP<90, score <=4 (residual: below escalate)",774,147,18.992248062015506,16.384658174652287,21.906108593200305,n and events equal the sum of the rule-out and observe rows of this group,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iv_fall_overall_test,"fall stratum, whole test set",36579,626,1.7113644440799365,1.583436165605357,1.849434023645323,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iv_fall_overall_test,all test patients (reference),79912,8826,11.044649114025429,10.829196607977009,11.263846694230418,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iv_fall_overall_test,"Observe stratum (1 to 4), all patients (reference)",22661,2367,10.445258373416884,10.053729553824226,10.850195441322047,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+iv_fall_whole_cohort_table1,"fall, whole analytic cohort (Table 1 / results bundle)",110024,1870,1.6996291718170582,1.624921851203397,1.7777091639854938,"counts as in Table 1 and derived/results_bundle.json; N=239,736 cohort",POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score

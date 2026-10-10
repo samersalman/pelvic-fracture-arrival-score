@@ -1,0 +1,611 @@
+{
+  "si_composite": {
+    "strata": {
+      "unstable_ring": {
+        "n": 41545,
+        "events": 10877,
+        "breakpoint": 1.32,
+        "n_valid_grid": 48,
+        "max_min_events_per_side": 5421,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.4407,
+        "interior_hi": 1.5479
+      },
+      "stable_ring": {
+        "n": 191151,
+        "events": 14349,
+        "breakpoint": 1.16,
+        "n_valid_grid": 29,
+        "max_min_events_per_side": 7137,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.3926,
+        "interior_hi": 1.1745
+      },
+      "elderly": {
+        "n": 107983,
+        "events": 5806,
+        "breakpoint": 1.0,
+        "n_valid_grid": 21,
+        "max_min_events_per_side": 2876,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.3684,
+        "interior_hi": 1.0,
+        "lci": 0.98,
+        "uci": 1.0
+      },
+      "young": {
+        "n": 124713,
+        "events": 19420,
+        "breakpoint": 1.28,
+        "n_valid_grid": 41,
+        "max_min_events_per_side": 9701,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.4615,
+        "interior_hi": 1.4125,
+        "lci": 0.6,
+        "uci": 1.4
+      },
+      "anticoag": {
+        "n": "withheld",
+        "events": "withheld",
+        "breakpoint": 1.02,
+        "n_valid_grid": 22,
+        "max_min_events_per_side": 628,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.3636,
+        "interior_hi": 1.024
+      },
+      "no_anticoag": {
+        "n": "withheld",
+        "events": "withheld",
+        "breakpoint": 1.26,
+        "n_valid_grid": 35,
+        "max_min_events_per_side": 11890,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.4062,
+        "interior_hi": 1.2889
+      },
+      "elderly_anticoag": {
+        "n": "withheld",
+        "events": "withheld",
+        "breakpoint": 0.98,
+        "n_valid_grid": 20,
+        "max_min_events_per_side": 489,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.3595,
+        "interior_hi": 0.9924,
+        "lci": 0.88,
+        "uci": 0.98
+      },
+      "young_or_noac": {
+        "n": "withheld",
+        "events": "withheld",
+        "breakpoint": 1.26,
+        "n_valid_grid": 35,
+        "max_min_events_per_side": 12047,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.4065,
+        "interior_hi": 1.2875
+      }
+    },
+    "interaction_lr": {
+      "unstable_ring": {
+        "chi2": 52.32673006122059,
+        "df": 3,
+        "p": 2.5513591239700872e-11
+      },
+      "age_ge65": {
+        "chi2": 120.06441911071306,
+        "df": 3,
+        "p": 0.0
+      },
+      "cc_anticoag": {
+        "chi2": 29.31993052433245,
+        "df": 3,
+        "p": 1.9182228184755346e-06
+      }
+    },
+    "directional_hypothesis": {
+      "evaluable": true,
+      "direction_supported": true,
+      "hypothesis": "elderly inflect at LOWER SI",
+      "elderly_bp": 1.0,
+      "young_bp": 1.28,
+      "ci_nonoverlap": false
+    },
+    "descriptive_only": [],
+    "descriptive_only_labels": [],
+    "min_events_per_side": 100,
+    "min_events_stratum": 200,
+    "adjustment": [
+      "age",
+      "sex_male",
+      "mechanism_cat",
+      "iss",
+      "ais_head",
+      "unstable_ring",
+      "cc_anticoag",
+      "charlson",
+      "acs_level",
+      "puf_year"
+    ],
+    "adjustment_stripped": {
+      "exposure_or_mediator": [],
+      "outcome_defining": [],
+      "never_adjust": [
+        "finaldischarge_days",
+        "finaldischarge_hrs"
+      ]
+    },
+    "outcome": "major_hemorrhage_event",
+    "exposure": "shock_index",
+    "main_curve_descriptive_only": false
+  },
+  "si_mortality": {
+    "strata": {
+      "unstable_ring": {
+        "n": 41545,
+        "events": 1155,
+        "breakpoint": 1.1,
+        "n_valid_grid": 48,
+        "max_min_events_per_side": 573,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.4407,
+        "interior_hi": 1.5479
+      },
+      "stable_ring": {
+        "n": 191151,
+        "events": 2393,
+        "breakpoint": 1.12,
+        "n_valid_grid": 29,
+        "max_min_events_per_side": 1191,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.3926,
+        "interior_hi": 1.1745
+      },
+      "elderly": {
+        "n": 107983,
+        "events": 1696,
+        "breakpoint": 0.96,
+        "n_valid_grid": 21,
+        "max_min_events_per_side": 840,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.3684,
+        "interior_hi": 1.0,
+        "lci": 0.88,
+        "uci": 1.0
+      },
+      "young": {
+        "n": 124713,
+        "events": 1852,
+        "breakpoint": 0.6,
+        "n_valid_grid": 41,
+        "max_min_events_per_side": 923,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.4615,
+        "interior_hi": 1.4125,
+        "lci": 0.6,
+        "uci": 0.6
+      },
+      "anticoag": {
+        "n": "withheld",
+        "events": "withheld",
+        "breakpoint": 1.02,
+        "n_valid_grid": 19,
+        "max_min_events_per_side": 193,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.3636,
+        "interior_hi": 1.024
+      },
+      "no_anticoag": {
+        "n": "withheld",
+        "events": "withheld",
+        "breakpoint": 1.12,
+        "n_valid_grid": 35,
+        "max_min_events_per_side": 1565,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.4062,
+        "interior_hi": 1.2889
+      },
+      "elderly_anticoag": {
+        "n": "withheld",
+        "events": "withheld",
+        "breakpoint": 0.98,
+        "n_valid_grid": 16,
+        "max_min_events_per_side": 181,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.3595,
+        "interior_hi": 0.9924,
+        "lci": 0.96,
+        "uci": 0.98
+      },
+      "young_or_noac": {
+        "n": "withheld",
+        "events": "withheld",
+        "breakpoint": 1.12,
+        "n_valid_grid": 35,
+        "max_min_events_per_side": 1574,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 0.4065,
+        "interior_hi": 1.2875
+      }
+    },
+    "interaction_lr": {
+      "unstable_ring": {
+        "chi2": 69.05359645899807,
+        "df": 3,
+        "p": 6.772360450213455e-15
+      },
+      "age_ge65": {
+        "chi2": 155.47355728507682,
+        "df": 3,
+        "p": 0.0
+      },
+      "cc_anticoag": {
+        "chi2": 28.63402718794896,
+        "df": 3,
+        "p": 2.6731509137345455e-06
+      }
+    },
+    "directional_hypothesis": {
+      "evaluable": true,
+      "direction_supported": false,
+      "hypothesis": "elderly inflect at LOWER SI",
+      "elderly_bp": 0.96,
+      "young_bp": 0.6,
+      "ci_nonoverlap": true
+    },
+    "descriptive_only": [],
+    "descriptive_only_labels": [],
+    "min_events_per_side": 100,
+    "min_events_stratum": 200,
+    "adjustment": [
+      "age",
+      "sex_male",
+      "mechanism_cat",
+      "iss",
+      "unstable_ring",
+      "cc_anticoag",
+      "charlson",
+      "acs_level",
+      "puf_year"
+    ],
+    "adjustment_stripped": {
+      "exposure_or_mediator": [],
+      "outcome_defining": [
+        "ais_head"
+      ],
+      "never_adjust": [
+        "finaldischarge_days",
+        "finaldischarge_hrs"
+      ]
+    },
+    "outcome": "death_hemorrhagic",
+    "exposure": "shock_index",
+    "main_curve_descriptive_only": false
+  },
+  "sbp_composite": {
+    "strata": {
+      "unstable_ring": {
+        "n": 41696,
+        "events": 10936,
+        "breakpoint": 120.0,
+        "n_valid_grid": 28,
+        "max_min_events_per_side": 5437,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 76.0,
+        "interior_hi": 172.0
+      },
+      "stable_ring": {
+        "n": 191687,
+        "events": 14408,
+        "breakpoint": 122.0,
+        "n_valid_grid": 21,
+        "max_min_events_per_side": 7092,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 90.0,
+        "interior_hi": 185.0
+      },
+      "elderly": {
+        "n": 108329,
+        "events": 5830,
+        "breakpoint": 130.0,
+        "n_valid_grid": 18,
+        "max_min_events_per_side": 2903,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 95.0,
+        "interior_hi": 191.0,
+        "lci": 122.45,
+        "uci": 130.0
+      },
+      "young": {
+        "n": 125054,
+        "events": 19514,
+        "breakpoint": 120.0,
+        "n_valid_grid": 25,
+        "max_min_events_per_side": 9604,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 81.0,
+        "interior_hi": 169.0,
+        "lci": 118.0,
+        "uci": 122.0
+      },
+      "anticoag": {
+        "n": 28080,
+        "events": 1266,
+        "breakpoint": 128.0,
+        "n_valid_grid": 19,
+        "max_min_events_per_side": 619,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 93.0,
+        "interior_hi": 190.0
+      },
+      "no_anticoag": {
+        "n": 205303,
+        "events": 24078,
+        "breakpoint": 122.0,
+        "n_valid_grid": 23,
+        "max_min_events_per_side": 12006,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 86.0,
+        "interior_hi": 182.0
+      },
+      "elderly_anticoag": {
+        "n": 25115,
+        "events": 1003,
+        "breakpoint": 128.0,
+        "n_valid_grid": 18,
+        "max_min_events_per_side": 492,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 95.0,
+        "interior_hi": 191.0,
+        "lci": 116.45,
+        "uci": 130.0
+      },
+      "young_or_noac": {
+        "n": 208268,
+        "events": 24341,
+        "breakpoint": 122.0,
+        "n_valid_grid": 23,
+        "max_min_events_per_side": 12133,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 86.0,
+        "interior_hi": 182.0
+      }
+    },
+    "interaction_lr": {
+      "unstable_ring": {
+        "chi2": 39.68113987312245,
+        "df": 3,
+        "p": 1.24491615904887e-08
+      },
+      "age_ge65": {
+        "chi2": 169.65573114676226,
+        "df": 3,
+        "p": 0.0
+      },
+      "cc_anticoag": {
+        "chi2": 31.89921663206769,
+        "df": 3,
+        "p": 5.49577076291996e-07
+      }
+    },
+    "directional_hypothesis": {
+      "evaluable": true,
+      "direction_supported": true,
+      "hypothesis": "elderly inflect at HIGHER SBP",
+      "elderly_bp": 130.0,
+      "young_bp": 120.0,
+      "ci_nonoverlap": true
+    },
+    "descriptive_only": [],
+    "descriptive_only_labels": [],
+    "min_events_per_side": 100,
+    "min_events_stratum": 200,
+    "adjustment": [
+      "age",
+      "sex_male",
+      "mechanism_cat",
+      "iss",
+      "ais_head",
+      "unstable_ring",
+      "cc_anticoag",
+      "charlson",
+      "acs_level",
+      "puf_year"
+    ],
+    "adjustment_stripped": {
+      "exposure_or_mediator": [],
+      "outcome_defining": [],
+      "never_adjust": [
+        "finaldischarge_days",
+        "finaldischarge_hrs"
+      ]
+    },
+    "outcome": "major_hemorrhage_event",
+    "exposure": "sbp2",
+    "main_curve_descriptive_only": false
+  },
+  "sbp_mortality": {
+    "strata": {
+      "unstable_ring": {
+        "n": 41696,
+        "events": 1178,
+        "breakpoint": 92.0,
+        "n_valid_grid": 28,
+        "max_min_events_per_side": 588,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 76.0,
+        "interior_hi": 172.0
+      },
+      "stable_ring": {
+        "n": 191687,
+        "events": 2415,
+        "breakpoint": 130.0,
+        "n_valid_grid": 21,
+        "max_min_events_per_side": 1197,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 90.0,
+        "interior_hi": 185.0
+      },
+      "elderly": {
+        "n": 108329,
+        "events": 1710,
+        "breakpoint": 130.0,
+        "n_valid_grid": 18,
+        "max_min_events_per_side": 852,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 95.0,
+        "interior_hi": 191.0,
+        "lci": 130.0,
+        "uci": 130.0
+      },
+      "young": {
+        "n": 125054,
+        "events": 1883,
+        "breakpoint": 118.0,
+        "n_valid_grid": 25,
+        "max_min_events_per_side": 935,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 81.0,
+        "interior_hi": 169.0,
+        "lci": 108.0,
+        "uci": 120.0
+      },
+      "anticoag": {
+        "n": 28080,
+        "events": 390,
+        "breakpoint": 130.0,
+        "n_valid_grid": 19,
+        "max_min_events_per_side": 188,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 93.0,
+        "interior_hi": 190.0
+      },
+      "no_anticoag": {
+        "n": 205303,
+        "events": 3203,
+        "breakpoint": 118.0,
+        "n_valid_grid": 23,
+        "max_min_events_per_side": 1582,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 86.0,
+        "interior_hi": 182.0
+      },
+      "elderly_anticoag": {
+        "n": 25115,
+        "events": 364,
+        "breakpoint": 130.0,
+        "n_valid_grid": 18,
+        "max_min_events_per_side": 180,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 95.0,
+        "interior_hi": 191.0,
+        "lci": 96.0,
+        "uci": 130.0
+      },
+      "young_or_noac": {
+        "n": 208268,
+        "events": 3229,
+        "breakpoint": 118.0,
+        "n_valid_grid": 23,
+        "max_min_events_per_side": 1601,
+        "descriptive_only": false,
+        "guard_reason": null,
+        "interior_lo": 86.0,
+        "interior_hi": 182.0
+      }
+    },
+    "interaction_lr": {
+      "unstable_ring": {
+        "chi2": 76.62463099142042,
+        "df": 3,
+        "p": 1.1102230246251565e-16
+      },
+      "age_ge65": {
+        "chi2": 95.66015984467958,
+        "df": 3,
+        "p": 0.0
+      },
+      "cc_anticoag": {
+        "chi2": 15.562620559117931,
+        "df": 3,
+        "p": 0.0013938350362031615
+      }
+    },
+    "directional_hypothesis": {
+      "evaluable": true,
+      "direction_supported": true,
+      "hypothesis": "elderly inflect at HIGHER SBP",
+      "elderly_bp": 130.0,
+      "young_bp": 118.0,
+      "ci_nonoverlap": true
+    },
+    "descriptive_only": [],
+    "descriptive_only_labels": [],
+    "min_events_per_side": 100,
+    "min_events_stratum": 200,
+    "adjustment": [
+      "age",
+      "sex_male",
+      "mechanism_cat",
+      "iss",
+      "unstable_ring",
+      "cc_anticoag",
+      "charlson",
+      "acs_level",
+      "puf_year"
+    ],
+    "adjustment_stripped": {
+      "exposure_or_mediator": [],
+      "outcome_defining": [
+        "ais_head"
+      ],
+      "never_adjust": [
+        "finaldischarge_days",
+        "finaldischarge_hrs"
+      ]
+    },
+    "outcome": "death_hemorrhagic",
+    "exposure": "sbp2",
+    "main_curve_descriptive_only": false
+  },
+  "_guard_summary": {
+    "min_events_per_side": 100,
+    "min_events_stratum": 200,
+    "policy": "locked SAP \u00a76 / CONTRACTS \u00a713 G5e: a change-point that cannot meet the pre-specified >=100-events-per-side guard is reported DESCRIPTIVE-ONLY. The guard is not relaxed to obtain an estimate.",
+    "main_curves_descriptive_only": [],
+    "strata_descriptive_only": {}
+  }
+}

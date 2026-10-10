@@ -1,0 +1,349 @@
+{
+  "outcome": "major_hemorrhage_event",
+  "outcome_definition": "received_hc | death_hemorrhagic | substantial_transfusion",
+  "prevalence": 0.11044649114025427,
+  "prevalence_source": "observed in the test set",
+  "dca_prevalence_anchor": 0.11044999999999999,
+  "dca_prevalence_anchor_source": "qc_manifest.primary_composite.major_hemorrhage_event_rate_pct",
+  "n_test": 79912,
+  "variables": [
+    {
+      "variable": "mech_fall",
+      "label": "mech_fall",
+      "points": -5,
+      "beta": -1.6723,
+      "or": 0.188,
+      "role": "point"
+    },
+    {
+      "variable": "gcs_motor_le5",
+      "label": "gcs_motor_le5",
+      "points": 3,
+      "beta": 0.916,
+      "or": 2.499,
+      "role": "point"
+    },
+    {
+      "variable": "si_ge0_9",
+      "label": "si_ge0_9",
+      "points": 2,
+      "beta": 0.7626,
+      "or": 2.144,
+      "role": "point"
+    },
+    {
+      "variable": "sbp_lt90",
+      "label": "sbp_lt90",
+      "points": 3,
+      "beta": 1.1173,
+      "or": 3.057,
+      "role": "point"
+    },
+    {
+      "variable": "mech_high_energy",
+      "label": "mech_high_energy",
+      "points": 2,
+      "beta": 0.529,
+      "or": 1.697,
+      "role": "point"
+    },
+    {
+      "variable": "sex_female",
+      "label": "sex_female",
+      "points": -1,
+      "beta": -0.4932,
+      "or": 0.611,
+      "role": "point"
+    },
+    {
+      "variable": "hr_ge120",
+      "label": "hr_ge120",
+      "points": 2,
+      "beta": 0.6708,
+      "or": 1.956,
+      "role": "point"
+    },
+    {
+      "variable": "si_ge1_0",
+      "label": "si_ge1_0",
+      "points": 2,
+      "beta": 0.5337,
+      "or": 1.705,
+      "role": "point"
+    },
+    {
+      "variable": "gcs_le8",
+      "label": "gcs_le8",
+      "points": 1,
+      "beta": 0.507,
+      "or": 1.66,
+      "role": "point"
+    },
+    {
+      "variable": "sbp_lt70",
+      "label": "sbp_lt70",
+      "points": 1,
+      "beta": 0.4685,
+      "or": 1.598,
+      "role": "point"
+    },
+    {
+      "variable": "mech_mvc",
+      "label": "mech_mvc",
+      "points": -1,
+      "beta": -0.2732,
+      "or": 0.761,
+      "role": "point"
+    },
+    {
+      "variable": "age_65_74",
+      "label": "age_65_74",
+      "points": 1,
+      "beta": 0.3407,
+      "or": 1.406,
+      "role": "point"
+    },
+    {
+      "variable": "age_ge75",
+      "label": "age_ge75",
+      "points": 1,
+      "beta": 0.3838,
+      "or": 1.468,
+      "role": "point"
+    },
+    {
+      "variable": "cc_anticoag",
+      "label": "cc_anticoag",
+      "points": 0,
+      "beta": 0.062,
+      "or": 1.064,
+      "role": "point"
+    }
+  ],
+  "n_point_variables": 14,
+  "override": {
+    "variable": "sbp_unrecordable",
+    "label": "No signs of life on arrival (unrecordable systolic pressure)",
+    "column_in_scored_table": "override_nslo",
+    "points": null,
+    "in_point_sum": false,
+    "role": "override",
+    "beta": 3.1091,
+    "se": 0.1497,
+    "or": 22.401,
+    "ci_low": 16.706,
+    "ci_high": 30.037,
+    "n": 201,
+    "pct_of_test": 0.251526679347282,
+    "events": 164,
+    "event_rate": 0.8159203980099502,
+    "event_rate_ci_low": 0.7565941239777763,
+    "event_rate_ci_high": 0.8633975551049631,
+    "outcome": "major_hemorrhage_event",
+    "death_hemorrhagic_rate": 0.6169154228855721,
+    "death_inhosp_rate": 0.8756218905472637,
+    "substantial_transfusion_rate": 0.3781094527363184,
+    "received_hc_rate": 0.35323383084577115,
+    "pelvic_score_in_group": {
+      "min": -2,
+      "max": 9,
+      "median": 5.0,
+      "mean": 4.945273631840796
+    },
+    "marginal_flagged_at_rule_in": 59,
+    "marginal_events_at_rule_in": 48,
+    "rule_text": "Automatic escalation regardless of score: no signs of life on arrival (unrecordable systolic pressure)",
+    "deployed_rule": "escalate = (pelvic_score >= 5.0) OR (override_nslo == 1)"
+  },
+  "score_range": {
+    "min": -6,
+    "max": 17,
+    "basis": "Observed minimum and maximum of pelvic_score in the test set (point-role variables only). This is the card's realistic range. It is not a column sum.",
+    "n_test": 79912,
+    "earlier_version_observed_reference": {
+      "min": -7,
+      "max": 32,
+      "note": "Observed range of an earlier version of the score, carried as a constant for comparison only."
+    },
+    "observed_max_delta_vs_earlier_version": -15
+  },
+  "score_range_theoretical": {
+    "basis": "Sum of the printed Points column over Role=='point' rows. A theoretical bound, never observed in any patient. Reported separately from score_range.",
+    "max_unconstrained": 18,
+    "min_unconstrained": -7,
+    "max_mutually_exclusive": 17,
+    "min_mutually_exclusive": -6,
+    "unconstrained_sum_reported_by_05": 18,
+    "unconstrained_min_reported_by_05": -7,
+    "unconstrained_sum_reported_by_05_raw": [
+      -7,
+      18
+    ],
+    "unconstrained_sum_check": "pass",
+    "zero_point_variables": [
+      "cc_anticoag"
+    ],
+    "zero_point_force_in_anchors": [
+      "cc_anticoag"
+    ],
+    "mutually_exclusive_groups_applied": {
+      "age_band": {
+        "age_65_74": 1,
+        "age_ge75": 1
+      },
+      "mechanism_exclusive": {
+        "mech_fall": -5,
+        "mech_mvc": -1
+      }
+    },
+    "nesting_note": "sbp_lt90/sbp_lt70 and si_ge0_9/si_ge1_0 are nested, not mutually exclusive: a patient can satisfy both, so both count toward the theoretical maximum."
+  },
+  "operating_points": {
+    "pelvic_score": {
+      "youden": {
+        "cutoff": 3.0,
+        "sens": 0.7635395422615001,
+        "spec": 0.8552316911909518,
+        "ppv": 0.39571344685848503,
+        "npv": 0.9668108520721351,
+        "lr_pos": 5.27421746197658,
+        "missed_event_rate": 0.03318914792786489
+      },
+      "sens_90": {
+        "cutoff": 1.0,
+        "sens": 0.9159302062089282,
+        "spec": 0.6243845482936162,
+        "ppv": 0.2323990225671985,
+        "npv": 0.9835575154563787,
+        "lr_pos": 2.438478507867416,
+        "missed_event_rate": 0.016442484543621336
+      },
+      "spec_90": {
+        "cutoff": 5.0,
+        "sens": 0.6477452979832313,
+        "spec": 0.9098697352502603,
+        "ppv": 0.47154404486968,
+        "npv": 0.9541364253260164,
+        "lr_pos": 7.1867679494983605,
+        "missed_event_rate": 0.045863574673983595
+      }
+    },
+    "SI-alone": {
+      "youden": {
+        "cutoff": 0.7913669064748201,
+        "sens": 0.7385651814206359,
+        "spec": 0.7659574468085106,
+        "ppv": 0.278190802653252,
+        "npv": 0.9599826326072798,
+        "lr_pos": 3.1556875933427166,
+        "missed_event_rate": 0.04001736739272017
+      },
+      "sens_90": {
+        "cutoff": 0.6134453781512605,
+        "sens": 0.9000118189339321,
+        "spec": 0.4512688010623863,
+        "ppv": 0.16688582073197458,
+        "npv": 0.973652247033542,
+        "lr_pos": 1.6401688489308155,
+        "missed_event_rate": 0.026347752966458002
+      },
+      "spec_90": {
+        "cutoff": 0.9513888888888888,
+        "sens": 0.5647086632785723,
+        "spec": 0.9000548514679985,
+        "ppv": 0.4083062724320629,
+        "npv": 0.9442282356860547,
+        "lr_pos": 5.650185842665066,
+        "missed_event_rate": 0.05577176431394521
+      }
+    }
+  },
+  "rule_out_cutpoint": 1.0,
+  "rule_in_cutpoint": 5.0,
+  "deployed_rule": "escalate = (pelvic_score >= 5.0) OR (override_nslo == 1)",
+  "risk_tiers": [
+    {
+      "tier": "rule_out",
+      "row_type": "score_tier",
+      "n": 45127,
+      "composite_events": 742,
+      "composite_rate": 0.016442484543621336,
+      "composite_ci_low": 0.015309660449550393,
+      "composite_ci_high": 0.01765762778898742,
+      "death_rate": 0.0033017927183282736,
+      "death_inhosp_rate": 0.016398165178274648,
+      "transfusion_rate": 0.0065149467059631705,
+      "hc_rate": 0.011921909278259136,
+      "score_min": -6,
+      "score_max": 0,
+      "n_override_in_tier": "<10"
+    },
+    {
+      "tier": "observe",
+      "row_type": "score_tier",
+      "n": 22661,
+      "composite_events": 2367,
+      "composite_rate": 0.10445258373416884,
+      "composite_ci_low": 0.10053729553824226,
+      "composite_ci_high": 0.10850195441322047,
+      "death_rate": 0.015268523013106218,
+      "death_inhosp_rate": 0.042804818851771766,
+      "transfusion_rate": 0.05891178677022197,
+      "hc_rate": 0.07916685053616346,
+      "score_min": 1,
+      "score_max": 4,
+      "n_override_in_tier": "withheld"
+    },
+    {
+      "tier": "escalate",
+      "row_type": "score_tier",
+      "n": 12124,
+      "composite_events": 5717,
+      "composite_rate": 0.47154404486968,
+      "composite_ci_low": 0.46266878123988286,
+      "composite_ci_high": 0.4804373351829899,
+      "death_rate": 0.0720884196634774,
+      "death_inhosp_rate": 0.22451336192675683,
+      "transfusion_rate": 0.34097657538766085,
+      "hc_rate": 0.34270867700428903,
+      "score_min": 5,
+      "score_max": 17,
+      "n_override_in_tier": 142
+    },
+    {
+      "tier": "override",
+      "row_type": "override_group",
+      "n": 201,
+      "composite_events": 164,
+      "composite_rate": 0.8159203980099502,
+      "composite_ci_low": 0.7565941239777763,
+      "composite_ci_high": 0.8633975551049631,
+      "death_rate": 0.6169154228855721,
+      "death_inhosp_rate": 0.8756218905472637,
+      "transfusion_rate": 0.3781094527363184,
+      "hc_rate": 0.35323383084577115,
+      "score_min": -2,
+      "score_max": 9,
+      "n_override_in_tier": 201
+    }
+  ],
+  "risk_tier_definitions": {
+    "rule_out": "pelvic_score < 1.0",
+    "observe": "1.0 <= pelvic_score < 5.0",
+    "escalate": "pelvic_score >= 5.0",
+    "override": "override_nslo == 1; reported separately. These patients also appear in one of the three score tiers (parallel escalation path, not a fourth mutually exclusive tier)",
+    "death_rate_component": "death_hemorrhagic",
+    "death_inhosp_rate_component": "death_inhosp (all-cause in-hospital mortality, named sensitivity)"
+  },
+  "operating_tables": {
+    "table5_operating.csv": "sens-90 rule-out / spec-90 rule-in / Youden",
+    "table5c_operating_full.csv": "Every integer cutoff, score vs SI vs rSIG, score-only and score-or-override",
+    "table5d_matched_workload.csv": "Equal-workload comparison across instruments"
+  },
+  "common_complete_case": {
+    "n": 75072,
+    "n_test": 79912,
+    "pct": 93.94333767143858,
+    "note": "Rows where the score, the shock index AND rSIG are all observed. table5d uses this set so that events caught are comparable across instruments. The score alone is defined for 100% of rows, so this restriction is conservative for the score: the excluded patients have unobtainable vitals."
+  }
+}

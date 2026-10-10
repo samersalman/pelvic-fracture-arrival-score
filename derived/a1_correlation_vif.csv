@@ -1,0 +1,288 @@
+section,set,var1,var2,value
+vif,fit15_as_in_v3_step05 (14 point + override),mech_fall,,3.4436953193066695
+vif,fit15_as_in_v3_step05 (14 point + override),gcs_motor_le5,,3.03145159797942
+vif,fit15_as_in_v3_step05 (14 point + override),si_ge0_9,,2.9849755259092206
+vif,fit15_as_in_v3_step05 (14 point + override),sbp_lt90,,1.616014743613544
+vif,fit15_as_in_v3_step05 (14 point + override),mech_high_energy,,3.5914430328316183
+vif,fit15_as_in_v3_step05 (14 point + override),sex_female,,1.1488363107975414
+vif,fit15_as_in_v3_step05 (14 point + override),hr_ge120,,1.5174577199894648
+vif,fit15_as_in_v3_step05 (14 point + override),si_ge1_0,,3.2101947506864006
+vif,fit15_as_in_v3_step05 (14 point + override),sbp_unrecordable,,1.0323656640785863
+vif,fit15_as_in_v3_step05 (14 point + override),gcs_le8,,2.9778211028478836
+vif,fit15_as_in_v3_step05 (14 point + override),sbp_lt70,,1.280640177853797
+vif,fit15_as_in_v3_step05 (14 point + override),mech_mvc,,1.6904079845496525
+vif,fit15_as_in_v3_step05 (14 point + override),age_65_74,,1.2704129847978407
+vif,fit15_as_in_v3_step05 (14 point + override),age_ge75,,1.888553738566128
+vif,fit15_as_in_v3_step05 (14 point + override),cc_anticoag,,1.1450038879693256
+vif,"point14 (card incl. anticoagulant, no override)",mech_fall,,3.4433534598428723
+vif,"point14 (card incl. anticoagulant, no override)",gcs_motor_le5,,3.0307228870384826
+vif,"point14 (card incl. anticoagulant, no override)",si_ge0_9,,2.9829026619468193
+vif,"point14 (card incl. anticoagulant, no override)",sbp_lt90,,1.615758907452357
+vif,"point14 (card incl. anticoagulant, no override)",mech_high_energy,,3.5912679083280463
+vif,"point14 (card incl. anticoagulant, no override)",sex_female,,1.1488362277143556
+vif,"point14 (card incl. anticoagulant, no override)",hr_ge120,,1.517293453227739
+vif,"point14 (card incl. anticoagulant, no override)",si_ge1_0,,3.2098217319212656
+vif,"point14 (card incl. anticoagulant, no override)",gcs_le8,,2.9528763379092178
+vif,"point14 (card incl. anticoagulant, no override)",sbp_lt70,,1.2805105094333715
+vif,"point14 (card incl. anticoagulant, no override)",mech_mvc,,1.6902724437437093
+vif,"point14 (card incl. anticoagulant, no override)",age_65_74,,1.270405635270466
+vif,"point14 (card incl. anticoagulant, no override)",age_ge75,,1.8885470653158236
+vif,"point14 (card incl. anticoagulant, no override)",cc_anticoag,,1.1450033143928762
+vif,"point13 (published card criteria, no anticoagulant)",mech_fall,,3.4294817074080863
+vif,"point13 (published card criteria, no anticoagulant)",gcs_motor_le5,,3.030346001033605
+vif,"point13 (published card criteria, no anticoagulant)",si_ge0_9,,2.9826563577201797
+vif,"point13 (published card criteria, no anticoagulant)",sbp_lt90,,1.6155966986461352
+vif,"point13 (published card criteria, no anticoagulant)",mech_high_energy,,3.5909758089467134
+vif,"point13 (published card criteria, no anticoagulant)",sex_female,,1.1470368333791932
+vif,"point13 (published card criteria, no anticoagulant)",hr_ge120,,1.5172794220174204
+vif,"point13 (published card criteria, no anticoagulant)",si_ge1_0,,3.2097668799308
+vif,"point13 (published card criteria, no anticoagulant)",gcs_le8,,2.952867634232752
+vif,"point13 (published card criteria, no anticoagulant)",sbp_lt70,,1.2804866099422605
+vif,"point13 (published card criteria, no anticoagulant)",mech_mvc,,1.6899919852413232
+vif,"point13 (published card criteria, no anticoagulant)",age_65_74,,1.2560294874847204
+vif,"point13 (published card criteria, no anticoagulant)",age_ge75,,1.787865769790643
+vif,fit14 (13 point + override),mech_fall,,3.4298266562094635
+vif,fit14 (13 point + override),gcs_motor_le5,,3.0310754536288576
+vif,fit14 (13 point + override),si_ge0_9,,2.9847302322152043
+vif,fit14 (13 point + override),sbp_lt90,,1.6158528231238976
+vif,fit14 (13 point + override),mech_high_energy,,3.5911512536642936
+vif,fit14 (13 point + override),sex_female,,1.1470369346715164
+vif,fit14 (13 point + override),hr_ge120,,1.5174437566625014
+vif,fit14 (13 point + override),si_ge1_0,,3.2101396960558675
+vif,fit14 (13 point + override),gcs_le8,,2.977813046253388
+vif,fit14 (13 point + override),sbp_lt70,,1.2806161995083951
+vif,fit14 (13 point + override),mech_mvc,,1.6901278021086217
+vif,fit14 (13 point + override),age_65_74,,1.2560373043320088
+vif,fit14 (13 point + override),age_ge75,,1.7878736537590445
+vif,fit14 (13 point + override),sbp_unrecordable,,1.0323651469269537
+corr_pearson_phi,train_point14_plus_override,mech_fall,mech_fall,1.0
+corr_pearson_phi,train_point14_plus_override,mech_fall,gcs_motor_le5,-0.24342322427488103
+corr_pearson_phi,train_point14_plus_override,mech_fall,si_ge0_9,-0.26919506700538415
+corr_pearson_phi,train_point14_plus_override,mech_fall,sbp_lt90,-0.15179007922618598
+corr_pearson_phi,train_point14_plus_override,mech_fall,mech_high_energy,-0.8087261932280714
+corr_pearson_phi,train_point14_plus_override,mech_fall,sex_female,0.24720676640262146
+corr_pearson_phi,train_point14_plus_override,mech_fall,hr_ge120,-0.20587387306422708
+corr_pearson_phi,train_point14_plus_override,mech_fall,si_ge1_0,-0.23776133033361538
+corr_pearson_phi,train_point14_plus_override,mech_fall,gcs_le8,-0.22312985690714826
+corr_pearson_phi,train_point14_plus_override,mech_fall,sbp_lt70,-0.08269367832815813
+corr_pearson_phi,train_point14_plus_override,mech_fall,mech_mvc,-0.5080664314353475
+corr_pearson_phi,train_point14_plus_override,mech_fall,age_65_74,0.11711276532509549
+corr_pearson_phi,train_point14_plus_override,mech_fall,age_ge75,0.5272060988769813
+corr_pearson_phi,train_point14_plus_override,mech_fall,cc_anticoag,0.2752693257343703
+corr_pearson_phi,train_point14_plus_override,mech_fall,sbp_unrecordable,-0.04335308613271711
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,mech_fall,-0.24342322427488103
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,gcs_motor_le5,1.0
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,si_ge0_9,0.27200327603960855
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,sbp_lt90,0.20246537663471934
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,mech_high_energy,0.2416777953585873
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,sex_female,-0.11427723104277027
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,hr_ge120,0.27029900504349413
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,si_ge1_0,0.28084795419575653
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,gcs_le8,0.8117786351585962
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,sbp_lt70,0.1456329775392262
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,mech_mvc,0.11370859772776397
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,age_65_74,-0.05842128271673853
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,age_ge75,-0.1626953338085324
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,cc_anticoag,-0.09477856443747229
+corr_pearson_phi,train_point14_plus_override,gcs_motor_le5,sbp_unrecordable,0.13388035520086003
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,mech_fall,-0.26919506700538415
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,gcs_motor_le5,0.27200327603960855
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,si_ge0_9,1.0
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,sbp_lt90,0.4352848294308931
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,mech_high_energy,0.2608285139589263
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,sex_female,-0.0937563023050692
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,hr_ge120,0.5180967735070994
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,si_ge1_0,0.8001399960318856
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,gcs_le8,0.24314470657977758
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,sbp_lt70,0.22933320645359156
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,mech_mvc,0.1643023352285965
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,age_65_74,-0.07202229207072332
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,age_ge75,-0.20849115515606206
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,cc_anticoag,-0.08793187820286849
+corr_pearson_phi,train_point14_plus_override,si_ge0_9,sbp_unrecordable,-0.02378047240054915
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,mech_fall,-0.15179007922618598
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,gcs_motor_le5,0.20246537663471934
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,si_ge0_9,0.4352848294308931
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,sbp_lt90,1.0
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,mech_high_energy,0.1454182146990458
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,sex_female,-0.07429530125642164
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,hr_ge120,0.14553975539380626
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,si_ge1_0,0.49370191528577445
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,gcs_le8,0.1910116002710839
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,sbp_lt70,0.46066134652166973
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,mech_mvc,0.07089295904853067
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,age_65_74,-0.01255911194751152
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,age_ge75,-0.0940851923571756
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,cc_anticoag,-0.03520721451680589
+corr_pearson_phi,train_point14_plus_override,sbp_lt90,sbp_unrecordable,-0.012437769970245604
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,mech_fall,-0.8087261932280714
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,gcs_motor_le5,0.2416777953585873
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,si_ge0_9,0.2608285139589263
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,sbp_lt90,0.1454182146990458
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,mech_high_energy,1.0
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,sex_female,-0.17180352178104397
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,hr_ge120,0.20266509430427726
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,si_ge1_0,0.23078998545586493
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,gcs_le8,0.22280545968117677
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,sbp_lt70,0.07822132564299313
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,mech_mvc,0.6282304637708888
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,age_65_74,-0.11688342946817623
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,age_ge75,-0.4317787819665247
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,cc_anticoag,-0.23016533311849702
+corr_pearson_phi,train_point14_plus_override,mech_high_energy,sbp_unrecordable,0.04133283269669919
+corr_pearson_phi,train_point14_plus_override,sex_female,mech_fall,0.24720676640262146
+corr_pearson_phi,train_point14_plus_override,sex_female,gcs_motor_le5,-0.11427723104277027
+corr_pearson_phi,train_point14_plus_override,sex_female,si_ge0_9,-0.0937563023050692
+corr_pearson_phi,train_point14_plus_override,sex_female,sbp_lt90,-0.07429530125642164
+corr_pearson_phi,train_point14_plus_override,sex_female,mech_high_energy,-0.17180352178104397
+corr_pearson_phi,train_point14_plus_override,sex_female,sex_female,1.0
+corr_pearson_phi,train_point14_plus_override,sex_female,hr_ge120,-0.07557333332251225
+corr_pearson_phi,train_point14_plus_override,sex_female,si_ge1_0,-0.09144537977895618
+corr_pearson_phi,train_point14_plus_override,sex_female,gcs_le8,-0.10889529887398587
+corr_pearson_phi,train_point14_plus_override,sex_female,sbp_lt70,-0.03870041477497275
+corr_pearson_phi,train_point14_plus_override,sex_female,mech_mvc,-0.002383756985297201
+corr_pearson_phi,train_point14_plus_override,sex_female,age_65_74,0.03871297990484716
+corr_pearson_phi,train_point14_plus_override,sex_female,age_ge75,0.29074927340557355
+corr_pearson_phi,train_point14_plus_override,sex_female,cc_anticoag,0.08148753076810325
+corr_pearson_phi,train_point14_plus_override,sex_female,sbp_unrecordable,-0.018795597416480018
+corr_pearson_phi,train_point14_plus_override,hr_ge120,mech_fall,-0.20587387306422708
+corr_pearson_phi,train_point14_plus_override,hr_ge120,gcs_motor_le5,0.27029900504349413
+corr_pearson_phi,train_point14_plus_override,hr_ge120,si_ge0_9,0.5180967735070994
+corr_pearson_phi,train_point14_plus_override,hr_ge120,sbp_lt90,0.14553975539380626
+corr_pearson_phi,train_point14_plus_override,hr_ge120,mech_high_energy,0.20266509430427726
+corr_pearson_phi,train_point14_plus_override,hr_ge120,sex_female,-0.07557333332251225
+corr_pearson_phi,train_point14_plus_override,hr_ge120,hr_ge120,1.0
+corr_pearson_phi,train_point14_plus_override,hr_ge120,si_ge1_0,0.5219978572819477
+corr_pearson_phi,train_point14_plus_override,hr_ge120,gcs_le8,0.2427165778210139
+corr_pearson_phi,train_point14_plus_override,hr_ge120,sbp_lt70,0.081450544092366
+corr_pearson_phi,train_point14_plus_override,hr_ge120,mech_mvc,0.13364836203393293
+corr_pearson_phi,train_point14_plus_override,hr_ge120,age_65_74,-0.07276802088615197
+corr_pearson_phi,train_point14_plus_override,hr_ge120,age_ge75,-0.15876663927549142
+corr_pearson_phi,train_point14_plus_override,hr_ge120,cc_anticoag,-0.07276924162339996
+corr_pearson_phi,train_point14_plus_override,hr_ge120,sbp_unrecordable,0.0014391635872613702
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,mech_fall,-0.23776133033361538
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,gcs_motor_le5,0.28084795419575653
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,si_ge0_9,0.8001399960318856
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,sbp_lt90,0.49370191528577445
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,mech_high_energy,0.23078998545586493
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,sex_female,-0.09144537977895618
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,hr_ge120,0.5219978572819477
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,si_ge1_0,1.0
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,gcs_le8,0.2538001743609213
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,sbp_lt70,0.2758702118022795
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,mech_mvc,0.1405407146075449
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,age_65_74,-0.0625283116330159
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,age_ge75,-0.17640255237280653
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,cc_anticoag,-0.07788472825550015
+corr_pearson_phi,train_point14_plus_override,si_ge1_0,sbp_unrecordable,-0.01902770709221165
+corr_pearson_phi,train_point14_plus_override,gcs_le8,mech_fall,-0.22312985690714826
+corr_pearson_phi,train_point14_plus_override,gcs_le8,gcs_motor_le5,0.8117786351585962
+corr_pearson_phi,train_point14_plus_override,gcs_le8,si_ge0_9,0.24314470657977758
+corr_pearson_phi,train_point14_plus_override,gcs_le8,sbp_lt90,0.1910116002710839
+corr_pearson_phi,train_point14_plus_override,gcs_le8,mech_high_energy,0.22280545968117677
+corr_pearson_phi,train_point14_plus_override,gcs_le8,sex_female,-0.10889529887398587
+corr_pearson_phi,train_point14_plus_override,gcs_le8,hr_ge120,0.2427165778210139
+corr_pearson_phi,train_point14_plus_override,gcs_le8,si_ge1_0,0.2538001743609213
+corr_pearson_phi,train_point14_plus_override,gcs_le8,gcs_le8,1.0
+corr_pearson_phi,train_point14_plus_override,gcs_le8,sbp_lt70,0.1492282351138879
+corr_pearson_phi,train_point14_plus_override,gcs_le8,mech_mvc,0.10516035709657783
+corr_pearson_phi,train_point14_plus_override,gcs_le8,age_65_74,-0.052805186099236
+corr_pearson_phi,train_point14_plus_override,gcs_le8,age_ge75,-0.15198807139469955
+corr_pearson_phi,train_point14_plus_override,gcs_le8,cc_anticoag,-0.08637573894984887
+corr_pearson_phi,train_point14_plus_override,gcs_le8,sbp_unrecordable,0.15986861368128263
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,mech_fall,-0.08269367832815813
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,gcs_motor_le5,0.1456329775392262
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,si_ge0_9,0.22933320645359156
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,sbp_lt90,0.46066134652166973
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,mech_high_energy,0.07822132564299313
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,sex_female,-0.03870041477497275
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,hr_ge120,0.081450544092366
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,si_ge1_0,0.2758702118022795
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,gcs_le8,0.1492282351138879
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,sbp_lt70,1.0
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,mech_mvc,0.03986170968518675
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,age_65_74,-0.006482349534186777
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,age_ge75,-0.04747524086822637
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,cc_anticoag,-0.023397579212983445
+corr_pearson_phi,train_point14_plus_override,sbp_lt70,sbp_unrecordable,-0.005729599862220202
+corr_pearson_phi,train_point14_plus_override,mech_mvc,mech_fall,-0.5080664314353475
+corr_pearson_phi,train_point14_plus_override,mech_mvc,gcs_motor_le5,0.11370859772776397
+corr_pearson_phi,train_point14_plus_override,mech_mvc,si_ge0_9,0.1643023352285965
+corr_pearson_phi,train_point14_plus_override,mech_mvc,sbp_lt90,0.07089295904853067
+corr_pearson_phi,train_point14_plus_override,mech_mvc,mech_high_energy,0.6282304637708888
+corr_pearson_phi,train_point14_plus_override,mech_mvc,sex_female,-0.002383756985297201
+corr_pearson_phi,train_point14_plus_override,mech_mvc,hr_ge120,0.13364836203393293
+corr_pearson_phi,train_point14_plus_override,mech_mvc,si_ge1_0,0.1405407146075449
+corr_pearson_phi,train_point14_plus_override,mech_mvc,gcs_le8,0.10516035709657783
+corr_pearson_phi,train_point14_plus_override,mech_mvc,sbp_lt70,0.03986170968518675
+corr_pearson_phi,train_point14_plus_override,mech_mvc,mech_mvc,1.0
+corr_pearson_phi,train_point14_plus_override,mech_mvc,age_65_74,-0.07700830168080122
+corr_pearson_phi,train_point14_plus_override,mech_mvc,age_ge75,-0.24736985768197076
+corr_pearson_phi,train_point14_plus_override,mech_mvc,cc_anticoag,-0.13197930793156937
+corr_pearson_phi,train_point14_plus_override,mech_mvc,sbp_unrecordable,0.012986757926238225
+corr_pearson_phi,train_point14_plus_override,age_65_74,mech_fall,0.11711276532509549
+corr_pearson_phi,train_point14_plus_override,age_65_74,gcs_motor_le5,-0.05842128271673853
+corr_pearson_phi,train_point14_plus_override,age_65_74,si_ge0_9,-0.07202229207072332
+corr_pearson_phi,train_point14_plus_override,age_65_74,sbp_lt90,-0.01255911194751152
+corr_pearson_phi,train_point14_plus_override,age_65_74,mech_high_energy,-0.11688342946817623
+corr_pearson_phi,train_point14_plus_override,age_65_74,sex_female,0.03871297990484716
+corr_pearson_phi,train_point14_plus_override,age_65_74,hr_ge120,-0.07276802088615197
+corr_pearson_phi,train_point14_plus_override,age_65_74,si_ge1_0,-0.0625283116330159
+corr_pearson_phi,train_point14_plus_override,age_65_74,gcs_le8,-0.052805186099236
+corr_pearson_phi,train_point14_plus_override,age_65_74,sbp_lt70,-0.006482349534186777
+corr_pearson_phi,train_point14_plus_override,age_65_74,mech_mvc,-0.07700830168080122
+corr_pearson_phi,train_point14_plus_override,age_65_74,age_65_74,1.0
+corr_pearson_phi,train_point14_plus_override,age_65_74,age_ge75,-0.28958503213534337
+corr_pearson_phi,train_point14_plus_override,age_65_74,cc_anticoag,0.03840517010568671
+corr_pearson_phi,train_point14_plus_override,age_65_74,sbp_unrecordable,-0.008876911521582253
+corr_pearson_phi,train_point14_plus_override,age_ge75,mech_fall,0.5272060988769813
+corr_pearson_phi,train_point14_plus_override,age_ge75,gcs_motor_le5,-0.1626953338085324
+corr_pearson_phi,train_point14_plus_override,age_ge75,si_ge0_9,-0.20849115515606206
+corr_pearson_phi,train_point14_plus_override,age_ge75,sbp_lt90,-0.0940851923571756
+corr_pearson_phi,train_point14_plus_override,age_ge75,mech_high_energy,-0.4317787819665247
+corr_pearson_phi,train_point14_plus_override,age_ge75,sex_female,0.29074927340557355
+corr_pearson_phi,train_point14_plus_override,age_ge75,hr_ge120,-0.15876663927549142
+corr_pearson_phi,train_point14_plus_override,age_ge75,si_ge1_0,-0.17640255237280653
+corr_pearson_phi,train_point14_plus_override,age_ge75,gcs_le8,-0.15198807139469955
+corr_pearson_phi,train_point14_plus_override,age_ge75,sbp_lt70,-0.04747524086822637
+corr_pearson_phi,train_point14_plus_override,age_ge75,mech_mvc,-0.24736985768197076
+corr_pearson_phi,train_point14_plus_override,age_ge75,age_65_74,-0.28958503213534337
+corr_pearson_phi,train_point14_plus_override,age_ge75,age_ge75,1.0
+corr_pearson_phi,train_point14_plus_override,age_ge75,cc_anticoag,0.3136859164777701
+corr_pearson_phi,train_point14_plus_override,age_ge75,sbp_unrecordable,-0.025540772167116806
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,mech_fall,0.2752693257343703
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,gcs_motor_le5,-0.09477856443747229
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,si_ge0_9,-0.08793187820286849
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,sbp_lt90,-0.03520721451680589
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,mech_high_energy,-0.23016533311849702
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,sex_female,0.08148753076810325
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,hr_ge120,-0.07276924162339996
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,si_ge1_0,-0.07788472825550015
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,gcs_le8,-0.08637573894984887
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,sbp_lt70,-0.023397579212983445
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,mech_mvc,-0.13197930793156937
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,age_65_74,0.03840517010568671
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,age_ge75,0.3136859164777701
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,cc_anticoag,1.0
+corr_pearson_phi,train_point14_plus_override,cc_anticoag,sbp_unrecordable,-0.01690655153447153
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,mech_fall,-0.04335308613271711
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,gcs_motor_le5,0.13388035520086003
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,si_ge0_9,-0.02378047240054915
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,sbp_lt90,-0.012437769970245604
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,mech_high_energy,0.04133283269669919
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,sex_female,-0.018795597416480018
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,hr_ge120,0.0014391635872613702
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,si_ge1_0,-0.01902770709221165
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,gcs_le8,0.15986861368128263
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,sbp_lt70,-0.005729599862220202
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,mech_mvc,0.012986757926238225
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,age_65_74,-0.008876911521582253
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,age_ge75,-0.025540772167116806
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,cc_anticoag,-0.01690655153447153
+corr_pearson_phi,train_point14_plus_override,sbp_unrecordable,sbp_unrecordable,1.0
+corr_key_pairs_by_dataset,train,si_ge0_9,si_ge1_0,0.8001399960318459
+corr_key_pairs_by_dataset,train,sbp_lt90,sbp_lt70,0.46066134652166046
+corr_key_pairs_by_dataset,test,si_ge0_9,si_ge1_0,0.8041476312292021
+corr_key_pairs_by_dataset,test,sbp_lt90,sbp_lt70,0.47245678549815495
+corr_key_pairs_by_dataset,whole_primary_cohort,si_ge0_9,si_ge1_0,0.8014733180888518
+corr_key_pairs_by_dataset,whole_primary_cohort,sbp_lt90,sbp_lt70,0.4645778981571022

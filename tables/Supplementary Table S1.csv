@@ -1,0 +1,49 @@
+Block,Item,Published card (13 point criteria plus override),"Domain-collapsed card A1 (one term per domain, rule-faithful integer scale)","Domain-collapsed card A1b (same model, published divisor)"
+A. Terms and integer points (derivation set),Female sex,−1,−3,−1
+A. Terms and integer points (derivation set),SBP <90 mmHg,+3,+7,+4
+A. Terms and integer points (derivation set),SBP <70 mmHg,+1,removed (duplicate tier),removed (duplicate tier)
+A. Terms and integer points (derivation set),Heart rate ≥120,+2,+4,+2
+A. Terms and integer points (derivation set),Shock index ≥0.9,+2,removed (duplicate tier),removed (duplicate tier)
+A. Terms and integer points (derivation set),Shock index ≥1.0,+2,+6,+3
+A. Terms and integer points (derivation set),GCS motor ≤5,+3,+7,+4
+A. Terms and integer points (derivation set),GCS ≤8,+1,removed (duplicate tier),removed (duplicate tier)
+A. Terms and integer points (derivation set),High-energy mechanism,+2,+3,+2
+A. Terms and integer points (derivation set),MVC (occupant),−1,−2,−1
+A. Terms and integer points (derivation set),Fall mechanism,−5,−9,−5
+A. Terms and integer points (derivation set),Air transport,not on card,+1,+1
+A. Terms and integer points (derivation set),Age 65–74,+1,+2,+1
+A. Terms and integer points (derivation set),Age ≥75,+1,+2,+1
+A. Terms and integer points (derivation set),Anticoagulant use,0 (not shown on card),0,0
+A. Terms and integer points (derivation set),Bleeding disorder,not selected,not selected,not selected
+A. Terms and integer points (derivation set),"No signs of life (unrecordable SBP), automatic escalation",override,override,override
+A. Terms and integer points (derivation set),Point-scoring criteria with nonzero points,13,11,11
+A. Terms and integer points (derivation set),Integer divisor (coefficient of the anchor term),"Age 65–74, 0.3407","Air transport, 0.1879","Age 65–74, 0.3407"
+A. Terms and integer points (derivation set),Observed test-set score range,−6 to +17,−12 to +30,−6 to +17
+"B. Performance in the held-out test set (n = 79,912)",Integer-score AUROC (95% CI),0.8823 (0.8787 to 0.8860),0.8820 (0.8784 to 0.8857),0.8810 (0.8774 to 0.8847)
+"B. Performance in the held-out test set (n = 79,912)",Difference from the published card (paired bootstrap 95% CI),reference,−0.0004 (−0.0013 to +0.0005),−0.0013 (−0.0021 to −0.0005)
+"B. Performance in the held-out test set (n = 79,912)",DeLong P value for the difference,reference,0.425,0.0015
+"B. Performance in the held-out test set (n = 79,912)",Continuous-logit AUROC,0.8861,0.8843,not computed
+"B. Performance in the held-out test set (n = 79,912)",Pre-specified material-loss threshold (integer AUROC),,0.005,0.005
+"B. Performance in the held-out test set (n = 79,912)","Rule-out (score ≤0): patients (events, event rate)","45,127 (742, 1.6%)",not comparable (own scale),"45,141 (758, 1.7%)"
+"B. Performance in the held-out test set (n = 79,912)","Observe (score +1 to +4): patients (events, event rate)","22,661 (2,367, 10.4%)",not comparable (own scale),"22,866 (2,422, 10.6%)"
+"B. Performance in the held-out test set (n = 79,912)","Escalate (score ≥+5): patients (events, event rate)","12,124 (5,717, 47.2%)",not comparable (own scale),"11,905 (5,646, 47.4%)"
+"B. Performance in the held-out test set (n = 79,912)",Matched workload against shock index (each card against its own matched shock index),"cutoff ≥+5, 15.62% flagged; card 5,442 events, 6,287 false positives; shock index 4,764 and 6,971; difference +678 events, −684 false positives","cutoff ≥+7, 16.26% flagged; card 5,551 events, 6,657 false positives; shock index 4,853 and 7,355; difference +698 events, −698 false positives (finer scale; not like-for-like with the published card)","cutoff ≥+5, 15.32% flagged; card 5,358 events, 6,142 false positives; shock index 4,728 and 6,776; difference +630 events, −634 false positives"
+C. Collinearity (derivation set unless stated),Maximum variance inflation factor (term),3.59 (High-energy mechanism),3.60 (High-energy mechanism),same model as A1
+C. Collinearity (derivation set unless stated),"Phi, shock index ≥0.9 vs ≥1.0 (derivation set)",0.80,term removed,term removed
+C. Collinearity (derivation set unless stated),"Phi, SBP <90 vs <70 (derivation set)",0.46,term removed,term removed
+C. Collinearity (derivation set unless stated),"Phi, GCS motor ≤5 vs GCS ≤8 (derivation set)",0.81,term removed,term removed
+C. Collinearity (derivation set unless stated),"Phi, shock index ≥0.9 vs ≥1.0; SBP <90 vs <70 (test set)",0.80; 0.47,term removed,term removed
+C. Collinearity (derivation set unless stated),"Phi, shock index ≥0.9 vs ≥1.0; SBP <90 vs <70 (whole cohort)",0.80; 0.46,term removed,term removed
+C. Collinearity (derivation set unless stated),"Phi, High-energy mechanism vs Fall mechanism (derivation set)",−0.81,"retained, same pair","retained, same pair"
+C. Collinearity (derivation set unless stated),"Phi, High-energy mechanism vs MVC (occupant) (derivation set)",0.63,"retained, same pair","retained, same pair"
+C. Collinearity (derivation set unless stated),"Phi, Fall mechanism vs Age ≥75 (derivation set)",0.53,"retained, same pair","retained, same pair"
+C. Collinearity (derivation set unless stated),"Phi, Heart rate ≥120 vs Shock index ≥1.0 (derivation set)",0.52,"retained, same pair","retained, same pair"
+C. Collinearity (derivation set unless stated),"Phi, Heart rate ≥120 vs Shock index ≥0.9 (derivation set)",0.52,term removed,term removed
+C. Collinearity (derivation set unless stated),"Phi, MVC (occupant) vs Fall mechanism (derivation set)",−0.51,"retained, same pair","retained, same pair"
+C. Collinearity (derivation set unless stated),"Phi, SBP <90 mmHg vs Shock index ≥1.0 (derivation set)",0.49,"retained, same pair","retained, same pair"
+C. Collinearity (derivation set unless stated),"Phi, SBP <90 mmHg vs Shock index ≥0.9 (derivation set)",0.44,term removed,term removed
+C. Collinearity (derivation set unless stated),"Phi, High-energy mechanism vs Age ≥75 (derivation set)",−0.43,"retained, same pair","retained, same pair"
+"D. Coefficients re-estimated on 2019–2022; internal temporal validation, 2023–2024",Validation set: patients (events),"88,470 (9,131)","88,470 (9,131)",not computed
+"D. Coefficients re-estimated on 2019–2022; internal temporal validation, 2023–2024",Integer-score AUROC (95% CI),0.8846 (0.8812 to 0.8881),0.8825 (0.8790 to 0.8860),not computed
+"D. Coefficients re-estimated on 2019–2022; internal temporal validation, 2023–2024",Continuous-logit AUROC,0.8883,0.8858,not computed
+"D. Coefficients re-estimated on 2019–2022; internal temporal validation, 2023–2024",Difference from the published variable set (integer; logit),reference,−0.0021; −0.0025,not computed

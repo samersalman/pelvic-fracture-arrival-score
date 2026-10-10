@@ -1,0 +1,36 @@
+{
+  "label": "POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score",
+  "patient": {
+    "age": 78,
+    "sex": "female",
+    "mechanism": "fall",
+    "sbp": 80,
+    "hr": 95,
+    "shock_index": 1.1875,
+    "gcs_motor": 6,
+    "gcs_total": 15
+  },
+  "contributions": {
+    "mech_fall": -5,
+    "si_ge0_9": 2,
+    "sbp_lt90": 3,
+    "sex_female": -1,
+    "si_ge1_0": 2,
+    "age_ge75": 1
+  },
+  "contribution_order_as_in_manuscript": [
+    "age >=75: +1",
+    "female: -1",
+    "fall: -5",
+    "SBP<90: +3",
+    "SI>=0.9: +2",
+    "SI>=1.0: +2"
+  ],
+  "total_points": 2,
+  "stratum": "Observe",
+  "stratum_definition": "1.0 <= pelvic_score < 5.0",
+  "sbp80_triggers_sbp_lt70_tier": false,
+  "total_without_anticoagulant_row": 2,
+  "asserts_passed": true,
+  "note": "Hand computation requested by a reviewer confirmed against the real card in refit.json; age 78 enters the >=75 band (+1), not the 65-74 band."
+}
