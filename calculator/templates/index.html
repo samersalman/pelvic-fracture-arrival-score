@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ app_name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+    <header class="card hero">
+      <p class="kicker">Research tool</p>
+      <h1>{{ app_name }}</h1>
+      <p class="lede">
+        A bedside point score for adults with a pelvic ring fracture, built from information available
+        in the first minutes after arrival. It sorts patients into a rule-out, observe or escalate stratum
+        for major hemorrhage.
+      </p>
+      <p class="disclaimer" role="note">
+        <strong>Research use only.</strong> The score has internal and temporal validation only and has not
+        been externally validated. It is not a diagnostic device and does not replace clinical judgment.
+      </p>
+    </header>
+
+    <main class="grid">
+      <section class="col">
+        <article class="card" id="result" aria-live="polite">
+          <h2>Result</h2>
+          {% if errors %}
+            <div class="error-box" role="alert">
+              <p><strong>Please correct the following.</strong></p>
+              <ul>
+                {% for field, message in errors.items() %}
+                  <li><span class="field-name">{{ field|replace('_', ' ') }}</span> {{ message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% elif result %}
+            <div class="summary tier-{{ result.tier }}">
+              <div class="tile">
+                <span class="tile-label">Score</span>
+                <strong class="tile-value">{{ result.score }}</strong>
+                <span class="tile-note">Sum of item points (observed range {{ result.observed_score_range.min }} to {{ result.observed_score_range.max }} in the test set)</span>
+              </div>
+              <div class="tile">
+                <span class="tile-label">Tier</span>
+                <strong class="tile-value">{{ result.tier_label }}</strong>
+                <span class="tile-note">
+                  {% if result.override %}Escalated by the override (score alone: {{ result.tier_by_score_label }}){% else %}From the score alone{% endif %}
+                </span>
+              </div>
+              <div class="tile">
+                <span class="tile-label">Override</span>
+                <strong class="tile-value">{{ 'Yes' if result.override else 'No' }}</strong>
+                <span class="tile-note">{{ result.override_label }}</span>
+              </div>
+            </div>
+
+            <div class="observed">
+              <h3>Observed stratum risk, not an individual probability</h3>
+              <p class="observed-value">
+                {{ result.observed_risk.rate_pct }}%
+                <span class="ci">(95% CI {{ result.observed_risk.ci_lo_pct }}% to {{ result.observed_risk.ci_hi_pct }}%)</span>
+              </p>
+              <p class="small">
+                {{ result.observed_risk.label }}: {{ '{:,}'.format(result.observed_risk.events) }} of
+                {{ '{:,}'.format(result.observed_risk.n) }} patients in the held-out test set had a major
+                hemorrhage event. {{ result.risk_note }}
+              </p>
+              {% if result.override %}
+                <p class="small">Score-only stratum for reference ({{ result.score_tier_observed_risk.label }}):
+                  {{ result.score_tier_observed_risk.rate_pct }}%.</p>
+              {% endif %}
+              <p class="small muted">{{ result.outcome_definition }}</p>
+            </div>
+
+            {% if result.warnings %}
+              <div class="warn-box" role="note">
+                <ul>{% for w in result.warnings %}<li>{{ w }}</li>{% endfor %}</ul>
+              </div>
+            {% endif %}
+          {% else %}
+            <p class="muted">Enter the arrival values and calculate. Unrecorded vital signs may be left blank; they add 0 points.</p>
+          {% endif %}
+        </article>
+
+        <article class="card">
+          <h2>Item breakdown</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col">Item</th><th scope="col">Condition</th><th scope="col">Points if present</th>{% if result %}<th scope="col">Status</th>{% endif %}</tr>
+              </thead>
+              <tbody>
+                {% if result %}
+                  {% for item in result.contributions %}
+                    <tr class="{{ 'active' if item.met else '' }}">
+                      <td>{{ item.label }}</td>
+                      <td>{{ item.condition }}</td>
+                      <td class="num">{{ item.signed_points }}</td>
+                      <td>{% if not item.requested %}Not requested{% elif item.met %}Met{% else %}Not met{% endif %}</td>
+                    </tr>
+                  {% endfor %}
+                {% else %}
+                  <tr><td colspan="3" class="muted">Calculate to see each item with its status.</td></tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+          <p class="small muted">
+            Items marked as adding to another item are cumulative by design: a systolic pressure below 70
+            earns the points for below 90 and for below 70, and similarly for the shock index and the
+            Glasgow Coma Scale items. Age bands 65 to 74 and 75 or older are exclusive, so the maximum for
+            age is one point. A motor vehicle occupant earns both the high-energy and the occupant items.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Observed risk by stratum</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col">Stratum</th><th scope="col">Score</th><th scope="col">Patients</th><th scope="col">Observed major hemorrhage</th><th scope="col">95% CI</th></tr>
+              </thead>
+              <tbody>
+                {% for t in tiers %}
+                  <tr class="{{ 'active' if result and ((t.key == 'override' and result.override) or (t.key == result.tier_by_score)) else '' }}">
+                    <td>{{ t.label }}</td>
+                    <td>{{ t.score_range }}</td>
+                    <td class="num">{{ '{:,}'.format(t.n) }}</td>
+                    <td class="num">{{ t.rate_pct }}%</td>
+                    <td>{{ t.ci_lo_pct }}% to {{ t.ci_hi_pct }}%</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <p class="small muted">
+            Held-out test set, n = {{ '{:,}'.format(n_test) }}. The three score strata include the patients who also
+            met the override; the override group is a parallel escalation path and overlaps them. Escalate means a score of
+            {{ cut_hi }} or higher, or the override.
+          </p>
+        </article>
+      </section>
+
+      <aside class="col">
+        <form class="card" action="{{ url_for('score') }}" method="post" novalidate>
+          <h2>Arrival values</h2>
+
+          <fieldset>
+            <legend>Required</legend>
+            <label class="field">
+              <span>Age (years)</span>
+              <input name="age" type="number" inputmode="numeric" min="18" max="120" step="any" value="{{ form.get('age', '') }}" class="{{ 'invalid' if 'age' in errors else '' }}">
+              <small>Adults, 18 to 120.</small>
+            </label>
+            <label class="field">
+              <span>Sex</span>
+              {% set sex = form.get('sex', '') %}
+              <select name="sex" class="{{ 'invalid' if 'sex' in errors else '' }}">
+                <option value="" {{ 'selected' if sex == '' }}>Select</option>
+                <option value="male" {{ 'selected' if sex == 'male' }}>Male</option>
+                <option value="female" {{ 'selected' if sex == 'female' }}>Female</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Mechanism of injury</span>
+              {% set mech = form.get('mechanism', '') %}
+              <select name="mechanism" class="{{ 'invalid' if 'mechanism' in errors else '' }}">
+                <option value="" {{ 'selected' if mech == '' }}>Select</option>
+                {% for value, label in mechanisms %}
+                  <option value="{{ value }}" {{ 'selected' if mech == value }}>{{ label }}</option>
+                {% endfor %}
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Arrival vital signs and neurologic status (optional)</legend>
+            <label class="field">
+              <span>Systolic blood pressure (mmHg)</span>
+              <input name="sbp" type="number" inputmode="numeric" min="0" max="300" step="any" value="{{ form.get('sbp', '') }}" class="{{ 'invalid' if 'sbp' in errors else '' }}">
+              <small>Leave blank if not recorded. Enter 0 if unrecordable (this sets the override).</small>
+            </label>
+            <label class="field">
+              <span>Heart rate (beats per minute)</span>
+              <input name="hr" type="number" inputmode="numeric" min="0" max="300" step="any" value="{{ form.get('hr', '') }}" class="{{ 'invalid' if 'hr' in errors else '' }}">
+              <small>Leave blank if not recorded. The shock index is heart rate divided by systolic pressure.</small>
+            </label>
+            <label class="field">
+              <span>Glasgow Coma Scale total (3 to 15)</span>
+              <input name="gcs" type="number" inputmode="numeric" min="3" max="15" step="1" value="{{ form.get('gcs', '') }}" class="{{ 'invalid' if 'gcs' in errors else '' }}">
+            </label>
+            <label class="field">
+              <span>Glasgow Coma Scale motor score (1 to 6)</span>
+              <input name="gcs_motor" type="number" inputmode="numeric" min="1" max="6" step="1" value="{{ form.get('gcs_motor', '') }}" class="{{ 'invalid' if 'gcs_motor' in errors else '' }}">
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Override</legend>
+            <label class="check">
+              <input name="override" type="checkbox" value="true" {{ 'checked' if form.get('override') in ('true', 'on', '1') }}>
+              <span>{{ override_label }}</span>
+            </label>
+            <small>Automatic escalation regardless of score. An entered systolic pressure of 0 also sets it.</small>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" class="primary">Calculate</button>
+            <a class="button secondary" href="{{ url_for('index') }}">Reset</a>
+          </div>
+        </form>
+      </aside>
+    </main>
+
+    <footer class="card footer">
+      <p>
+        {{ app_name }}. Internal and temporal validation only; no external validation. Research use only.
+        No data entered here are stored.
+      </p>
+      {% if doi %}
+        <p><a href="{{ doi }}">Archived release and citation</a></p>
+      {% endif %}
+    </footer>
+  </div>
+</body>
+</html>

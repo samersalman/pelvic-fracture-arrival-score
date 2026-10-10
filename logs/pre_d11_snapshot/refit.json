@@ -1,0 +1,132 @@
+{
+  "outcome": "major_hemorrhage_event",
+  "intercept": -2.776448216290156,
+  "coefficients": {
+    "mech_fall": -1.6723184972244383,
+    "gcs_motor_le5": 0.9159636345789678,
+    "si_ge0_9": 0.7626428636171445,
+    "sbp_lt90": 1.1173469764931137,
+    "mech_high_energy": 0.5289613092339879,
+    "sex_female": -0.4932471508784344,
+    "hr_ge120": 0.6708023649437505,
+    "si_ge1_0": 0.5336987276552378,
+    "sbp_unrecordable": 3.1090909985421713,
+    "gcs_le8": 0.5069677446736888,
+    "sbp_lt70": 0.4685363783288724,
+    "mech_mvc": -0.2732202743907288,
+    "age_65_74": 0.34071677258401617,
+    "age_ge75": 0.3838394765061876,
+    "cc_anticoag": 0.06195757223497538
+  },
+  "points": {
+    "mech_fall": -27,
+    "gcs_motor_le5": 15,
+    "si_ge0_9": 12,
+    "sbp_lt90": 18,
+    "mech_high_energy": 9,
+    "sex_female": -8,
+    "hr_ge120": 11,
+    "si_ge1_0": 9,
+    "gcs_le8": 8,
+    "sbp_lt70": 8,
+    "mech_mvc": -4,
+    "age_65_74": 5,
+    "age_ge75": 6,
+    "cc_anticoag": 1
+  },
+  "point_vars": [
+    "mech_fall",
+    "gcs_motor_le5",
+    "si_ge0_9",
+    "sbp_lt90",
+    "mech_high_energy",
+    "sex_female",
+    "hr_ge120",
+    "si_ge1_0",
+    "gcs_le8",
+    "sbp_lt70",
+    "mech_mvc",
+    "age_65_74",
+    "age_ge75",
+    "cc_anticoag"
+  ],
+  "override_vars": [
+    "sbp_unrecordable"
+  ],
+  "override_labels": {
+    "sbp_unrecordable": "No signs of life on arrival (unrecordable systolic pressure)"
+  },
+  "override_rule_text": "Automatic escalation regardless of score: no signs of life on arrival (unrecordable systolic pressure)",
+  "variables_kept": [
+    "mech_fall",
+    "gcs_motor_le5",
+    "si_ge0_9",
+    "sbp_lt90",
+    "mech_high_energy",
+    "sex_female",
+    "hr_ge120",
+    "si_ge1_0",
+    "sbp_unrecordable",
+    "gcs_le8",
+    "sbp_lt70",
+    "mech_mvc",
+    "age_65_74",
+    "age_ge75",
+    "cc_anticoag"
+  ],
+  "forced_in_anchors": [
+    "age_65_74",
+    "age_ge75",
+    "cc_anticoag"
+  ],
+  "variables_dropped_beta": [
+    "air_transport"
+  ],
+  "variables_dropped_vif": [],
+  "anchor_min_positive_beta": 0.06195757223497538,
+  "anchor_min_positive_var": "cc_anticoag",
+  "theoretical_point_sum_unconstrained": [
+    -39,
+    102
+  ],
+  "training_score_distribution": {
+    "min": -35,
+    "max": 96,
+    "mean": -3.1300242767043747,
+    "median": -3.0,
+    "p25": -28.0,
+    "p75": 9.0,
+    "p90": 32.0,
+    "p95": 48.0
+  },
+  "training_auroc_integer": 0.8833237777862346,
+  "training_auroc_logit": 0.8850209731474983,
+  "n_train": 159824,
+  "n_train_events": 17653,
+  "beta_cutoff": 0.15,
+  "n_selected_before_cutoff": 16,
+  "lasso_x_cols": [
+    "age_65_74",
+    "age_ge75",
+    "sex_female",
+    "sbp_lt90",
+    "sbp_lt70",
+    "sbp_unrecordable",
+    "hr_ge120",
+    "si_ge0_9",
+    "si_ge1_0",
+    "gcs_motor_le5",
+    "gcs_le8",
+    "mech_high_energy",
+    "mech_mvc",
+    "mech_fall",
+    "air_transport",
+    "cc_anticoag",
+    "cc_bleeding"
+  ],
+  "force_in_spec": [
+    "age_65_74",
+    "age_ge75",
+    "cc_anticoag"
+  ]
+}

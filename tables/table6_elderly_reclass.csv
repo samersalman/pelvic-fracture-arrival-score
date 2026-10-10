@@ -1,0 +1,34 @@
+Section,Metric,Stratum,Value,CI_Low,CI_High,N,Note
+EffectModification,interaction_OR_composite,age_ge65:cc_anticoag,0.8902772016935864,0.7555679978697626,1.0490035285903971,239736,HC1; p=0.165
+EffectModification,interaction_OR_patient_state,age_ge65:cc_anticoag,0.9566652204124539,0.7850325419926881,1.1658221729556446,239736,drops HC (anti-circ); p=0.661
+EffectModification,main_OR_age_ge65,age_ge65,1.1355755682196282,,,239736,composite
+EffectModification,main_OR_cc_anticoag,cc_anticoag,1.005220535766438,,,239736,composite
+StratifiedRates,composite_rate,young(<65),0.15988890627444843,0.15788991767584457,0.16190833742502223,127820,events=20437; col=major_hemorrhage_event
+StratifiedRates,hc_receipt_rate,young(<65),0.12343138788921922,0.12163945259577562,0.1252459570324999,127820,events=15777; col=received_hc
+StratifiedRates,death_rate,young(<65),0.01836958222500391,0.017647765134222698,0.019120347959411553,127820,events=2348; col=death_hemorrhagic
+StratifiedRates,death_allcause_rate,young(<65),0.058214676889375684,0.05694427133690406,0.059511636175594455,127820,events=7441; col=death_inhosp
+StratifiedRates,transfusion_rate,young(<65),0.10706462212486309,0.10538136845232049,0.10877149338010506,127820,events=13685; col=substantial_transfusion
+StratifiedRates,composite_rate,elderly/no-AC,0.05836037356221579,0.05681310769387175,0.05994709989706293,85983,events=5018; col=major_hemorrhage_event
+StratifiedRates,hc_receipt_rate,elderly/no-AC,0.03753067466824837,0.036280831109367744,0.03882183982561908,85983,events=3227; col=received_hc
+StratifiedRates,death_rate,elderly/no-AC,0.01703825174743845,0.016194565342793305,0.0179250907469785,85983,events=1465; col=death_hemorrhagic
+StratifiedRates,death_allcause_rate,elderly/no-AC,0.0533710152006792,0.051888473376801914,0.05489346328984375,85983,events=4589; col=death_inhosp
+StratifiedRates,transfusion_rate,elderly/no-AC,0.03454171173371481,0.03334173622089429,0.03578327590863268,85983,events=2970; col=substantial_transfusion
+StratifiedRates,composite_rate,elderly/AC,0.03948636871939228,0.03718350295702475,0.04192564616887611,25933,events=1024; col=major_hemorrhage_event
+StratifiedRates,hc_receipt_rate,elderly/AC,0.022326765125515752,0.02059808129350911,0.024196943600532914,25933,events=579; col=received_hc
+StratifiedRates,death_rate,elderly/AC,0.014576022828056916,0.013187599552163235,0.01610823664389311,25933,events=378; col=death_hemorrhagic
+StratifiedRates,death_allcause_rate,elderly/AC,0.05383102610573401,0.05114974536778662,0.056644469408117584,25933,events=1396; col=death_inhosp
+StratifiedRates,transfusion_rate,elderly/AC,0.019319014383218293,0.017713575071299316,0.021066839283225877,25933,events=501; col=substantial_transfusion
+StratifiedRates,composite_rate,elderly(all),0.05398691876049894,0.05267814071973884,0.05532631408703679,111916,events=6042; col=major_hemorrhage_event
+StratifiedRates,hc_receipt_rate,elderly(all),0.03400764859358805,0.03296165659203014,0.03508562939007906,111916,events=3806; col=received_hc
+StratifiedRates,death_rate,elderly(all),0.016467707923799993,0.015738520454400023,0.017230088245589234,111916,events=1843; col=death_hemorrhagic
+StratifiedRates,death_allcause_rate,elderly(all),0.05347760820615462,0.05217475244934432,0.054811116211185354,111916,events=5985; col=death_inhosp
+StratifiedRates,transfusion_rate,elderly(all),0.031014332177704707,0.030014674281751412,0.03204618434961394,111916,events=3471; col=substantial_transfusion
+ElderlyCalibration,CITL_intercept,elderly,0.027263892380996094,-0.025005813098960862,0.07953359786095304,37235,alpha>0 => under-predicts
+ElderlyCalibration,calibration_slope,elderly,1.1643813491063295,1.1274221501498043,1.2013405480628547,37235,1.0=ideal
+ElderlyCalibration,mean_predicted,elderly,0.05355163286265126,,,37235,mean_observed=0.0546; well-calibrated
+ElderlyDCA,net_benefit_gain_over_SI_at_rule_in,p_t=0.2,0.01251768151887852,,,37235,"net TP/1,000 gain=+12.5"
+ElderlyDCA,net_TP_per_1000_score_at_rule_in,p_t=0.2,23.86867194843561,,,37235,elderly
+UnderTriage,occult_undertriaged_bleeders_reclassified,SI<0.9 & score>=5,258.0,,,37235,24.5% of SI-missed bleeders; proj full~774
+NRI,categorical_NRI_total,score>=5 vs SI>=0.9,0.09545921638876034,0.0758306163242031,0.11620593893072864,35944,1000-boot CI
+NRI,NRI_event,events,0.0629800307219662,,,1953,up=258 down=135
+NRI,NRI_nonevent,nonevents,0.03247918566679415,,,33991,down=1417 up=313

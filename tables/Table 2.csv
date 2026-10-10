@@ -1,0 +1,15 @@
+Criterion,β,Odds ratio (95% CI),Points
+GCS motor ≤5,+0.9160,2.499 (2.327–2.684),+3
+SBP <90 mmHg,+1.1173,3.057 (2.865–3.261),+3
+Shock index ≥0.9,+0.7626,2.144 (2.009–2.288),+2
+High-energy mechanism,+0.5290,1.697 (1.598–1.802),+2
+Heart rate ≥120,+0.6708,1.956 (1.856–2.061),+2
+Shock index ≥1.0,+0.5337,1.705 (1.591–1.828),+2
+GCS ≤8,+0.5070,1.660 (1.534–1.797),+1
+SBP <70 mmHg,+0.4685,1.598 (1.417–1.801),+1
+Age 65–74,+0.3407,1.406 (1.325–1.492),+1
+Age ≥75,+0.3838,1.468 (1.373–1.569),+1
+Female sex,−0.4932,0.611 (0.587–0.636),−1
+MVC (occupant),−0.2732,0.761 (0.728–0.795),−1
+Fall mechanism,−1.6723,0.188 (0.173–0.204),−5
+Automatic escalation regardless of score: no signs of life on arrival (unrecordable systolic pressure),,,

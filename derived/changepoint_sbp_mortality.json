@@ -1,0 +1,116 @@
+{
+  "exposure": "sbp2",
+  "outcome": "death_hemorrhagic",
+  "tag": "sbp_mortality",
+  "adjustment": [
+    "age",
+    "sex_male",
+    "mechanism_cat",
+    "iss",
+    "unstable_ring",
+    "cc_anticoag",
+    "charlson",
+    "acs_level",
+    "puf_year"
+  ],
+  "adjustment_stripped": {
+    "exposure_or_mediator": [],
+    "outcome_defining": [
+      "ais_head"
+    ],
+    "never_adjust": [
+      "finaldischarge_days",
+      "finaldischarge_hrs"
+    ]
+  },
+  "mortality_only_run": true,
+  "ais_head_in_adjustment": false,
+  "unstable_ring_in_adjustment": true,
+  "descriptive_only": false,
+  "guard": null,
+  "n": 233383,
+  "n_events": 3593,
+  "breakpoint": 118.0,
+  "lci": 110.0,
+  "uci": 130.0,
+  "beta_pre": -0.025875036857793063,
+  "beta_post": -0.008433506416317144,
+  "or_per_unit_pre": 0.7720157183729356,
+  "or_per_unit_post": 0.9191232392362947,
+  "unit": 10.0,
+  "deviance_at_bp": 30458.631887855307,
+  "grid_min": 88.0,
+  "grid_max": 130.0,
+  "grid_step": 2.0,
+  "interior_lo": 87.0,
+  "interior_hi": 183.0,
+  "n_valid_grid": 22,
+  "min_events_per_side": 100,
+  "n_boot": 1000,
+  "at_grid_boundary": false,
+  "ci_excludes_endpoints": false,
+  "bootstrap_distribution": {
+    "n_boot_ok": 1000,
+    "boot_bp_min": 92.0,
+    "boot_bp_max": 130.0,
+    "boot_bp_p2_5": 110.0,
+    "boot_bp_p97_5": 130.0,
+    "boot_bp_n_unique": 16,
+    "ci_width_lt_grid_resolution": false
+  },
+  "lr_overall": {
+    "chi2": 995.8079753661368,
+    "df": 3,
+    "p": 0.0
+  },
+  "lr_nonlinearity": {
+    "chi2": 95.27478236942989,
+    "df": 2,
+    "p": 0.0
+  },
+  "mi_pooled_location": {
+    "location": 117.0,
+    "lci": 106.3025,
+    "uci": 127.6975,
+    "m_ok": 20,
+    "n_boot_mi": 0,
+    "within_var": 26.031777,
+    "within_method": "complete-case row-bootstrap variance (low-missingness approx)",
+    "between_var": 3.578947,
+    "per_imputation_locations": [
+      118.0,
+      118.0,
+      118.0,
+      110.0,
+      118.0,
+      118.0,
+      118.0,
+      116.0,
+      116.0,
+      116.0,
+      118.0,
+      118.0,
+      118.0,
+      116.0,
+      116.0,
+      118.0,
+      116.0,
+      118.0,
+      118.0,
+      118.0
+    ]
+  },
+  "tipping_point": {
+    "exposure": "sbp2",
+    "outcome": "death_hemorrhagic",
+    "n_missing_exposure": 5744,
+    "worst_tail_bp": 116.0,
+    "worst_tail_fill": 70.0,
+    "best_tail_bp": 92.0,
+    "best_tail_fill": 130.0,
+    "bound_lo": 92.0,
+    "bound_hi": 116.0,
+    "bound_range": 24.0
+  },
+  "method": "deviance-minimizing segmented logistic (FULL adjusted refit per grid point via sklearn newton-cholesky, no HC1 in the inner loop; deviance is cov-type invariant); HC1 robust SE reserved for the spline/threshold/per-unit point models; joblib-parallel row-level bootstrap CI (1000 iters, full refit per resample); interior 5-95pct restriction + >=100 events/side."
+}

@@ -1,0 +1,25 @@
+{
+  "upload_type": "software",
+  "title": "Pelvic-Fracture Arrival Score: code, aggregate tables and web calculator",
+  "version": "1.0.0",
+  "access_right": "open",
+  "license": "mit",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Salman, Samer G.",
+      "affiliation": "Baylor College of Medicine, Houston, TX, USA"
+    }
+  ],
+  "description": "<p>Analysis code, aggregate result tables and figures, and a research-use web calculator for the Pelvic-Fracture Arrival Score, a bedside integer score for early recognition of major hemorrhage in adults with blunt pelvic-ring fracture. The score uses only information available on arrival (age, sex, mechanism of injury, systolic blood pressure, heart rate and Glasgow Coma Scale) and was derived and internally validated on the American College of Surgeons National Trauma Data Bank Public Use Files, admission years 2019 to 2024, with a held-out test set and a temporal validation. It has not been externally validated and is for research use only.</p><p>The archive contains the Python pipeline that rebuilds the cohort, fits and validates the score from the raw National Trauma Data Bank files, the aggregate tables and figures, a Flask calculator with its tests, and documentation of the small-cell suppression applied to the shared tables (counts under 10 patients are suppressed). No patient-level data are included; the National Trauma Data Bank files must be obtained from the American College of Surgeons.</p>",
+  "keywords": [
+    "pelvic ring fracture",
+    "major hemorrhage",
+    "trauma",
+    "clinical prediction rule",
+    "integer risk score",
+    "shock index",
+    "National Trauma Data Bank",
+    "temporal validation"
+  ]
+}

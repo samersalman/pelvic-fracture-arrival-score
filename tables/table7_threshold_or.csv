@@ -1,0 +1,25 @@
+exposure,outcome,analysis,term,adj_or,lci,uci,p_raw,p_bonferroni,n,notes
+shock_index,major_hemorrhage_event,prespecified_threshold,SI>=1.0,4.9809,4.7945,5.1746,0.0,0.0,232696,danger side=SI>=1.0; Bonferroni m=4
+shock_index,major_hemorrhage_event,prespecified_threshold,SI>=1.3,6.4911,6.1248,6.8792,0.0,0.0,232696,danger side=SI>=1.3; Bonferroni m=4
+shock_index,major_hemorrhage_event,categorical_band,"shock_index band [0.8,1.0) vs <0.8",2.2979,2.1965,2.4041,1.6712908401964463e-285,,35981,reference = SI<0.8 / SBP>=110
+shock_index,major_hemorrhage_event,categorical_band,"shock_index band [1.0,1.3) vs <0.8",4.8588,4.6301,5.0989,0.0,,19355,reference = SI<0.8 / SBP>=110
+shock_index,major_hemorrhage_event,categorical_band,shock_index band >=1.3 vs <0.8,12.1642,11.4496,12.9234,0.0,,10348,reference = SI<0.8 / SBP>=110
+shock_index,major_hemorrhage_event,per_unit,per +0.1 SI,1.3067,1.2988,1.3146,0.0,,232696,linear-exposure adjusted OR
+shock_index,death_hemorrhagic,prespecified_threshold,SI>=1.0,3.2686,2.994,3.5683,3.395061482385405e-154,1.358024592954162e-153,232696,danger side=SI>=1.0; Bonferroni m=4
+shock_index,death_hemorrhagic,prespecified_threshold,SI>=1.3,3.1489,2.8459,3.4843,2.3353873670712586e-109,9.341549468285034e-109,232696,danger side=SI>=1.3; Bonferroni m=4
+shock_index,death_hemorrhagic,categorical_band,"shock_index band [0.8,1.0) vs <0.8",2.2841,2.0587,2.5342,9.765209969719736e-55,,35981,reference = SI<0.8 / SBP>=110
+shock_index,death_hemorrhagic,categorical_band,"shock_index band [1.0,1.3) vs <0.8",3.6193,3.2383,4.0451,9.869636296951179e-114,,19355,reference = SI<0.8 / SBP>=110
+shock_index,death_hemorrhagic,categorical_band,shock_index band >=1.3 vs <0.8,5.9863,5.2963,6.7661,2.1488140703364216e-180,,10348,reference = SI<0.8 / SBP>=110
+shock_index,death_hemorrhagic,per_unit,per +0.1 SI,1.1816,1.1694,1.1939,2.1004913613116072e-217,,232696,linear-exposure adjusted OR
+sbp2,major_hemorrhage_event,prespecified_threshold,SBP<90.0,5.3454,5.0841,5.6202,0.0,0.0,233383,danger side=SBP<90.0; Bonferroni m=4
+sbp2,major_hemorrhage_event,prespecified_threshold,SBP<70.0,7.4408,6.6694,8.3014,7.346624905418371e-283,2.9386499621673486e-282,233383,danger side=SBP<70.0; Bonferroni m=4
+sbp2,major_hemorrhage_event,categorical_band,"sbp2 band [90,110) vs >=110",2.3052,2.2111,2.4033,0.0,,30690,reference = SI<0.8 / SBP>=110
+sbp2,major_hemorrhage_event,categorical_band,"sbp2 band [70,90) vs >=110",5.7711,5.4556,6.1049,0.0,,10506,reference = SI<0.8 / SBP>=110
+sbp2,major_hemorrhage_event,categorical_band,sbp2 band <70 vs >=110,11.0466,9.9307,12.2879,0.0,,3064,reference = SI<0.8 / SBP>=110
+sbp2,major_hemorrhage_event,per_unit,per -10 mmHg (lower),1.2758,1.2665,1.2852,0.0,,233383,linear-exposure adjusted OR
+sbp2,death_hemorrhagic,prespecified_threshold,SBP<90.0,3.0695,2.8081,3.3551,9.93526310864373e-135,3.974105243457492e-134,233383,danger side=SBP<90.0; Bonferroni m=4
+sbp2,death_hemorrhagic,prespecified_threshold,SBP<70.0,3.6228,3.171,4.1389,5.206530902770315e-80,2.082612361108126e-79,233383,danger side=SBP<70.0; Bonferroni m=4
+sbp2,death_hemorrhagic,categorical_band,"sbp2 band [90,110) vs >=110",1.8838,1.7165,2.0674,1.2201581382459543e-40,,30690,reference = SI<0.8 / SBP>=110
+sbp2,death_hemorrhagic,categorical_band,"sbp2 band [70,90) vs >=110",3.1784,2.8554,3.538,2.9247606598934063e-99,,10506,reference = SI<0.8 / SBP>=110
+sbp2,death_hemorrhagic,categorical_band,sbp2 band <70 vs >=110,5.4469,4.7359,6.2647,1.0881969870792311e-124,,3064,reference = SI<0.8 / SBP>=110
+sbp2,death_hemorrhagic,per_unit,per -10 mmHg (lower),1.1981,1.1805,1.216,4.076007159313047e-126,,233383,linear-exposure adjusted OR

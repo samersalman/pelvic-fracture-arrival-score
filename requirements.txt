@@ -1,0 +1,13 @@
+# Python 3.14 (the versions below were run under Python 3.14.0)
+# Packages imported by the scripts in analysis/. Calculator dependencies are
+# listed separately in calculator/requirements.txt.
+numpy==2.4.2
+pandas==2.3.3
+scipy==1.17.0
+scikit-learn==1.9.0
+statsmodels==0.14.6
+matplotlib==3.10.8
+pillow==12.1.0
+pyarrow==23.0.0
+joblib==1.5.3
+patsy==1.0.2

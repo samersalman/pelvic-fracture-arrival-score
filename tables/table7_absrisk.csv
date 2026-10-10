@@ -1,0 +1,17 @@
+exposure,outcome,threshold,denom_set,danger_side,adj_risk_danger_pct,adj_risk_safe_pct,adj_risk_diff_pp,rd_lci_pp,rd_uci_pp,adj_or,or_lci,or_uci,n_danger,n_safe,ci_method,notes
+shock_index,major_hemorrhage_event,1.0,complete_case,SI>=1.0,20.5597,7.9286,12.6311,12.2512,13.0111,4.9809,4.7945,5.1746,29703.0,202993.0,delta_method_HC1,g-computation over observed covariates
+shock_index,major_hemorrhage_event,1.0,MI_m20,SI>=1.0,20.7243,8.1496,12.5747,12.1975,12.952,4.9016,4.7194,5.0908,,,MI_rubin,Rubin-pooled over m=20
+shock_index,major_hemorrhage_event,1.3,complete_case,SI>=1.3,26.3404,9.4948,16.8456,16.139,17.5521,6.4911,6.1248,6.8792,10348.0,222348.0,delta_method_HC1,g-computation over observed covariates
+shock_index,major_hemorrhage_event,1.3,MI_m20,SI>=1.3,26.2993,9.745,16.5543,15.8556,17.2531,6.2883,5.9346,6.6632,,,MI_rubin,Rubin-pooled over m=20
+shock_index,death_hemorrhagic,1.0,complete_case,SI>=1.0,3.2158,1.0573,2.1586,1.9491,2.368,3.2686,2.994,3.5683,29703.0,202993.0,delta_method_HC1,g-computation over observed covariates
+shock_index,death_hemorrhagic,1.0,MI_m20,SI>=1.0,3.4373,1.2539,2.1834,1.9666,2.4002,2.941,2.7018,3.2012,,,MI_rubin,Rubin-pooled over m=20
+shock_index,death_hemorrhagic,1.3,complete_case,SI>=1.3,3.7279,1.2937,2.4342,2.1245,2.7439,3.1489,2.8459,3.4843,10348.0,222348.0,delta_method_HC1,g-computation over observed covariates
+shock_index,death_hemorrhagic,1.3,MI_m20,SI>=1.3,3.6237,1.5422,2.0815,1.7834,2.3796,2.5319,2.2939,2.7946,,,MI_rubin,Rubin-pooled over m=20
+sbp2,major_hemorrhage_event,90.0,complete_case,SBP<90.0,23.7119,9.3795,14.3324,13.7699,14.895,5.3454,5.0841,5.6202,13570.0,219813.0,delta_method_HC1,g-computation over observed covariates
+sbp2,major_hemorrhage_event,90.0,MI_m20,SBP<90.0,23.6664,9.6089,14.0574,13.5013,14.6136,5.1782,4.9259,5.4435,,,MI_rubin,Rubin-pooled over m=20
+sbp2,major_hemorrhage_event,70.0,complete_case,SBP<70.0,29.4214,10.45,18.9714,17.5716,20.3712,7.4408,6.6694,8.3014,3064.0,230319.0,delta_method_HC1,g-computation over observed covariates
+sbp2,major_hemorrhage_event,70.0,MI_m20,SBP<70.0,29.3606,10.6463,18.7143,17.332,20.0965,7.262,6.5127,8.0974,,,MI_rubin,Rubin-pooled over m=20
+sbp2,death_hemorrhagic,90.0,complete_case,SBP<90.0,3.5281,1.2434,2.2848,2.0311,2.5384,3.0695,2.8081,3.3551,13570.0,219813.0,delta_method_HC1,g-computation over observed covariates
+sbp2,death_hemorrhagic,90.0,MI_m20,SBP<90.0,3.5938,1.4698,2.124,1.8722,2.3758,2.6288,2.4129,2.864,,,MI_rubin,Rubin-pooled over m=20
+sbp2,death_hemorrhagic,70.0,complete_case,SBP<70.0,4.5896,1.4257,3.1638,2.6489,3.6788,3.6228,3.171,4.1389,3064.0,230319.0,delta_method_HC1,g-computation over observed covariates
+sbp2,death_hemorrhagic,70.0,MI_m20,SBP<70.0,4.6314,1.6409,2.9905,2.4774,3.5037,3.1465,2.7597,3.5876,,,MI_rubin,Rubin-pooled over m=20

@@ -1,0 +1,230 @@
+{
+  "label": "POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score",
+  "n_test": 79912,
+  "criteria_published_card": 14,
+  "criteria_after_removal": 13,
+  "removed": "cc_anticoag",
+  "removed_points": 0,
+  "checks": [
+    {
+      "check": "score vector identical (13 vs 14 criteria), all test rows",
+      "pass": true,
+      "got": 0,
+      "expected": 0
+    },
+    {
+      "check": "AUROC exactly equal (full float)",
+      "pass": true,
+      "got": "0.8823435472073577",
+      "expected": "0.8823435472073577"
+    },
+    {
+      "check": "AUROC rounds to 0.8823",
+      "pass": true,
+      "got": 0.8823,
+      "expected": 0.8823
+    },
+    {
+      "check": "AUROC equals table4_discrimination.csv pelvic_score",
+      "pass": true,
+      "got": 0.8823,
+      "expected": 0.8823
+    },
+    {
+      "check": "strata n (<=0, 1-4, >=5)",
+      "pass": true,
+      "got": [
+        45127,
+        22661,
+        12124
+      ],
+      "expected": [
+        45127,
+        22661,
+        12124
+      ]
+    },
+    {
+      "check": "strata n and events identical to 14-criteria version",
+      "pass": true,
+      "got": "equal",
+      "expected": "equal"
+    },
+    {
+      "check": "strata events equal risk_tiers.csv",
+      "pass": true,
+      "got": [
+        742,
+        2367,
+        5717
+      ],
+      "expected": [
+        742,
+        2367,
+        5717
+      ]
+    },
+    {
+      "check": "matched-workload common n",
+      "pass": true,
+      "got": 75072,
+      "expected": 75072
+    },
+    {
+      "check": "score >= +5 events caught",
+      "pass": true,
+      "got": 5442,
+      "expected": 5442
+    },
+    {
+      "check": "score >= +5 false positives",
+      "pass": true,
+      "got": 6287,
+      "expected": 6287
+    },
+    {
+      "check": "shock index events caught",
+      "pass": true,
+      "got": 4764,
+      "expected": 4764
+    },
+    {
+      "check": "shock index false positives",
+      "pass": true,
+      "got": 6971,
+      "expected": 6971
+    },
+    {
+      "check": "delta events caught (+678)",
+      "pass": true,
+      "got": 678,
+      "expected": 678
+    },
+    {
+      "check": "delta false positives (-684)",
+      "pass": true,
+      "got": -684,
+      "expected": -684
+    },
+    {
+      "check": "SI cutoff equals table5d (0.946309)",
+      "pass": true,
+      "got": 0.946309,
+      "expected": 0.946309
+    }
+  ],
+  "status": "PASS",
+  "auroc_14_criteria": 0.8823435472073577,
+  "auroc_13_criteria": 0.8823435472073577,
+  "strata_13": [
+    {
+      "stratum": "rule_out (score <= 0)",
+      "n": 45127,
+      "events": 742,
+      "rate": 0.016442484543621336,
+      "ci_low": 0.015309660449550393,
+      "ci_high": 0.01765762778898742
+    },
+    {
+      "stratum": "observe (score 1 to 4)",
+      "n": 22661,
+      "events": 2367,
+      "rate": 0.10445258373416884,
+      "ci_low": 0.10053729553824226,
+      "ci_high": 0.10850195441322047
+    },
+    {
+      "stratum": "escalate (score >= 5)",
+      "n": 12124,
+      "events": 5717,
+      "rate": 0.47154404486968,
+      "ci_low": 0.46266878123988286,
+      "ci_high": 0.4804373351829899
+    }
+  ],
+  "strata_14": [
+    {
+      "stratum": "rule_out (score <= 0)",
+      "n": 45127,
+      "events": 742,
+      "rate": 0.016442484543621336,
+      "ci_low": 0.015309660449550393,
+      "ci_high": 0.01765762778898742
+    },
+    {
+      "stratum": "observe (score 1 to 4)",
+      "n": 22661,
+      "events": 2367,
+      "rate": 0.10445258373416884,
+      "ci_low": 0.10053729553824226,
+      "ci_high": 0.10850195441322047
+    },
+    {
+      "stratum": "escalate (score >= 5)",
+      "n": 12124,
+      "events": 5717,
+      "rate": 0.47154404486968,
+      "ci_low": 0.46266878123988286,
+      "ci_high": 0.4804373351829899
+    }
+  ],
+  "matched_workload_13": {
+    "n_common": 75072,
+    "events_common": 8358,
+    "score_cutoff": 5.0,
+    "score_pct_flagged": 15.623667945439045,
+    "score": {
+      "n_flagged": 11729,
+      "events_caught_TP": 5442,
+      "false_positives_FP": 6287,
+      "events_missed_FN": 2916,
+      "sensitivity": 0.6511127063890882,
+      "ppv": 0.46397817375735356
+    },
+    "si_cutoff": 0.946309,
+    "si_pct_flagged": 15.631660272804773,
+    "si": {
+      "n_flagged": 11735,
+      "events_caught_TP": 4764,
+      "false_positives_FP": 6971,
+      "events_missed_FN": 3594,
+      "sensitivity": 0.5699928212491027,
+      "ppv": 0.405965061780997
+    },
+    "workload_gap_pp": 0.007992327365727303,
+    "tolerance_pp": 0.25,
+    "within_tolerance": true,
+    "delta_events_caught": 678,
+    "delta_false_positives": -684
+  },
+  "matched_workload_14": {
+    "n_common": 75072,
+    "events_common": 8358,
+    "score_cutoff": 5.0,
+    "score_pct_flagged": 15.623667945439045,
+    "score": {
+      "n_flagged": 11729,
+      "events_caught_TP": 5442,
+      "false_positives_FP": 6287,
+      "events_missed_FN": 2916,
+      "sensitivity": 0.6511127063890882,
+      "ppv": 0.46397817375735356
+    },
+    "si_cutoff": 0.946309,
+    "si_pct_flagged": 15.631660272804773,
+    "si": {
+      "n_flagged": 11735,
+      "events_caught_TP": 4764,
+      "false_positives_FP": 6971,
+      "events_missed_FN": 3594,
+      "sensitivity": 0.5699928212491027,
+      "ppv": 0.405965061780997
+    },
+    "workload_gap_pp": 0.007992327365727303,
+    "tolerance_pp": 0.25,
+    "within_tolerance": true,
+    "delta_events_caught": 678,
+    "delta_false_positives": -684
+  },
+  "note": "cc_anticoag carries 0 points, so removing it from the card cannot change any patient's score; asserted element-wise on all 79,912 test rows."
+}

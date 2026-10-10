@@ -1,0 +1,18 @@
+variable,role,beta,SE,OR,OR_CI_low,OR_CI_high,a1_points,a1b_points_published_divisor,published_points,label
+sex_female,point,-0.4838,0.0205,0.616,0.592,0.642,-3,-1,-1,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+sbp_lt90,point,1.308,0.0307,3.699,3.483,3.928,7,4,3,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+sbp_unrecordable,override,3.1183,0.1487,22.608,16.894,30.255,,,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+hr_ge120,point,0.7928,0.0265,2.21,2.098,2.327,4,2,2,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+si_ge1_0,point,1.0984,0.0266,2.999,2.847,3.16,6,3,2,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+gcs_motor_le5,point,1.2805,0.022,3.599,3.447,3.757,7,4,3,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+mech_high_energy,point,0.5539,0.0306,1.74,1.639,1.848,3,2,2,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+mech_fall,point,-1.6702,0.0424,0.188,0.173,0.205,-9,-5,-5,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+air_transport,point,0.1879,0.026,1.207,1.147,1.27,1,1,,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+mech_mvc,point,-0.2847,0.0226,0.752,0.72,0.786,-2,-1,-1,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+age_65_74,point,0.3124,0.03,1.367,1.289,1.45,2,1,1,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+age_ge75,point,0.3433,0.0338,1.41,1.319,1.506,2,1,1,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+cc_anticoag,point,0.0644,0.0436,1.067,0.979,1.162,0,0,0,POST-HOC SUPPLEMENTARY (reviewer-requested); does not replace the primary score
+sbp_lt70,not in model,,,,,,,,1,dropped by design (duplicate threshold tier)
+si_ge0_9,not in model,,,,,,,,2,dropped by design (duplicate threshold tier)
+gcs_le8,not in model,,,,,,,,1,dropped by design (duplicate threshold tier)
+cc_bleeding,not in model,,,,,,,,,not stability-selected

@@ -1,0 +1,50 @@
+{
+  "si_composite": {
+    "exposure": "shock_index",
+    "outcome": "major_hemorrhage_event",
+    "n_missing_exposure": 6431,
+    "worst_tail_bp": 1.22,
+    "worst_tail_fill": 1.6,
+    "best_tail_bp": 1.24,
+    "best_tail_fill": 0.6,
+    "bound_lo": 1.22,
+    "bound_hi": 1.24,
+    "bound_range": 0.020000000000000018
+  },
+  "si_mortality": {
+    "exposure": "shock_index",
+    "outcome": "death_hemorrhagic",
+    "n_missing_exposure": 6431,
+    "worst_tail_bp": 1.5,
+    "worst_tail_fill": 1.6,
+    "best_tail_bp": 0.6,
+    "best_tail_fill": 0.6,
+    "bound_lo": 0.6,
+    "bound_hi": 1.5,
+    "bound_range": 0.9
+  },
+  "sbp_composite": {
+    "exposure": "sbp2",
+    "outcome": "major_hemorrhage_event",
+    "n_missing_exposure": 5744,
+    "worst_tail_bp": 122.0,
+    "worst_tail_fill": 70.0,
+    "best_tail_bp": 116.0,
+    "best_tail_fill": 130.0,
+    "bound_lo": 116.0,
+    "bound_hi": 122.0,
+    "bound_range": 6.0
+  },
+  "sbp_mortality": {
+    "exposure": "sbp2",
+    "outcome": "death_hemorrhagic",
+    "n_missing_exposure": 5744,
+    "worst_tail_bp": 116.0,
+    "worst_tail_fill": 70.0,
+    "best_tail_bp": 92.0,
+    "best_tail_fill": 130.0,
+    "bound_lo": 92.0,
+    "bound_hi": 116.0,
+    "bound_range": 24.0
+  }
+}

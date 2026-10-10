@@ -1,0 +1,1026 @@
+{
+  "run_seed": 42,
+  "sample_mode": null,
+  "version": "v3",
+  "gates": {
+    "timing_gate_pass": false,
+    "timing_valid_pct": 0.0,
+    "mortality_24h_gate_pass": false,
+    "primary_outcome": "major_hemorrhage_event",
+    "primary_outcome_definition": "received_hc | death_hemorrhagic | substantial_transfusion",
+    "mortality_only_anchor": "death_hemorrhagic",
+    "mortality_only_anchor_definition": "death_inhosp & (ais_head < 4) & (finaldischarge_hrs <= 48)",
+    "compiled_export_death_datetime_derivable": "in_hospital_mortality",
+    "funnel_gate_pass": true,
+    "funnel_gate_expected_n_primary": 239736,
+    "funnel_gate_expected_csv_rows": 291766,
+    "fork_fidelity_pass": true,
+    "fork_fidelity_skipped_sample_mode": false
+  },
+  "fork_fidelity": [
+    {
+      "quantity": "CSV rows (acetabulum-inclusive)",
+      "observed": 291766,
+      "expected": 291766,
+      "pass": true
+    },
+    {
+      "quantity": "cohort_primary == 1 (analytic N)",
+      "observed": 239736,
+      "expected": 239736,
+      "pass": true
+    },
+    {
+      "quantity": "cc_anticoag (preexisting code 31)",
+      "observed": 28966,
+      "expected": 28966,
+      "pass": true
+    },
+    {
+      "quantity": "cc_bleeding (preexisting code 4)",
+      "observed": 2261,
+      "expected": 2261,
+      "pass": true
+    },
+    {
+      "quantity": "unstable_ring (ICD S32.81*)",
+      "observed": 42798,
+      "expected": 42798,
+      "pass": true
+    },
+    {
+      "quantity": "sbp_unrecordable (raw SBP2 == 0)",
+      "observed": 608,
+      "expected": 608,
+      "pass": true
+    },
+    {
+      "quantity": "received_hc",
+      "observed": 19583,
+      "expected": 19583,
+      "pass": true
+    },
+    {
+      "quantity": "death_inhosp (v2 all-cause)",
+      "observed": 13426,
+      "expected": 13426,
+      "pass": true
+    },
+    {
+      "quantity": "substantial_transfusion_ml_only (v2 rule)",
+      "observed": 14238,
+      "expected": 14238,
+      "pass": true
+    },
+    {
+      "quantity": "major_hemorrhage_event_v2def",
+      "observed": 31054,
+      "expected": 31054,
+      "pass": true
+    },
+    {
+      "quantity": "patient_state_composite (v2 definition)",
+      "observed": 22907,
+      "expected": 22907,
+      "pass": true
+    },
+    {
+      "quantity": "blood_4h 1-50 band (FULL CSV)",
+      "observed": 6592,
+      "expected": 6592,
+      "pass": true
+    },
+    {
+      "quantity": "major_hemorrhage_event_v2def rate %",
+      "observed": 12.95,
+      "expected": 12.95,
+      "pass": true
+    }
+  ],
+  "cohort_flow": [
+    {
+      "step": 1,
+      "label": "All NTDB/TQP 2019-2024 encounters",
+      "n_in": 7327714,
+      "n_out": 7327714,
+      "n_dropped": 0
+    },
+    {
+      "step": 2,
+      "label": "Adult (AGE_NUMBER >= 18 & AGE_UNITS == 'Y')",
+      "n_in": 7327714,
+      "n_out": 6065699,
+      "n_dropped": 1262015
+    },
+    {
+      "step": 3,
+      "label": "Pelvic-ring fracture (>=1 ICD-10 S32.1/.3/.5/.6/.81/.82)",
+      "n_in": 6065699,
+      "n_out": 349776,
+      "n_dropped": 5715923
+    },
+    {
+      "step": 4,
+      "label": "Blunt mechanism (non-blank e-code; penetrating excluded)",
+      "n_in": 349776,
+      "n_out": 334818,
+      "n_dropped": 14958
+    },
+    {
+      "step": 5,
+      "label": "Direct arrival (HOSPITAL_TRANSFER == 'N')",
+      "n_in": 334818,
+      "n_out": 257776,
+      "n_dropped": 77042
+    },
+    {
+      "step": 6,
+      "label": "Exclude DOA / unsurvivable (PREHOSPITAL_ARREST == 'Y' or any AIS severity 6)",
+      "n_in": 257776,
+      "n_out": 252657,
+      "n_dropped": 5119
+    },
+    {
+      "step": 7,
+      "label": "Valid outcome (disposition known or ED death)",
+      "n_in": 252657,
+      "n_out": 239736,
+      "n_dropped": 12921
+    }
+  ],
+  "n_primary": 239736,
+  "n_acetabulum_inclusive": 291766,
+  "primary_composite": {
+    "definition": "received_hc | death_hemorrhagic | substantial_transfusion",
+    "major_hemorrhage_event_n": 26479,
+    "major_hemorrhage_event_rate_pct": 11.045,
+    "received_hc_n": 19583,
+    "death_hemorrhagic_n": 4191,
+    "substantial_transfusion_n": 17156,
+    "patient_state_composite_n": 19041,
+    "patient_state_composite_rate_pct": 7.942
+  },
+  "v2def_composite": {
+    "definition": "received_hc | death_inhosp | substantial_transfusion_ml_only",
+    "major_hemorrhage_event_v2def_n": 31054,
+    "major_hemorrhage_event_v2def_rate_pct": 12.953,
+    "received_hc_n": 19583,
+    "death_inhosp_n": 13426,
+    "substantial_transfusion_ml_only_n": 14238,
+    "v2_realized_reference": {
+      "major_hemorrhage_event_n": 31054,
+      "major_hemorrhage_event_rate_pct": 12.95,
+      "received_hc_n": 19583,
+      "death_inhosp_n": 13426,
+      "substantial_transfusion_n": 14238,
+      "patient_state_composite_n": 22907
+    }
+  },
+  "death_variants": {
+    "death_hemorrhagic_n": 4191,
+    "death_hemorrhagic_definition": "death_inhosp & (ais_head < 4) & (finaldischarge_hrs <= 48)",
+    "death_hemorrhagic_headais_n": 8501,
+    "death_le48h_n": 6408,
+    "death_hemorrhagic_dayrule_n": 3884,
+    "death_le48h_dayrule_n": 5802,
+    "death_hemorrhagic_dayfallback_n": 4209,
+    "death_hemorrhagic_edincl_n": 4253,
+    "untimed_death_recovery_ladder": {
+      "primary_no_recovery": 4191,
+      "day_fallback": 4209,
+      "ed_inclusive": 4253,
+      "all_missing_included_upper_bound": 4478,
+      "superseded_dayrule_proxy": 3884
+    },
+    "death_hemorrhagic_missing_incl_n": 4478,
+    "death_inhosp_n": 13426,
+    "death_ed_n": 1818,
+    "missing_value_rule": "finaldischarge_hrs missing -> NOT within 48h (conservative); bounded by death_hemorrhagic_missing_incl",
+    "deaths_lost_to_missingness_rule": 287
+  },
+  "finaldischarge_timing": {
+    "source": "RAW _DATA/NTDB/PUF/PUF AY <year>/CSV/PUF_TRAUMA.csv columns FINALDISCHARGEHRS (primary) and FINALDISCHARGEDAYS (sensitivity), joined on inc_key",
+    "anchor": "ED/hospital ARRIVAL (used directly; NOT differenced against HOSPITALARRIVAL*, which is incident-anchored)",
+    "primary_field": "finaldischarge_hrs",
+    "primary_rule": "finaldischarge_hrs <= 48",
+    "superseded_rule": "finaldischarge_days <= 2",
+    "dayrule_missed_true_le48h_deaths": 633,
+    "dayrule_false_positive_deaths": 0,
+    "day_hour_crosswalk": {
+      "1": {
+        "n": 4730,
+        "hrs_min": 0.0,
+        "hrs_max": 23.27,
+        "straddles_48h": false
+      },
+      "2": {
+        "n": 16086,
+        "hrs_min": 0.13,
+        "hrs_max": 47.12,
+        "straddles_48h": false
+      },
+      "3": {
+        "n": 24849,
+        "hrs_min": 24.4,
+        "hrs_max": 69.65,
+        "straddles_48h": true
+      },
+      "4": {
+        "n": 27541,
+        "hrs_min": 49.28,
+        "hrs_max": 94.95,
+        "straddles_48h": false
+      },
+      "5": {
+        "n": 24947,
+        "hrs_min": 72.08,
+        "hrs_max": 118.75,
+        "straddles_48h": false
+      }
+    },
+    "hrs_days_corr_among_deaths": 0.999482,
+    "ascertainment_by_split": {
+      "derivation_2019_2022": {
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022
+        ],
+        "n": 151266,
+        "n_deaths": 8942,
+        "deaths_missing_n": 393,
+        "deaths_missing_pct": 4.395,
+        "death_hemorrhagic_n": 2801,
+        "composite_rate_pct": 11.469
+      },
+      "validation_2023_2024": {
+        "years": [
+          2023,
+          2024
+        ],
+        "n": 88470,
+        "n_deaths": 4484,
+        "deaths_missing_n": 36,
+        "deaths_missing_pct": 0.803,
+        "death_hemorrhagic_n": 1390,
+        "composite_rate_pct": 10.321
+      },
+      "differential_pp": 3.592
+    },
+    "join_duplicate_key_check": {
+      "rows": 498884,
+      "unique_inc_keys": 498884,
+      "duplicate_rows": 0,
+      "assert": "hard failure on any duplicate inc_key (not a dedup)"
+    },
+    "cohort_fill_pct": 99.628,
+    "deaths_fill_pct": 96.805,
+    "raw_file_fill_by_year": {
+      "2019": {
+        "raw_rows": 1097190,
+        "raw_fill_pct_days": 98.8018,
+        "raw_fill_pct_hrs": 97.666,
+        "cohort_keys_matched": 72617
+      },
+      "2020": {
+        "raw_rows": 1135018,
+        "raw_fill_pct_days": 98.9132,
+        "raw_fill_pct_hrs": 97.9769,
+        "cohort_keys_matched": 74967
+      },
+      "2021": {
+        "raw_rows": 1209097,
+        "raw_fill_pct_days": 99.6347,
+        "raw_fill_pct_hrs": 98.8106,
+        "cohort_keys_matched": 83323
+      },
+      "2022": {
+        "raw_rows": 1232956,
+        "raw_fill_pct_days": 99.7212,
+        "raw_fill_pct_hrs": 99.0803,
+        "cohort_keys_matched": 86557
+      },
+      "2023": {
+        "raw_rows": 1300735,
+        "raw_fill_pct_days": 99.7611,
+        "raw_fill_pct_hrs": 99.2307,
+        "cohort_keys_matched": 89238
+      },
+      "2024": {
+        "raw_rows": 1352718,
+        "raw_fill_pct_days": 99.7567,
+        "raw_fill_pct_hrs": 99.2441,
+        "cohort_keys_matched": 92182
+      },
+      "_join_check": {
+        "rows": 498884,
+        "unique_inc_keys": 498884,
+        "duplicate_rows": 0,
+        "assert": "hard failure on any duplicate inc_key (not a dedup)"
+      }
+    },
+    "cohort_fill_by_year": {
+      "2019": {
+        "n": 34986,
+        "fill_pct": 98.311,
+        "fill_pct_days": 99.002,
+        "n_deaths": 2003,
+        "deaths_fill_pct": 90.664,
+        "deaths_missing_pct": 9.336,
+        "n_deaths_missing": 187
+      },
+      "2020": {
+        "n": 35178,
+        "fill_pct": 98.61,
+        "fill_pct_days": 99.204,
+        "n_deaths": 2098,
+        "deaths_fill_pct": 92.278,
+        "deaths_missing_pct": 7.722,
+        "n_deaths_missing": 162
+      },
+      "2021": {
+        "n": 39354,
+        "fill_pct": 99.357,
+        "fill_pct_days": 99.799,
+        "n_deaths": 2390,
+        "deaths_fill_pct": 98.954,
+        "deaths_missing_pct": 1.046,
+        "n_deaths_missing": 25
+      },
+      "2022": {
+        "n": 41748,
+        "fill_pct": 99.473,
+        "fill_pct_days": 99.89,
+        "n_deaths": 2451,
+        "deaths_fill_pct": 99.225,
+        "deaths_missing_pct": 0.775,
+        "n_deaths_missing": 19
+      },
+      "2023": {
+        "n": 43429,
+        "fill_pct": 99.553,
+        "fill_pct_days": 99.876,
+        "n_deaths": 2305,
+        "deaths_fill_pct": 99.349,
+        "deaths_missing_pct": 0.651,
+        "n_deaths_missing": 15
+      },
+      "2024": {
+        "n": 45041,
+        "fill_pct": 99.516,
+        "fill_pct_days": 99.816,
+        "n_deaths": 2179,
+        "deaths_fill_pct": 99.036,
+        "deaths_missing_pct": 0.964,
+        "n_deaths_missing": 21
+      }
+    },
+    "stats_among_deaths": {
+      "n_with_value": 12997,
+      "min": 0.0,
+      "max": 7277.9,
+      "median": 50.17,
+      "q1": 5.32,
+      "q3": 184.35,
+      "n_negative": 0
+    },
+    "hist_among_deaths": {
+      "0-24h": 5143,
+      "24-48h": 1265,
+      "48-72h": 912,
+      "72-168h": 2167,
+      ">168h": 3510
+    },
+    "cuts": {
+      "<=24h": {
+        "n": 5143,
+        "pct_of_all_deaths": 38.31
+      },
+      "<=48h": {
+        "n": 6408,
+        "pct_of_all_deaths": 47.73
+      },
+      "<=72h": {
+        "n": 7320,
+        "pct_of_all_deaths": 54.52
+      },
+      "<=168h": {
+        "n": 9487,
+        "pct_of_all_deaths": 70.66
+      }
+    },
+    "median_ed_deaths": 1.25,
+    "median_survivors": 135.4
+  },
+  "headais_only_composite": {
+    "definition": "received_hc | death_hemorrhagic_headais | substantial_transfusion",
+    "major_hemorrhage_event_headais_n": 29096,
+    "major_hemorrhage_event_headais_rate_pct": 12.137
+  },
+  "secondary_outcomes": {
+    "mtp_equivalent_n": 17156,
+    "mtp_equivalent_note": "definitionally identical to substantial_transfusion; not an independent endpoint"
+  },
+  "fix7_balanced_resuscitation_fields": {
+    "plasma_4h_fill_pct": 80.678,
+    "platelet_4h_fill_pct": 80.682,
+    "plan_expected_fill_pct_SUPERSEDED": 27.3,
+    "plan_figure_note": "The plan's 27.3% is a SAMPLING ARTIFACT (first 1.5M rows of a year-ordered file, ~73% AY2019, the one year these fields were not collected). True pool-wide fill 77.55%, ~90% in 2020-2024. See logs/timing_evidence_v3.md section 6. Quote 77.5% or ~90%, never 27.3%.",
+    "detail": {
+      "plasma_4h": {
+        "source_column": "TQIP_HC_PLASMA_4HR",
+        "fill_pct": 80.678,
+        "n_missing": 46322,
+        "n_zero": 169880,
+        "n_nonzero": 23534,
+        "min": 0.0,
+        "max": 132250.0,
+        "bands": {
+          "1-3": 1894,
+          "4-50": 1941,
+          "51-100": 29,
+          "101-199": 127,
+          "200-249": 748,
+          "250-999": 9819,
+          ">=1000": 8976
+        },
+        "n_units_like_le100": 3864,
+        "n_ml_like_ge200": 19543,
+        "n_gap_101_199": 127,
+        "pct_units_like_of_nonzero": 16.42,
+        "pct_ml_like_of_nonzero": 83.04,
+        "bimodal_units_vs_ml": true,
+        "decoder_applied": false,
+        "top_values": {
+          "500": 1223,
+          "600": 1099,
+          "2": 988,
+          "250": 897,
+          "1000": 710,
+          "300": 648,
+          "1200": 603,
+          "1": 591,
+          "4": 522,
+          "1500": 470
+        }
+      },
+      "platelet_4h": {
+        "source_column": "TQIP_HC_PLATE_4HR",
+        "fill_pct": 80.682,
+        "n_missing": 46312,
+        "n_zero": 180743,
+        "n_nonzero": 12681,
+        "min": 0.0,
+        "max": 15035.0,
+        "bands": {
+          "1-3": 1870,
+          "4-50": 439,
+          "51-100": 71,
+          "101-199": 318,
+          "200-249": 2162,
+          "250-999": 7121,
+          ">=1000": 700
+        },
+        "n_units_like_le100": 2380,
+        "n_ml_like_ge200": 9983,
+        "n_gap_101_199": 318,
+        "pct_units_like_of_nonzero": 18.77,
+        "pct_ml_like_of_nonzero": 78.72,
+        "bimodal_units_vs_ml": true,
+        "decoder_applied": false,
+        "top_values": {
+          "250": 1481,
+          "1": 1268,
+          "200": 987,
+          "300": 804,
+          "500": 550,
+          "2": 417,
+          "600": 370,
+          "400": 302,
+          "225": 232,
+          "750": 189
+        }
+      }
+    }
+  },
+  "fix1_transfusion": {
+    "blood_4h_fill_pct": 91.812,
+    "n_zero": 185751,
+    "n_missing": 19630,
+    "n_nonzero": 34355,
+    "bands_analytic": {
+      "1-50": 5832,
+      "51-100": 43,
+      "101-199": 11,
+      "200-249": 38,
+      ">=250": 28431
+    },
+    "bands_fine_analytic": {
+      "1-3": 2957,
+      "4-50": 2875,
+      "51-100": 43,
+      "101-199": 11,
+      "200-249": 38,
+      "250-999": 14193,
+      ">=1000": 14238
+    },
+    "scale_counts": {
+      "units": 5875,
+      "ml": 28469,
+      "ambiguous": 11,
+      "zero": 185751,
+      "missing": 19630
+    },
+    "n_v2_ml_only": 14238,
+    "n_v3_unit_aware": 17156,
+    "delta": 2918,
+    "n_reclassified": 2918,
+    "n_newly_negative": 0,
+    "n_units_1_3_not_flagged": 2957,
+    "n_ambiguous_gap": 11,
+    "n_ambiguous_gap_flagged": 0,
+    "n_mtp_vs_substantial_mismatches": 0,
+    "fix7_plasma_platelet": {
+      "plasma_4h": {
+        "source_column": "TQIP_HC_PLASMA_4HR",
+        "fill_pct": 80.678,
+        "n_missing": 46322,
+        "n_zero": 169880,
+        "n_nonzero": 23534,
+        "min": 0.0,
+        "max": 132250.0,
+        "bands": {
+          "1-3": 1894,
+          "4-50": 1941,
+          "51-100": 29,
+          "101-199": 127,
+          "200-249": 748,
+          "250-999": 9819,
+          ">=1000": 8976
+        },
+        "n_units_like_le100": 3864,
+        "n_ml_like_ge200": 19543,
+        "n_gap_101_199": 127,
+        "pct_units_like_of_nonzero": 16.42,
+        "pct_ml_like_of_nonzero": 83.04,
+        "bimodal_units_vs_ml": true,
+        "decoder_applied": false,
+        "top_values": {
+          "500": 1223,
+          "600": 1099,
+          "2": 988,
+          "250": 897,
+          "1000": 710,
+          "300": 648,
+          "1200": 603,
+          "1": 591,
+          "4": 522,
+          "1500": 470
+        }
+      },
+      "platelet_4h": {
+        "source_column": "TQIP_HC_PLATE_4HR",
+        "fill_pct": 80.682,
+        "n_missing": 46312,
+        "n_zero": 180743,
+        "n_nonzero": 12681,
+        "min": 0.0,
+        "max": 15035.0,
+        "bands": {
+          "1-3": 1870,
+          "4-50": 439,
+          "51-100": 71,
+          "101-199": 318,
+          "200-249": 2162,
+          "250-999": 7121,
+          ">=1000": 700
+        },
+        "n_units_like_le100": 2380,
+        "n_ml_like_ge200": 9983,
+        "n_gap_101_199": 318,
+        "pct_units_like_of_nonzero": 18.77,
+        "pct_ml_like_of_nonzero": 78.72,
+        "bimodal_units_vs_ml": true,
+        "decoder_applied": false,
+        "top_values": {
+          "250": 1481,
+          "1": 1268,
+          "200": 987,
+          "300": 804,
+          "500": 550,
+          "2": 417,
+          "600": 370,
+          "400": 302,
+          "225": 232,
+          "750": 189
+        }
+      }
+    },
+    "assertions_passed": true
+  },
+  "fix2_death": {
+    "death_inhosp_n": 13426,
+    "death_hemorrhagic_n": 4191,
+    "death_hemorrhagic_headais_n": 8501,
+    "death_le48h_n": 6408,
+    "death_le48h_dayrule_n": 5802,
+    "death_hemorrhagic_dayrule_n": 3884,
+    "death_hemorrhagic_dayfallback_n": 4209,
+    "death_hemorrhagic_edincl_n": 4253,
+    "death_hemorrhagic_missing_incl_n": 4478,
+    "dayrule_sensitivity_pct": 90.1,
+    "dayrule_true_positives": 5775,
+    "day3_deaths_within_48h": 633,
+    "dayrule_untimed_deaths": 27,
+    "deaths_untimed_that_are_ed_deaths": 82,
+    "deaths_missing_both_timing_fields": 376,
+    "death_ed_n": 1818,
+    "received_hc_n": 19583,
+    "patient_state_composite_n": 19041,
+    "patient_state_composite_rate_pct": 7.942,
+    "deaths_removed_total": 9235,
+    "deaths_removed_by_head_ais_ge4": 4925,
+    "deaths_removed_by_gt48h_or_missing": 7018,
+    "dayrule_missed_true_le48h_deaths": 633,
+    "dayrule_false_positive_deaths": 0,
+    "day_hour_crosswalk": {
+      "1": {
+        "n": 4730,
+        "hrs_min": 0.0,
+        "hrs_max": 23.27,
+        "straddles_48h": false
+      },
+      "2": {
+        "n": 16086,
+        "hrs_min": 0.13,
+        "hrs_max": 47.12,
+        "straddles_48h": false
+      },
+      "3": {
+        "n": 24849,
+        "hrs_min": 24.4,
+        "hrs_max": 69.65,
+        "straddles_48h": true
+      },
+      "4": {
+        "n": 27541,
+        "hrs_min": 49.28,
+        "hrs_max": 94.95,
+        "straddles_48h": false
+      },
+      "5": {
+        "n": 24947,
+        "hrs_min": 72.08,
+        "hrs_max": 118.75,
+        "straddles_48h": false
+      }
+    },
+    "deaths_removed_by_timing_within_head_ais_ok": 4310,
+    "deaths_with_missing_finaldischarge_days": 429,
+    "deaths_lost_to_missingness_rule": 287,
+    "head_ais_dist_all_deaths": {
+      "0": 4432,
+      "1": 1160,
+      "2": 986,
+      "3": 1923,
+      "4": 1671,
+      "5": 3254,
+      "6": 0
+    },
+    "head_ais_dist_removed_deaths": {
+      "0": 2387,
+      "1": 527,
+      "2": 487,
+      "3": 909,
+      "4": 1671,
+      "5": 3254,
+      "6": 0
+    },
+    "head_ais_dist_retained_deaths": {
+      "0": 2045,
+      "1": 633,
+      "2": 499,
+      "3": 1014,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    "head_ais_dist_removed_by_timing": {
+      "0": 2387,
+      "1": 527,
+      "2": 487,
+      "3": 909,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    "finaldischarge_hrs_stats_deaths": {
+      "n_with_value": 12997,
+      "min": 0.0,
+      "max": 7277.9,
+      "median": 50.17,
+      "q1": 5.32,
+      "q3": 184.35,
+      "n_negative": 0
+    },
+    "finaldischarge_hrs_hist_deaths": {
+      "0-24h": 5143,
+      "24-48h": 1265,
+      "48-72h": 912,
+      "72-168h": 2167,
+      ">168h": 3510
+    },
+    "finaldischarge_hrs_cuts": {
+      "<=24h": {
+        "n": 5143,
+        "pct_of_all_deaths": 38.31
+      },
+      "<=48h": {
+        "n": 6408,
+        "pct_of_all_deaths": 47.73
+      },
+      "<=72h": {
+        "n": 7320,
+        "pct_of_all_deaths": 54.52
+      },
+      "<=168h": {
+        "n": 9487,
+        "pct_of_all_deaths": 70.66
+      }
+    },
+    "finaldischarge_hrs_median_ed_deaths": 1.25,
+    "finaldischarge_hrs_median_survivors": 135.4,
+    "finaldischarge_hrs_fill_pct": 99.18,
+    "finaldischarge_hrs_fill_pct_deaths": 96.805,
+    "finaldischarge_hrs_days_corr_deaths": 0.999482,
+    "ascertainment_by_year": {
+      "2019": {
+        "n": 34986,
+        "fill_pct": 98.311,
+        "fill_pct_days": 99.002,
+        "n_deaths": 2003,
+        "deaths_fill_pct": 90.664,
+        "deaths_missing_pct": 9.336,
+        "n_deaths_missing": 187
+      },
+      "2020": {
+        "n": 35178,
+        "fill_pct": 98.61,
+        "fill_pct_days": 99.204,
+        "n_deaths": 2098,
+        "deaths_fill_pct": 92.278,
+        "deaths_missing_pct": 7.722,
+        "n_deaths_missing": 162
+      },
+      "2021": {
+        "n": 39354,
+        "fill_pct": 99.357,
+        "fill_pct_days": 99.799,
+        "n_deaths": 2390,
+        "deaths_fill_pct": 98.954,
+        "deaths_missing_pct": 1.046,
+        "n_deaths_missing": 25
+      },
+      "2022": {
+        "n": 41748,
+        "fill_pct": 99.473,
+        "fill_pct_days": 99.89,
+        "n_deaths": 2451,
+        "deaths_fill_pct": 99.225,
+        "deaths_missing_pct": 0.775,
+        "n_deaths_missing": 19
+      },
+      "2023": {
+        "n": 43429,
+        "fill_pct": 99.553,
+        "fill_pct_days": 99.876,
+        "n_deaths": 2305,
+        "deaths_fill_pct": 99.349,
+        "deaths_missing_pct": 0.651,
+        "n_deaths_missing": 15
+      },
+      "2024": {
+        "n": 45041,
+        "fill_pct": 99.516,
+        "fill_pct_days": 99.816,
+        "n_deaths": 2179,
+        "deaths_fill_pct": 99.036,
+        "deaths_missing_pct": 0.964,
+        "n_deaths_missing": 21
+      }
+    },
+    "ascertainment_by_split": {
+      "derivation_2019_2022": {
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022
+        ],
+        "n": 151266,
+        "n_deaths": 8942,
+        "deaths_missing_n": 393,
+        "deaths_missing_pct": 4.395,
+        "death_hemorrhagic_n": 2801,
+        "composite_rate_pct": 11.469
+      },
+      "validation_2023_2024": {
+        "years": [
+          2023,
+          2024
+        ],
+        "n": 88470,
+        "n_deaths": 4484,
+        "deaths_missing_n": 36,
+        "deaths_missing_pct": 0.803,
+        "death_hemorrhagic_n": 1390,
+        "composite_rate_pct": 10.321
+      },
+      "differential_pp": 3.592
+    },
+    "death_ed_and_death_inhosp": 1818,
+    "death_ed_and_death_hemorrhagic": 1328,
+    "death_ed_not_death_inhosp": 0,
+    "death_hemorrhagic_not_death_inhosp": 0,
+    "patient_state_not_in_composite": 0,
+    "ed_disposition_fill_pct": 99.794,
+    "ais_head_fill_pct": 100.0,
+    "composite_v3_n": 26479,
+    "composite_headais_n": 29096,
+    "composite_v2def_n": 31054,
+    "composite_fix1_only_n": 31634,
+    "composite_fix2_only_n": 25690,
+    "composite_missing_incl_n": 26638,
+    "assertions_passed": true
+  },
+  "ais_predot_zfill_fix": {
+    "defect": "compiled AIS export stores AISPreDot as a float, so chapter-0 codes ('010008') lose the leading zero and the region digit read at position 0 is the code's SECOND digit",
+    "fix": "AISPreDot .str.zfill(6) before taking the region digit",
+    "national_5digit_ais_rows": 12898,
+    "national_total_ais_rows": 25483291,
+    "mismapped_to_head_region1": 7026,
+    "mismapped_to_chest_region4": 192,
+    "mismapped_to_abd_region5": 0,
+    "direction": "inflation-only (fix can only move a code out of a mapped region into unmapped chapter 0)",
+    "funnel_impact": "none (AIS-6 exclusion is region-independent)",
+    "outcome_impact": "ais_head is outcome-defining in v3 via death_hemorrhagic, so this corrects an OUTCOME misclassification; register as a v2-SAP deviation",
+    "ais_head_ge3_n": 29944,
+    "tbi_severe_n": 14450
+  },
+  "new_predictors": {
+    "cc_anticoag_n": 28966,
+    "cc_bleeding_n": 2261,
+    "unstable_ring_n": 42798,
+    "sbp_unrecordable_n": 608
+  },
+  "hc_route_counts": {
+    "surgical_only": 10985,
+    "angio_only": 5585,
+    "both": 3013,
+    "none": 220153
+  },
+  "hc_route_counts_by_year": {
+    "2019": {
+      "surgical_only": 1637,
+      "angio_only": 744,
+      "both": 448,
+      "none": 32157
+    },
+    "2020": {
+      "surgical_only": 1788,
+      "angio_only": 853,
+      "both": 484,
+      "none": 32053
+    },
+    "2021": {
+      "surgical_only": 1890,
+      "angio_only": 924,
+      "both": 562,
+      "none": 35978
+    },
+    "2022": {
+      "surgical_only": 1899,
+      "angio_only": 1010,
+      "both": 494,
+      "none": 38345
+    },
+    "2023": {
+      "surgical_only": 1885,
+      "angio_only": 1017,
+      "both": 493,
+      "none": 40034
+    },
+    "2024": {
+      "surgical_only": 1886,
+      "angio_only": 1037,
+      "both": 532,
+      "none": 41586
+    }
+  },
+  "s32_frequencies": {
+    "S32.1": 148221,
+    "S32.3": 55862,
+    "S32.5": 208316,
+    "S32.6": 9701,
+    "S32.81": 68970,
+    "S32.82": 43396,
+    "S32.4": 191333
+  },
+  "blood_4h_fill_pct": 91.812,
+  "informative_missingness_missing_stratum_mortality_pct": 16.26,
+  "cohort_columns": [
+    "inc_key",
+    "puf_year",
+    "cohort_primary",
+    "has_acetabulum",
+    "hc_route",
+    "surg_hc",
+    "angio_hc",
+    "embo_any",
+    "embo_pelvis",
+    "surg_type_raw",
+    "angio_raw",
+    "embo_site_raw",
+    "surg_class",
+    "pelvic_specific_surg",
+    "death_inhosp",
+    "death_hemorrhagic",
+    "death_hemorrhagic_headais",
+    "death_hemorrhagic_missing_incl",
+    "death_hemorrhagic_dayrule",
+    "death_hemorrhagic_dayfallback",
+    "death_hemorrhagic_edincl",
+    "death_le48h",
+    "death_le48h_dayrule",
+    "death_ed",
+    "finaldischarge_hrs",
+    "finaldischarge_days",
+    "blood_4h",
+    "blood_4h_scale",
+    "plasma_4h",
+    "platelet_4h",
+    "icu_los",
+    "vent_days",
+    "received_hc",
+    "substantial_transfusion",
+    "substantial_transfusion_ml_only",
+    "mtp_equivalent",
+    "major_hemorrhage_event",
+    "major_hemorrhage_event_headais",
+    "major_hemorrhage_event_v2def",
+    "patient_state_composite",
+    "sbp2",
+    "pulse2",
+    "shock_index",
+    "sbp_lt90",
+    "sbp_unrecordable",
+    "motor2",
+    "gcs2",
+    "iss",
+    "ais_head",
+    "ais_head_ge3",
+    "ais_chest",
+    "ais_abd",
+    "age",
+    "age_ge65",
+    "sex_male",
+    "race_eth_cat",
+    "ethnicity_hispanic",
+    "payment_cat",
+    "mechanism_cat",
+    "transport_cat",
+    "acs_level",
+    "charlson",
+    "unstable_flag",
+    "tbi_severe",
+    "moribund",
+    "cc_anticoag",
+    "cc_bleeding",
+    "unstable_ring"
+  ],
+  "notes": [
+    "v3 = v2 pipeline with TWO OUTCOME-DEFINITION FIXES. The cohort FUNNEL is UNCHANGED from v2 (same 7 pre-decision STROBE steps, same exclusions): analytic N (cohort_primary==1) = 239,736; CSV rows = 291,766. No exclusion step was touched.",
+    "v3 PRE-DECISION cohort: HC-inclusion filter DROPPED (CONTRACTS \u00a79-A); hemorrhage control is an OUTCOME component of major_hemorrhage_event, not a cohort filter. STROBE funnel = 7 pre-decision steps.",
+    "Both QC gates FAIL on the COMPILED export: all 33 of its date/time columns are 0% filled, so no death DATETIME is derivable there. That does NOT mean time-to-death is unavailable -- see the finaldischarge_days block: the RAW PUF carries day-resolution arrival-anchored offsets, and the <=48h restriction IS built. The gates are retained unchanged as an honest statement about the compiled export only.",
+    "v3 W1 FULL COMPLIANCE (supersedes the plan's 'rebut the <=48h half' posture, which was based on a false premise): FINALDISCHARGEDAYS ('Time from ED/Hospital Arrival to Final Discharge (days)') is joined from the RAW PUF_TRAUMA.csv files on inc_key. It is ALREADY arrival-anchored and is used DIRECTLY -- it must NOT be differenced against HOSPITALARRIVALDAYS, which is incident-anchored (that subtraction manufactures impossible negative values). Evidence: logs/timing_evidence_v3.md.",
+    "TIMING CUT IS ON HOURS. FINALDISCHARGEHRS (elapsed hours, two decimals, arrival-anchored, ~98.8% raw fill) exists in all six raw years and gives W1's '<=48h' EXACTLY. An earlier build used 'finaldischarge_days <= 2' and asserted that AY 2019-2024 has no minute/hour fields -- that assertion was FALSE and is withdrawn. The header search had been widened from *_DATE/*_TIME to *DAYS but never to *HRS. The raw files also carry HOSPITALARRIVALHRS, EDDISCHARGEHRS, INPATIENTHRS, ANGIOGRAPHYHRS, HMRRHGCTRLSURGHRS, TRAUMASURGEONARRIVALHRS.",
+    "The calendar-day rule is SUPERSEDED but retained as death_hemorrhagic_dayrule / death_le48h_dayrule. finaldischarge_days is a calendar-day INDEX, not elapsed time: day 3 straddles 48h. The day rule had 0 false positives (100% specific) but MISSED 633 deaths that truly occurred within 48h.",
+    "MISSING-VALUE RULE (explicit): a missing finaldischarge_hrs is treated as NOT within 48h, so such a death does NOT enter death_le48h or death_hemorrhagic. Conservative -- it shrinks the primary outcome. Deaths excluded by missingness ALONE = 287 (of 429 deaths with no hours value). The rule is BOUNDED, not assumed, by the retained column death_hemorrhagic_missing_incl.",
+    "DIFFERENTIAL ASCERTAINMENT (for script 12): timing-field missingness among deaths is 4.395% in the derivation window (2019-2022) vs 0.803% in validation (2023-2024) -- a +3.592 pp gap sitting exactly on the temporal split. Because missing timing is scored as NOT within 48h, death_hemorrhagic is under-counted more in derivation. 12 must report this as a DATA-COLLECTION ARTIFACT, not as model miscalibration.",
+    "AIS PARSER DEFECT FIX (inherited from v2, corrected in v3): the compiled AIS export stores AISPreDot as a FLOAT, so chapter-0 codes like '010008' round-trip to '10008' and the region digit read from position 0 was the SECOND digit -- scoring External/chapter-0 codes as HEAD (or CHEST) injuries. Fixed with .str.zfill(6) before the region digit is taken. Nationally 12,898 of 25,483,291 AIS rows are 5-digit; 7,026 were mis-mapped to region 1 (head) and 192 to region 4 (chest). Direction is INFLATION-ONLY. ais_head is outcome-defining in v3 (death_hemorrhagic), so this is a corrected OUTCOME misclassification and must be registered as a deviation from the v2 SAP. The AIS-6 exclusion is region-independent, so the cohort funnel is unaffected.",
+    "FIX 1 (S1) unit-aware transfusion decoder: TQIP_HC_BLOOD_UNIT is 100% blank and TQIP_HC_BLOOD_4HR is bimodal (units cluster 1-100, mL cluster >=200, near-empty 101-199 gap). substantial_transfusion = (blood_4h >= 1000) | (4 <= blood_4h <= 100). The v2 mL-only rule is retained as substantial_transfusion_ml_only (named sensitivity, and a strict subset of the new rule). blood_4h_scale records the inferred scale per row. blood_4h NaN -> not flagged (downstream sensitivity).",
+    "FIX 1 delta: substantial_transfusion 14,238 (v2 mL-only) -> 17,156 (v3 unit-aware); 2,918 newly flagged, all from the 4-100 units band. 2,957 records at 1-3 U are below the >=4 U threshold and are NOT flagged. 11 records sit in the 101-199 ambiguous gap and 0 of them are flagged. See logs/fix1_transfusion_audit.md.",
+    "mtp_equivalent is DEFINITIONALLY IDENTICAL to the v3 substantial_transfusion (>=4 U or >=1000 mL / 4 h; PMID 25440492). It is a separate column only because script 17 analyses it as a standalone secondary outcome -- it is NOT an independent endpoint.",
+    "FIX 2 (W1, FULL) hemorrhagic-death component: death_hemorrhagic = death_inhosp & (ais_head < 4) & (finaldischarge_hrs <= 48) is the PRIMARY composite death component AND the mortality-only anchor. The timing cut is on HOURS (exact); the calendar-day rule is SUPERSEDED and kept only as a sensitivity. Retained named sensitivities: death_hemorrhagic_headais (head-AIS half only), death_le48h (timing half only), death_hemorrhagic_dayrule / death_le48h_dayrule (superseded day proxy), death_hemorrhagic_dayfallback and death_hemorrhagic_edincl (pre-specified partial recovery of untimed deaths), death_hemorrhagic_missing_incl (upper bound), death_inhosp (all-cause), death_ed (ED_DISPOSITION_CODE=='MOR').",
+    "FIX 2 ladder: death_inhosp 13,426 -> & ais_head<4 8,501 -> & <=48h 4,191. Other ordering: 13,426 -> & <=48h 6,408 -> & ais_head<4 4,191. Untimed-death recovery rungs: primary 4,191 / day-fallback 4,209 / ED-inclusive 4,253 / all-missing-included 4,478. Superseded day-rule proxy 3,884. death_ed = 1,818. See logs/fix2_death_audit.md.",
+    "v3 PRIMARY composite = received_hc | death_hemorrhagic | substantial_transfusion. Co-primary anti-circularity = patient_state_composite (death_hemorrhagic | substantial_transfusion; HC dropped). Mortality-only anchor is now death_hemorrhagic (head AIS < 4 AND <=48h). Retained composites: major_hemorrhage_event_headais (n = 29,096, the head-AIS-half-only variant) and the exact v2 primary major_hemorrhage_event_v2def (n = 31,054, fork-fidelity gate).",
+    "cc_anticoag (preexisting code 31) and cc_bleeding (code 4) are NOT Charlson components -- collected separately in build_charlson; charlson unaffected. unstable_ring = ICD S32.81* (disrupted ring).",
+    "sbp_unrecordable = raw SBP2==0 sentinel captured BEFORE the 0->NaN mask (MNAR-as-signal); it is a subset of sbp2-missing.",
+    "blood_4h fill (primary pre-decision cohort) = 91.812%.",
+    "FIX 7 companion fields plasma_4h (TQIP_HC_PLASMA_4HR) and platelet_4h (TQIP_HC_PLATE_4HR) are now pulled into the cohort CSV for the EXPLORATORY balanced-resuscitation subgroup. NO decoder is applied to them -- they are raw-numeric and NaN-preserving. Fill: plasma_4h = 80.678%, platelet_4h = 80.682% (plan expected ~27.3%). Their unit-vs-mL band distributions and a data-driven bimodality verdict are in logs/fix1_transfusion_audit.md \u00a76; any ratio built from them inherits an undetermined scale and must be labelled exploratory.",
+    "FORK-FIDELITY GATE (CONTRACTS \u00a73.1 / \u00a713 G2e-G2f): every carried-forward v2 figure (CSV rows, analytic N, cc_anticoag, cc_bleeding, unstable_ring, sbp_unrecordable, received_hc, death_inhosp, substantial_transfusion_ml_only, major_hemorrhage_event_v2def + its rate, v2-definition patient_state_composite, full-CSV blood_4h 1-50 band) is recomputed and checked -- result: PASS. See the 'fork_fidelity' block above for the per-quantity ledger.",
+    "NOTE on the CONTRACTS \u00a713 G1a wording: the 6,592 figure for the blood_4h 1-50 band is a FULL-CSV (291,766-row) count and reproduces there exactly. The analytic-cohort (cohort_primary==1) 1-50 band is 5,832. Both are reported in logs/fix1_transfusion_audit.md; the contract's 'in the analytic cohort' phrasing names the wrong denominator.",
+    "Informative-missingness: MISSING-vitals stratum mortality = 16.26% (v2 realized ~16.26%)."
+  ]
+}

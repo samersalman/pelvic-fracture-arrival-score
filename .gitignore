@@ -1,0 +1,35 @@
+# Patient-level and local artifacts: never commit
+*.parquet
+*.pkl
+*_inc_keys.csv
+pelvic_cohort_predecision*.csv
+candidates.*
+cohort_test_scored.*
+
+# Manuscript documents and instructions files: never commit
+*.docx
+CLAUDE.md
+~$*
+
+# Internal working files
+logs/NUMBERS-LEDGER.md
+logs/*.log
+logs/_*
+work/
+scratch/
+tmp/
+.env
+.env.*
+
+# Python and OS noise
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.DS_Store
+
+# NOTE: the global gitignore on the author's machine ignores *.csv, *.docx,
+# *.parquet and CLAUDE.md. The aggregate CSV tables under tables/, derived/,
+# inputs/ and logs/ are therefore added explicitly with: git add -f <file>
+# Review every file with git status and git diff --cached --stat before pushing.
